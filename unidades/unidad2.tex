@@ -1,0 +1,232 @@
+% !TeX root = ../resumen.tex
+
+\begin{document}
+\section{Ordenes parciales}
+\begin{definition}
+  Una relacion binaria sobre $R$ sobre un conjunto $A$ sera llamada un \emph{orden parcial sobre} $A$,
+  si es reflexiva, transitiva y antisimetrica respecto de $A$.
+  
+  Muchas veces denotaremos con $\leq$ a una relacion binaria que sea un orden parcial.
+
+  Ademas, si hemos denotado $\leq$ a cierto orden parcial sobre un conjunto $A$, entonces:
+  \begin{enumerate}
+    \item Denotaremos con $<$ a la relacion binaria $\{(a, b) \in A^2 : a \leq b \text{ y } a \neq b\}$. Cuando se
+    de que $a < b$, diremos que $a$ \emph{es menor que} $b$, o que $b$ \emph{es mayor que} $a$
+    \item Denotaremos con $\prec$ a la relacion binaria $\{(a, b) \in A^2 : a < b \text{ y no existe $z$ tal que $a < z < b$}\}$.
+    Cuando se de que $a \prec b$, diremos que $a$ \emph{es cubierto por} $b$ o que $b$ \emph{cubre a} $a$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Un \emph{conjunto} parcialmente ordenado o poset, es un par \poset, donde $P$ es un conjunto no vacio
+  cualquiera y $\leq$ es un orden parcial sobre $P$. Dado un poset \poset, el conjunto $P$ sera llamado el \emph{universo} de \poset.
+\end{definition}
+
+\subsection{Diagramas de Hasse}
+Dado un poset \poset. con $P$ finito, podemos realizar un diagrama llamado \emph{diagrama de Hasse}, siguiendo las siguientes instrucciones:
+\begin{enumerate}
+  \item Asociar en forma inyectiva a cada $a \in P$ un punto $p_a$ del plano
+  \item Trazar un segmento de recta uniendo los puntos $p_a$ y $p_b$, cada vez que $a \prec b$
+  \item Realizar los antes dicho de tal forma que: \begin{enumerate}
+    \item Si $a \prec b$, entonces $p_a$ esta por debajo de $p_b$
+    \item Si un punto $p_a$ ocurre en un segmento del diagrama, entonces lo hace en alguno de sus extremos 
+  \end{enumerate}
+\end{enumerate}
+La relacion de $\leq$ puede ser reconstruida facilmente apartir del diagrama. $a \leq b$ sucedera si y solo si
+$p_a = p_b$ p hay una sucesion de caminos ascendentes de segmentos desde $p_a$ hasta $p_b$.
+
+\subsection{Elementos maximales, maximos, minimales y minimos}
+\begin{definition}
+  Sea \poset un poset.
+  
+  Diremos que $a \in P$ es un elemento maximal de \poset, si no existe un $b \in P$ tal que $a < b$.
+
+  Diremos que $a \in P$ es un elemento maximo de \poset si $b \leq a$, para todo $b \in P$.
+  En caso de existir, sera denotado como 1, y muchas veces diremos que \poset tiene un 1 para expresar que \poset
+  tiene un maximo
+
+  Diremos que $a \in P$ es un elemento minimal de \poset, si no existe un $b \in P$ tal que $b < a$.
+  
+  Diremos que $a \in P$ es un elemento minimo de \poset si $a \leq b$ para todo $b \in P$.
+  En caso de existir, sera denotado como 0, y muchas veces diremos que \poset tiene un 0 para expresar que \poset
+  tiene un minimo
+\end{definition}
+
+\begin{remark}
+  Un poset \poset tiene a lo sumo 1 maximo (resp. minimo)
+\end{remark}
+\begin{remark}
+  Todo elemento maximo (resp. minimo) de \poset es un elemento maximal (resp. minimal) de \poset
+\end{remark}
+
+\subsection{Supremos}
+Sea \poset un poset. Dado $S \subseteq P$, diremos que un elemento $a \in P$ es \emph{cota superior} de $S$
+en \poset cuando $b \leq a$, para todo $b \in S$. Notese que todo elemento de $P$ es cota superior de $\emptyset$
+en \poset. Un elemento $a \in P$ sera llamado \emph{supremo} de $S$ en \poset, cuando se den las siguientes propiedades:
+\begin{enumerate}
+  \item $a$ es cota superior de $S$ en \poset
+  \item Para cada $b \in P$, si $b$ es cota superior de $S$ en \poset, entonces $a \leq b$
+\end{enumerate}
+\subsection{Infimos}
+Sea \poset un poset. Dado $S \subseteq P$, diremos que un elemento $a \in P$ es \emph{cota inferior} de $S$
+en \poset cuando $a \leq b$, para todo $b \in S$. Notese que todo elemento de $P$ es cota inferior de $\emptyset$
+en \poset. Un elemento $a \in P$ sera llamado \emph{infimo} de $S$ en \poset, cuando se den las siguientes propiedades:
+\begin{enumerate}
+  \item $a$ es cota inferior de $S$ en \poset
+  \item Para cada $b \in P$, si $b$ es cota inferior de $S$ en \poset, entonces $b \leq a$
+\end{enumerate}
+\begin{remark}
+  Si $a$ es supremo (resp. infimo) de $S$ en \poset y $a'$ es supremo (resp. infimo) de $S$ en \poset, entonces $a = a'$
+\end{remark}
+\begin{remark}
+  $a$ es supremo (resp. infimo) de $P$ en \poset $\iff a$ es maximo (resp. minimo) de \poset
+\end{remark}
+
+\subsection{Homomorfismos de posets}
+\begin{definition}
+Sea \poset y \posetdef{P'}{\leq'} posets. Una funcion $\functype{F}{P}{P'}$ sera llamada un \emph{homomorfismo de } \poset
+en \posetdef{P'}{\leq'} si para todo $x, y \in P$ se cumple que $x \leq y$ implica $F(x) \leq' F(y)$.
+Escribiremos \functype{F}{\poset}{\posetdef{P'}{\leq'}} para expresar que $F$ es un homomorfismo
+de \poset en \posetdef{P'}{\leq'}
+\end{definition}
+
+\subsection{Isomorfismo de posets}
+\begin{definition}
+  Sea \poset y \posetdef{P'}{\leq'} posets. Una funcion \functype{F}{P}{P'} sera llamada un \emph{isomorfismo de}
+  \poset en \posetdef{P'}{\leq'} si $F$ es biyectiva, F es un homomorfismo de \poset en \posetdef{P'}{\leq'}
+  y $F^{-1}$ es un homomorfismo de \posetdef{P'}{\leq'} en \poset. Escribiremos \poset $\overset{\sim}{=}$ \posetdef{P'}{\leq'}
+  cuando exista un isomorfismo de \poset en \posetdef{P'}{\leq'} y en tal caso diremos que \poset y \posetdef{P'}{\leq'}
+  son isomorfos.
+\end{definition}
+
+\begin{definition}
+  Dada una funcion \functype{F}{A}{B} y $S \subseteq A$, denotaremos con $F(S)$ al conjunto ${\{F(a) : a \in S\}}$
+\end{definition}
+
+\begin{lemma}
+  Sean \poset y \posetdef{P'}{\leq'} posets. Supongamos $F$ es un isomorfismo de \poset y \posetdef{P'}{\leq'}
+  \begin{enumerate}
+    \item Para cada $S \subseteq P$ y cada $a \in P$, se tiene que $a$ es cota superior (resp. cota inferior) de $S \iff F(a)$
+    es cota superior (resp. inferior) de $F(S)$
+    \item Para cada $S \subseteq P$ y cada $a \in P$, se tiene que existe $\sup(S) \iff$ existe $\sup(F(S))$,
+    y en el caso de que existan tales elementos, se tiene que $F(\sup(S)) = \sup(F(S))$
+    \item Para cada $S \subseteq P$ y cada $a \in P$, se tiene que existe $\inf(S) \iff$ existe $\inf(F(S))$,
+    y en el caso de que existan tales elementos, se tiene que $F(\inf(S)) = \inf(F(S))$
+    \item Para cada $a \in P$, a es maximo (resp. minimo) $\iff F(a)$ es maximo (resp. minimo)
+    \item Para cada $a \in P$, a es maximal (resp. minimal) $\iff F(a)$ es maximal (resp. minimal)
+    \item Para $a, b \in P$, tenemos $a \prec b  \iff F(a) \prec' F(b)$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  (a) Supongamos $a$ es cota superior de S. Sea $s \in S$. Como $s \leq a$,
+  tenemos que $F(s) \leq' F(a)$. Supongamos ahora que $F(a)$ es cota superior de $F(S)$. Sea $s \in S$.
+  Como $F(s) \leq' F(a)$, tenemos que $s = F^{-1}(F(s)) \leq F^{-1}(F(a)) = a$.
+  
+  (b) Supongamos que existe $\sup(S)$. Entonces por (a) $F(\sup(S))$ es cota superior de $F(S)$.
+  Supongamos $b$ es cota superior de $F(S)$, entonces $F^{-1}(b)$ es cota superior de $S$. Por lo tanto,
+  $\sup(S) \leq F^{-1}(b)$ y entonces $F(\sup(S)) \leq' b$. La \emph{vuelta} es analoga.
+  
+  (c) La prueba es analoga a (b)
+  
+  (d) Supongamos $a \in P$ es maximo. Pero entonces $a = \sup(P)$, y entonces $F(a) = \sup(F(P)) = \sup(P')$.
+  La \emph{vuelta} es analoga.
+
+  (e) Supongamos $b \in P$ tal que no existe $a \in P$ tal que $b \leq a \Rightarrow a = b$.  Sea $c \in P$ tal que
+  $F(b) \leq' F(c)$, entonces $b \leq c$, y entonces $b = c$, $F(b) = F(c)$. Luego $F(b)$ es maximal.
+  La \emph{vuelta} es analoga.
+
+  (f) Sean $a, b \in P$ tal que $a \prec b$. Luego tenemos que $F(a) \leq' F(b)$. Supongamos existe $z \in P$ tal que
+  $F(a) \leq' F(z) \leq' F(b)$, entonces tendriamos $a \leq z \leq b$. Como $a \prec b$, se sigue que $z = a$ o $z = b$. Luego $F(a) \prec' F(b)$.
+  La \emph{vuelta} es analoga.
+\end{proof}
+
+\subsection{Reticulados}
+\begin{definition}
+  Diremos que un poset \poset es un \emph{reticulado} si para todo $a, b \in P$, existen $\sup(\{a, b\})$ e $\inf(\{a, b\})$
+\end{definition}
+
+\begin{definition}
+  Dado un reticulado \poset, definimos 2 operacion binarias:
+  \funcdef{s}{P^2}{P}{(a,b)}{\sup(\{a, b\})}
+  \funcdef{i}{P^2}{p}{(a,b)}{\inf(\{a, b\})}
+Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(a, b)$
+\end{definition}
+
+\begin{lemma}
+  Dado un reticulado \reticul y elementos $x, y \in L$, se cumplen:
+  \begin{enumerate}
+    \item $x \leq \supbin{x}{y}$
+    \item $\infbin{x}{y} \leq x$
+    \item $\supbin{x}{x} = \infbin{x}{x} = x$
+    \item $\supbin{x}{y} = \supbin{y}{x}$
+    \item $\infbin{x}{y} = \infbin{y}{x}$ 
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}
+  Dado un reticulado \reticul y elementos $x, y \in L$, son equivalentes:
+  \begin{enumerate}
+    \item $x \leq y$
+    \item $\supbin{x}{y} = y$
+    \item $\infbin{x}{y} = x$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}
+  Dado un reticulado \reticul y elementos $x, y \in L$, se tiene que:
+  \begin{enumerate}
+    \item $\supbin{x}{(\infbin{x}{y})} = x$
+    \item $\infbin{x}{(\supbin{x}{y})} = x$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}
+  Dado un reticulado \reticul y elementos $x, y, z \in L$, se tiene que:
+  \begin{enumerate}
+    \item \supbin{(\supbin{x}{y})}{z} = \supbin{x}{(\supbin{y}{z})}
+    \item \infbin{(\infbin{x}{y})}{z} = \infbin{x}{(\infbin{y}{z})}
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}
+  Dado un reticulado \reticul y elementos $x, y, z, w \in L$, se tiene que
+  si $x \leq z$ y $y \leq w$, entonces
+  \begin{enumerate}
+    \item $\supbin{x}{y} \leq \supbin{z}{w}$
+    \item $\infbin{x}{y} \leq \infbin{z}{w}$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{lemma}
+  Dado un reticulado \reticul y elementos $x, y, z \in L$, se tiene que\\
+  $\supbin{(\infbin{x}{y})}{(\infbin{x}{z})} \leq \infbin{x}{(\supbin{y}{z})}$
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{lemma}
+  Sea \reticul un reticulado. Dados elementos $\succession{x}{1}{n} \in L$, con $n \geq 2$,
+  se tiene que:
+  \begin{alignat}{2}
+    &\supbin{(\dots\supbin{(\supbin{x_1}{x_2})}{\dots})}{x_n} &= \sup({\{\succession{x}{1}{n}}\})\\
+    &\infbin{(\dots\infbin{(\infbin{x_1}{x_2})}{\dots})}{x_n} &= \inf({\{\succession{x}{1}{n}}\})        
+  \end{alignat}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\end{document}

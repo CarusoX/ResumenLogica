@@ -1,0 +1,96 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+\section{Version algebraica del concepto de reticulado}
+\begin{definition}
+  Una terna \reticulAlg, donde $L$ es un conjunto y \textbf{s}, \textbf{i} son dos operaciones
+  binarias sobre $L$ sera llamada \emph{reticulado} cuando cumpla:
+  \begin{enumerate}
+    \item $\supbin{x}{x} = \infbin{x}{x} = x$, cualesquiera sea $x \in L$
+    \item $\supbin{x}{y} = \supbin{y}{x}$, cualesquiera sean $x,y \in L$
+    \item $\infbin{x}{y} = \infbin{y}{x}$, cualesquiera sean $x,y \in L$
+    \item $\supbin{(\supbin{x}{y})}{z} = \supbin{x}{(\supbin{y}{z})}$, cualesquiera sean $x,y,z \in L$
+    \item $\infbin{(\infbin{x}{y})}{z} = \infbin{x}{(\infbin{y}{z})}$, cualesquiera sean $x,y,z \in L$
+    \item $\supbin{x}{(\infbin{x}{y})} = x$, cualesquiera sean $x,y \in L$
+    \item $\infbin{x}{(\supbin{x}{y})} = x$, cualesquiera sean $x,y \in L$
+  \end{enumerate}
+
+  En tal caso que \reticulAlg sea un reticulado, diremos que $L$ es el \emph{universo} del reticulado.
+\end{definition}
+
+\begin{theorem}
+  Sea \reticulAlg un reticulado. La relacion binaria definida por:
+  $$
+  x \leq y \iff \supbin{x}{y} = y
+  $$
+  es un orden parcial sobre L para el cual se cumple que:
+  \begin{alignat*}{2}
+    \sup&(\{x, y\}) &\ = \supbin{x}{y}\\
+    \inf&(\{x, y\}) &\ = \infbin{x}{y}
+  \end{alignat*}
+  cualesquiera sean $x, y \in L$
+\end{theorem}
+\begin{definition}
+  Dados reticulados \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} diremos que \reticulAlg
+  es un \emph{subreticulado de} \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} si se dan las siguientes condiciones:
+  \begin{enumerate}
+    \item $L \subseteq L'$
+    \item $\textbf{s} = \textbf{s}'\vert_{L\times L}$
+    \item $\textbf{i} = \textbf{i}'\vert_{L\times L}$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  Sea \reticulAlg un reticulado. Un conjunto $S \subseteq L$ es llamado \emph{subuniverso de} \reticulAlg
+  si es no vacio y cerrado bajo las operaciones \textbf{s} y \textbf{i}
+\end{definition}
+\begin{remark}
+  Sea \reticulAlg un reticulado. $S$ es subuniverso de \reticulAlg $\iff$ \reticulAlgDef{S}{\textbf{s}\vert_{S \times S}}{\textbf{i}\vert_{S \times S}}
+  es un subreticulado de \reticulAlg
+\end{remark}
+\begin{definition}
+  Sean \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} reticulados. Una funcion \functype{F}{L}{L'}
+  sera llamada un \emph{homomorfismo} de \reticulAlg \emph{en} \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} si
+  para todo $x, y \in L$ se cumple que:
+  \begin{alignat*}{2}
+    F(\supbin{x}{y}) &\ = F(x)\textbf{ s' }F(y)\\
+    F(\infbin{x}{y}) &\ = F(x)\textbf{ i' }F(y)\\    
+  \end{alignat*}
+
+  Un homomorfismo de \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} sera llamada \emph{isomorfismo}
+  de \reticulAlg \emph{en} \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} cuando sea biyectivo, y su inversa
+  sea tambien un homomorfismo.
+
+  Escribiremos \functype{F}{\reticulAlg}{\reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}} cuando $F$ sea un homomorfismo
+  de \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}
+
+  Escribiremos \reticulAlg $\overset{\sim}{=}$ \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} cuando exista
+  un isomorfismo de \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}
+\end{definition}
+
+\begin{lemma}
+  Si \functype{F}{\reticulAlg}{\reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}} es un homomorfismo biyectivo,
+  entonces $F$ es un isomorfismo
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{lemma}
+  Sean \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} reticulados y sea \functype{F}{\reticulAlg}{\reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}}
+  un homomorfismo. Entonces $I_F$ es un subuniverso de \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}. Es decir que $F$
+  es tambien un homomorfismo de \reticulAlg en \reticulAlgDef{I_F}{\textbf{s}'\vert_{I_F \times I_F}}{\textbf{i}'\vert_{I_F \times I_F}}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{lemma}
+  Sean \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} reticulados y sean \posetdef{L}{\leq} y \posetdef{L'}{\leq'}
+  los posets asociados. Sea \functype{F}{L}{L'} una funcion. Entonces $F$ es un isomorfismo de
+  \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} $\iff$ $F$ es un isomorfismo de \posetdef{L}{\leq} en \posetdef{L'}{\leq'}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{definition}
+  Congruencias de reticulados ...
+\end{definition}
+
+\end{document}

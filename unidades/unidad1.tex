@@ -1,0 +1,126 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+
+\section{Relaciones binarias}
+
+\begin{definition}
+
+  Una \emph{relacion binaria} sera un conjunto cuyos elementos son pares ordenados. Una relacion
+  binaria sobre un conjunto $A$ sera una relacion binaria, la cual es subconjunto de $A^2$.
+
+  Notese que si $R$ es una relacion binaria sobre $A$ y $A \subseteq B$, entonces $R$ es una
+  relacion sobre $B$. Como es usual, cuando $R$ sea una relacion binaria sobre un conjunto
+  $A$, diremos $aRb$ en lugar de $(a, b) \in R$
+\end{definition}
+
+
+\subsection{Propiedades notables de relaciones binarias}
+Algunas propiedades que puede cumplir una relacion binaria $R$ sobre un conjunto $A$ son:
+\begin{itemize}
+  \item \underline{Reflexividad}: $xRx$, cualesquiera sea $x \in A$
+  \item \underline{Transitividad}: $xRy$ y $yRz$ implica $xRz$, cualesquiera sean $x,y,z \in A$
+  \item \underline{Simetria}: $xRy$ implica $yRx$, cualesquiera sean $x,y \in A$
+  \item \underline{Antisimetria}: $xRy$ y $yRx$ implica $x=y$, cualesquiera sean $x,y \in A$
+\end{itemize}
+
+
+\subsection{Relaciones de equivalencia}
+\begin{definition}
+  Sea $A$ un conjunto cualquiera. Por una \emph{relacion de equivalencia sobre} $A$ entenderemos
+  una relacion binaria sobre $A$ la cual es reflexiva, transitiva y simetrica, con respecto a $A$.
+\end{definition}
+
+\begin{definition}
+  Dada una funcion \functype{F}{A}{B}, definimos:
+  $$
+  \text{ker }F = \{(x, y) \in A^2 : F(x) = F(y)\}
+  $$
+\end{definition}
+
+\begin{definition}
+  Dada una relacion de equivalencia $R$ sobre $A$ y $a \in A$, definimos:
+  $$
+  a / R = \{b \in A: aRb\}
+  $$
+  El conjunto $a/R$ sera llamado la \emph{clase de equivalencia} de $a$, con respecto a $R$.
+\end{definition}
+
+\begin{remark}
+  $a \in a/R$, pues $R$ es reflexiva, por lo tanto $aRa$.
+\end{remark}
+\begin{remark}
+  $aRb \iff a/R = b/R$, sencillo de demostrar con las
+  propiedades
+\end{remark}
+\begin{remark}
+  $a/R \cap b/R = \emptyset$ o $a/R = b/R$, sencillo de demostrar
+  viendo que pasa si $aRb$ y si no $aRb$
+\end{remark}
+
+\begin{definition}
+  Dada una relacion de equivalencia $R$ sobre $A$, definimos:
+  $$
+  A/R = \{a/R : a \in A\}
+  $$
+  Diremos que $A/R$ es el cociente de $A$ por $R$. Notese que $A/R$ es el conjunto de clases de equivalencia
+  de cada elemento de $A$.
+\end{definition}
+
+\begin{remark}
+  Sea \functype{F}{A}{B}, entonces:
+  \begin{enumerate}
+    \item $F$ es inyectiva $\iff$ ker $F = \{(x, y) \in A^2 : x = y\}$
+    \item Si $F$ es sobreyectiva, entonces hay una biyeccion entre $A/\text{ker }F$
+  \end{enumerate}
+\end{remark}
+
+\begin{definition}
+  Si $R$ es una relacion de equivalencia sobre $A$, definimos la funcion \functype{\pi_R}{A}{A/R} por $\pi_R(a) = a/R$, para cada $a \in A$.
+  Esta funcion es llamada la \emph{proyeccion canonica} respecto de $R$.
+\end{definition}
+
+\begin{remark}
+  Sea $R$ una relacion de equivalencia sobre $A$. Entonces ${\text{ker } \pi_R = R}$
+\end{remark}
+
+\subsection{Correspondencia entre relaciones de equivalencia y particiones}
+\begin{definition}
+  Dado un conjunto $A$, por una \emph{particion de } $A$ entenderemos a un conjunto $\mathcal{P}$ tal que:
+  \begin{itemize}
+    \item Cada elemento de $\mathcal{P}$ es un subconjunto no vacio de $A$
+    \item Si $S_1, S_2 \in \mathcal{P}$ y $S_1 \neq S_2$, entonces $S_1 \cap S_2 = \emptyset$
+    \item $A = \bigcup_{S \in \mathcal{P}}S$
+  \end{itemize}
+\end{definition}
+\begin{remark}
+  Si $\mathcal{P}$ es una particion de $A$, entonces para cada $a \in A$ hay un unico $S \in \mathcal{P}$
+  tal que $a \in S$.
+\end{remark}
+\begin{definition}
+  Dada una particion $\mathcal{P}$ de un conjunto $A$, podemos definir una relacion binaria
+  asociada a $\mathcal{P}$ de la siguiente manera:
+  $$
+  R_\mathcal{P} = \{(a, b) \in A^2 : a, b \in S\text{, para algun }S \in \mathcal{P}\}
+  $$
+\end{definition}
+
+\begin{theorem}
+  Sea $A$ un conjunto cualquiera. Sean
+  \begin{equation*}\begin{split}
+      &Part = \{particiones\ de\ A\}\\
+      &ReEq = \{relaciones\ de\ equivalencia\ sobre\ A\}
+  \end{split}\end{equation*}
+  
+  Entonces, las funciones:
+  \funcdef{f}{Part}{ReEq}{\mathcal{P}}{R_\mathcal{P}}
+  \funcdef{g}{ReEq}{Part}{R}{A / R}  
+
+  son biyecciones una de la otra
+\end{theorem}
+
+\begin{proof}
+  \underline{Se acepta sin demostracion}
+\end{proof}
+
+
+\end{document}
