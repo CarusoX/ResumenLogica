@@ -1,0 +1,215 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+  \section{Reticulados acotados}
+  \begin{definition}
+    Por un \emph{reticulado acotado} entenderemos una 5-upla \reticulAcot, tal que \reticulAlg
+    es un reticulado, $0, 1 \in L$, y ademas se cumplen las siguientes propiedades
+    \begin{enumerate}
+      \item $\supbin{0}{x} = x$, para cada $x \in L$
+      \item $\supbin{1}{x} = 1$, para cada $x \in L$
+    \end{enumerate}
+  \end{definition}
+
+  \subsection{Subreticulados acotados}
+  \begin{definition}
+    Dados reticulados acotados \reticulAcot y \reticulAcotDef{L'}{s'}{i'}{0'}{1'} diremos que \reticulAcot
+    es un $\emph{subreticulado acotado de}$ \reticulAcotDef{L'}{s'}{i'}{0'}{1'} si se dan las siguientes condiciones:
+    \begin{enumerate}
+      \item $L \subseteq L'$
+      \item $0 = 0'$ y $1 = 1'$
+      \item $s = s'\vert_{L \times L}$
+      \item $i = i'\vert_{L \times L}$
+    \end{enumerate}
+
+    Sea \reticulAcot un reticulado acotado. Un conjunto $S \subseteq L$ es llamado un $\emph{subuniverso}$ de
+    \reticulAcot si $0, 1 \in S$, y $S$ es cerrado bajo las operaciones $s$ e $i$.
+  \end{definition}
+
+  \subsection{Homomorfismo de reticulados acotados}
+  \begin{definition}
+    Sean \reticulAcot y \reticulAcotDef{L'}{s'}{i'}{0'}{1'} reticulados acotados. Una funcion \functype{F}{L}{L'}
+    sera llamada un \emph{homomorfismo de} \reticulAcot en \reticulAcotDef{L'}{s'}{i'}{0'}{1'} si para todo
+    $x, y \in L$ se cumple que:
+    \begin{alignat*}{4}
+      F(\supbin{x}{y}) &=&\ & F(x) s' F(y)\\
+      F(\infbin{x}{y}) &=&\ & F(x) i' F(y)\\
+      F(0) &=&\ & 0'\\
+      F(1) &=&\ & 1'
+    \end{alignat*}
+
+    Un homomorfismo \reticulAcot en \reticulAcotDef{L'}{s'}{i'}{0'}{1'} sera llamado \emph{isomorfismo} cuando
+    sea biyectivo y su inversa tambien sea un homomorfismo. 
+
+    Escribiremos \functype{F}{\reticulAcot}{\reticulAcotDef{L'}{s'}{i'}{0'}{1'}} cuando $F$ sea un homomorfismo
+  de \reticulAcot en \reticulAcotDef{L'}{s'}{i'}{0'}{1'}
+
+  Escribiremos \reticulAcot $\overset{\sim}{=}$ \reticulAcotDef{L'}{s'}{i'}{0'}{1'} cuando exista
+  un isomorfismo de \reticulAcot en \reticulAcotDef{L'}{s'}{i'}{0'}{1'}
+  \end{definition}
+
+  \begin{lemma}
+    Si \functype{F}{\reticulAcot}{\reticulAcotDef{L'}{s'}{i'}{0'}{1'}} es un \emph{homomorfismo biyectivo},
+    entonces $F$ es un isomorfismo.
+  \end{lemma}
+  \begin{proof}
+    \underline{Se acepta sin demostracion}
+  \end{proof}
+  \begin{lemma}
+    Sean \reticulAcot y \reticulAcotDef{L'}{s'}{i'}{0'}{1'} reticulados y sea \functype{F}{\reticulAcot}{\reticulAcotDef{L'}{s'}{i'}{0'}{1'}}
+    un homomorfismo. Entonces $I_F$ es un subuniverso de \reticulAcotDef{L'}{s'}{i'}{0'}{1'}. Es decir que $F$
+    es tambien un homomorfismo de \reticulAcot en \reticulAcotDef{I_F}{\textbf{s}'\vert_{I_F \times I_F}}{\textbf{i}'\vert_{I_F \times I_F}}{0'}{1'}
+  \end{lemma}
+  \begin{proof}
+    \underline{Se acepta sin demostracion}
+  \end{proof}
+
+  \subsection{Congruencias de reticulados acotados}
+  \begin{definition}
+    Sea \reticulAcot un reticulado acotado. Una \emph{congruencia sobre} \reticulAcot sera una
+    relacion de equivalencia $\theta$ la cual sera una congruencia sobre \reticulAlg. Tenemos definidas sobre
+    $L/\theta$ dos operaciones binarias $\overset{\sim}{\textbf{s}}$ y $\overset{\sim}{\text{i}}$
+    \begin{alignat*}{2}
+      \supbincongr{x/\theta}{y/\theta} &=& (\supbin{x}{y})/\theta\\
+      \infbincongr{x/\theta}{y/\theta} &=& (\infbin{x}{y})/\theta
+    \end{alignat*}
+
+    La 5-upla \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} es llamada
+    \emph{cociente de} \reticulAcot sobre $\theta$ y la denotaremos con $\reticulAcot/\theta$
+  \end{definition}
+
+  \begin{lemma}
+    Sea \reticulAcot un reticulado acotado y $\theta$ una congruencia sobre \reticulAcot.
+    \begin{enumerate}
+      \item \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} es un reticulado acotado
+      \item $\pi_\theta$ es un homomorfismo de \reticulAcot en \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$
+    \end{enumerate}
+  \end{lemma}
+
+  \begin{proof}
+    TODO
+  \end{proof}
+
+  \begin{lemma}
+    Si \functype{F}{\reticulAcot}{\reticulAcotDef{L'}{s'}{i'}{0'}{1'}} es un homomorfismo de
+    reticulados acotados, entonces ker $F$ es una congruencia sobre \reticulAcot
+  \end{lemma}
+  \begin{proof}
+    TODO
+  \end{proof}
+
+  \section{Reticulados complementados}
+  \begin{definition}
+    Sea \reticulAcot un reticulado acotado. Dado $a \in L$, diremos que $a$ es \emph{complementado} cuando 
+    exista un elemento $b \in L$ (llamado \emph{complemento de a}) tal que:
+    \begin{alignat*}{4}
+      \supbin{a}{b} &=&\ & 1\\
+      \infbin{a}{b} &=&\ & 0
+    \end{alignat*}
+  \end{definition}
+
+  \begin{definition}
+    Entonderemos por \emph{reticulado complementado} a una 6-upla \reticulCompl tal que \reticulAcot es un
+    reticulado acotado y ${}^c$ es una operacion unaria sobre $L$ tal que:
+    \begin{enumerate}
+      \item \supbin{x}{x^c} = 1, para cada $x \in L$
+      \item \infbin{x}{x^c} = 0, para cada $x \in L$
+    \end{enumerate}
+  \end{definition}
+
+  \subsection{Subreticulados complementados}
+  \begin{definition}
+    Dados reticulados complementados \reticulCompl y \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} diremos que
+    \reticulCompl es un \emph{subreticulado complementado de} \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} si se
+    dan las siguientes condiciones:
+    \begin{enumerate}
+      \item $L \subseteq L'$
+      \item $0 = 0'$ y $1 = 1'$
+      \item $s = s'\vert_{L \times L}$
+      \item $i = i'\vert_{L \times L}$
+      \item ${}^c = {}^{c'}\vert_L$
+    \end{enumerate}
+
+    Sea \reticulCompl un reticulado complementado. Un conjunto $S \subseteq L$ es llamado un $\emph{subuniverso}$ de
+    \reticulCompl si $0, 1 \in S$, y $S$ es cerrado bajo las operaciones $s$, $i$ y ${}^c$.
+  \end{definition}
+
+  \subsection{Homomorfismo de reticulados complementados}
+
+  \begin{definition}
+    Sean \reticulCompl y \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} reticulados complementados. Una funcion
+    \functype{F}{L}{L'} sera llamada un \emph{homomorfismo de} \reticulCompl en \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}
+    si para todo $x, y \in L$ se cumple que:
+    \begin{alignat*}{4}
+      F(\supbin{x}{y}) &=&\ & F(x) s' F(y)\\
+      F(\infbin{x}{y}) &=&\ & F(x) i' F(y)\\
+      F(x^c) &=&\ & F(x)^{c'}\\
+      F(0) &=&\ & 0'\\
+      F(1) &=&\ & 1'
+    \end{alignat*}
+
+    Un homomorfismo \reticulCompl en \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} sera llamado \emph{isomorfismo} cuando
+    sea biyectivo y su inversa tambien sea un homomorfismo. 
+
+    Escribiremos \functype{F}{\reticulCompl}{\reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}} cuando $F$ sea un homomorfismo de\\
+    \reticulCompl en \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}
+
+    Escribiremos \reticulCompl $\overset{\sim}{=}$ \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} cuando exista
+    un isomorfismo de \reticulCompl en \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}
+  \end{definition}
+
+  \begin{lemma}
+    Si \functype{F}{\reticulCompl}{\reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}} es un \emph{homomorfismo biyectivo},
+    entonces $F$ es un isomorfismo.
+  \end{lemma}
+  \begin{proof}
+    \underline{Se acepta sin demostracion}
+  \end{proof}
+  \begin{lemma}
+    Sean \reticulCompl y \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} reticulados y sea \functype{F}{\reticulCompl}{\reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}}
+    un homomorfismo. Entonces $I_F$ es un subuniverso de \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}. Es decir que $F$
+    es tambien un homomorfismo de \reticulCompl en \reticulComplDef{I_F}{\textbf{s}'\vert_{I_F \times I_F}}{\textbf{i}'\vert_{I_F \times I_F}}{{}^{c'}\vert_{I_F}}{0'}{1'}
+  \end{lemma}
+  \begin{proof}
+    \underline{Se acepta sin demostracion}
+  \end{proof}
+
+  \subsection{Congruencias de reticulados complementados}
+  \begin{definition}
+    Sea \reticulCompl un reticulado complementado. Una \emph{congruencia sobre} \reticulCompl sera una
+    relacion de equivalencia $\theta$ sobre $L$ la cual cumpla: 
+    \begin{enumerate}
+      \item $\theta$ es una congruencia sobre \reticulAcot
+      \item $x/\theta = y/\theta$ implica $x^c/\theta = y^c/\theta$
+    \end{enumerate}
+
+    Las condiciones anteriores nos permiten definir sobre $L/\theta$ dos operaciones binarias $\overset{\sim}{\textbf{s}}$ y $\overset{\sim}{\text{i}}$
+    y una operacion binaria ${}^{\overset{\sim}{c}}$ de la siguiente manera:
+    \begin{alignat*}{3}
+      \supbincongr{x/\theta}{y/\theta} &=&\ & (\supbin{x}{y})/\theta\\
+      \infbincongr{x/\theta}{y/\theta} &=&\ & (\infbin{x}{y})/\theta\\
+      (x/\theta)^{\overset{\sim}{c}} &=&\ & x^c/\theta
+    \end{alignat*}
+
+    La 6-upla \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} es llamada
+    \emph{cociente de} \reticulCompl sobre $\theta$ y la denotaremos con $\reticulCompl/\theta$
+  \end{definition}
+
+  \begin{lemma}
+    Sea \reticulCompl un reticulado complementado y $\theta$ una congruencia sobre \reticulCompl.
+    \begin{enumerate}
+      \item \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} es un reticulado complementado
+      \item $\pi_\theta$ es un homomorfismo de \reticulCompl en \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$
+    \end{enumerate}
+  \end{lemma}
+  \begin{proof}
+    TODO
+  \end{proof}
+
+  \begin{lemma}
+    Si \functype{F}{\reticulCompl}{\reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}} es un homomorfismo de
+    reticulados complementados, entonces ker $F$ es una congruencia sobre \reticulCompl
+  \end{lemma}
+  \begin{proof}
+    \underline{Se acepta sin demostracion}
+  \end{proof}
+\end{document}

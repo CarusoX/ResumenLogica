@@ -90,7 +90,50 @@
   TODO
 \end{proof}
 \begin{definition}
-  Congruencias de reticulados ...
+  Sea \reticulAlg un reticulado. Una \emph{congruencia sobre} \reticulAlg sera una relacion de equivalencia
+  $\theta$ la cual cumpla:
+  $$
+  x\theta x' \text{ y } y\theta y' \Rightarrow (\supbin{x}{y})\theta(\supbin{x'}{y'}) \text{ y } (\infbin{x}{y})\theta(\infbin{x'}{y'})
+  $$
+
+  Gracias a tal propiedad podemos definir sobre $L/\theta$ dos operaciones binarias $\overset{\sim}{\textbf{s}}$ y $\overset{\sim}{\text{i}}$
+  \begin{alignat*}{2}
+    \supbincongr{x/\theta}{y/\theta} &=& (\supbin{x}{y})/\theta\\
+    \infbincongr{x/\theta}{y/\theta} &=& (\infbin{x}{y})/\theta
+  \end{alignat*}
 \end{definition}
+
+\begin{definition}
+  La terna \reticulAlgDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}} es llamada \emph{cociente de} \reticulAlg sobre $\theta$,
+  y la denotaremos con $\reticulAlg/\theta$
+\end{definition}
+
+\begin{lemma}
+  \reticulAlgDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}} es un reticulado. El orden
+  parcial $\overset{\sim}{\leq}$ asociado a este reticulado cumple:
+  $$
+  x/\theta \overset{\sim}{\leq} y/\theta \iff y\theta(\supbin{x}{y})
+  $$
+\end{lemma}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}
+  Si \functype{F}{\reticulAlg}{\reticulAlgDef{L'}{s'}{i'}} es un \emph{homomorfismo}, entonces \text{ker }F es una \emph{congruencia sobre} \reticulAlg
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}
+  Sea \reticulAlg un reticulado y sea $\theta$ una congruencia sobre \reticulAlg. Entonces $\pi_\theta$ es un 
+  homomorfismo de \reticulAlg en \reticulAlgDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}.
+  Ademas ker $\pi_\theta$ = $\theta$.
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
 
 \end{document}
