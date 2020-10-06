@@ -1,0 +1,226 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+\section{Sintaxis de la logica de primer orden}
+
+\subsection{Variables}
+
+\begin{definition}
+Sea $Var$ el siguiente conjunto de palabras del alfabeto 
+$\{\text{X}, \mathit{0}, \mathit{1}, \dots, \mathit{9}, \mathbf{0}, \mathbf{1}, \dots, \mathbf{9}\}$:
+
+$$
+Var = \{\text{X}\mathbf{0}, \dots, \text{X}\mathbf{9}, \text{X}\mathit{1}\mathbf{0}, \dots, \text{X}\mathit{2}\mathbf{0}, \dots, \text{X}\mathit{10}\mathbf{0}, \dots\}
+$$
+
+Es decir, el n-esimo elemento de $Var$ sera la palabra de la forma $\text{X}\alpha$, donde $\alpha$ es el resultado de reemplazar en 
+la representacion decimal de $n$ su ultimo simbolo por el numeral en bold, y el resto por sus numerales en italics.
+
+A los elementos de $Var$ se los llamara \emph{variables}.
+
+Denotaremos con $x_i$ al i-esimo elemento de $Var$, para cada $i \in \mathbf{N}$.
+\end{definition}
+
+\subsection{Tipos}
+\begin{definition}
+  Diremos que $\alpha$ es subpalabra (propia) de $\beta$ cuando ($\alpha \notin \{\epsilon, \beta \}$ y) existan palabras
+  $\delta, \gamma$, tales que $\beta = \delta\alpha\gamma$ 
+\end{definition}
+\begin{definition}
+  Por un tipo (de primer orden) entenderemos una 4-upla $\tau = (\mathcal{C}, \mathcal{F}, \mathcal{R}, a)$ tal que:
+  \begin{enumerate}
+    \item Hay alfabetos finitos $\Sigma_1, \Sigma_2, \Sigma_3$ tales: \begin{enumerate}
+      \item $\mathcal{C} \subseteq \Sigma_1^+, \mathcal{F} \subseteq \Sigma_2^+, \mathcal{R} \subseteq \Sigma_3^+$
+      \item $\Sigma_1, \Sigma_2, \Sigma_3$ son disjuntos de a pares
+      \item $\Sigma_1 \cup \Sigma_2 \cup \Sigma_3$ no contiene ningun simbolo de la lista: $\forall\ \exists\ \neg\ \lor\ \land\ \rightarrow\ \leftrightarrow\ (\ )\ ,\ \equiv\ \text{X}\ \mathit{0}\ \mathit{1}\ \dots\ \mathit{9}\ \mathbf{0}\ \mathbf{1}\ \dots\ \mathbf{9}$ 
+    \end{enumerate}
+    \item \functype{a}{\mathcal{F}\cup\mathcal{R}}{\mathbf{N}} es una funcion que a cada $p \in \mathcal{F} \cup \mathcal{R}$ le asocia 
+    un numero natural $a(p)$, llamado la \emph{aridad} de $p$
+    \item Ninguna palabra de $\mathcal{C}$ (resp. $\mathcal{F}, \mathcal{R}$) es subpalabra propia de otra palabra de $\mathcal{C}$ (resp. $\mathcal{F}, \mathcal{R}$)
+  \end{enumerate}
+
+  A los elementos de $\mathcal{C}$ (resp. $\mathcal{F}, \mathcal{R}$) los llamaremos \emph{nombres de constante} (resp. \emph{nombres de funcion}, \emph{nombres de relacion}) de tipo $\tau$
+
+  Dado $n \geq 1$, definamos
+  \begin{alignat*}{3}
+    &\mathcal{F}_n &\ =&\ \{f \in \mathcal{F} : a(f) = n\}\\
+    &\mathcal{R}_n &\ =&\ \{r \in \mathcal{R} : a(r) = n\}
+  \end{alignat*}
+\end{definition}
+
+\subsection{Terminos}
+
+Dado un tipo $\tau$, definamos recursivamente los conjuntos de palabras $T_k^\tau$, con $k \geq 0$, de la siguiente manera:
+\begin{alignat*}{3}
+  &T_0^\tau &\ =&\ Var \cup \mathcal{C}\\
+  &T_{k+1}^\tau &\ =&\ T_{k}^\tau \cup \{f(\succession{t}{1}{n}) : f \in \mathcal{F}_n, n \geq 1, \succession{t}{1}{n} \in T_k^\tau)\} 
+\end{alignat*}
+
+Sea
+$$
+T^\tau = \bigcup_{k \geq 0}T_k^\tau
+$$
+
+Los elementos de $T^\tau$ seran llamados \emph{terminos de tipo} $\tau$. Un termino $t$ es llamado \emph{cerrado} si $x_i$ no ocurre en $t$, para cada $i \in \mathbf{N}$.
+
+Definimos tambien:
+$$
+T_c^\tau = \{t \in T^\tau : t \text{ es cerrado}\}
+$$
+
+\begin{lemma}
+  Supongamos $t \in T_k^\tau$, con $k \geq 1$. Entonces ya sea $t \in Var \cup \mathcal{C}$ o $t = f(\succession{t}{1}{n})$, con
+  $f \in \mathcal{F}_n, n \geq 1, \succession{t}{1}{n} \in T_{k-1}^\tau$
+\end{lemma}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsubsection{Unicidad de la lectura de terminos}
+
+\begin{definition}
+  Diremos que $\beta$ es un \emph{tramo inicial} (\emph{propio}) de $\alpha$ si hay una palabra de $\gamma$ tal que $\alpha = \beta\gamma$ (y $\beta \notin \{\epsilon, \alpha\}$).
+  En forma similar se define \emph{tramo final} (\emph{propio})
+\end{definition}
+
+\begin{lemma}[Mordizqueo de Terminos]
+  Sean $s, t \in T^\tau$ y supongamos que hay palabras $x, y, z$, con $y \neq \epsilon$ tales que $s = xy$ y $t = yz$. Entonces 
+  $x = z = \epsilon$ o $s, t \in \mathcal{C}$. En particular si un termino es tramo inicial o final de otro termino, entonces dichos terminos son iguales.
+\end{lemma}
+\noproof
+
+\begin{theorem}[Lectura unica de terminos]
+  Dado $t \in T^\tau$ se da una de las siguientes:
+  \begin{enumerate}
+    \item $t \in Var \cup \mathcal{C}$
+    \item Hay unicos $n \geq 1, f \in \mathcal{F}_n, \succession{t}{1}{n} \in T^\tau$ tales que $t = f(\succession{t}{1}{n})$
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsection{Ocurrencias}
+
+\begin{definition}
+  Dadas palabras $\alpha, \beta \in \Sigma^*$, con $|\alpha|, |\beta| \geq 1$, y un natural $i \in \{1, \dots, |\beta|\}$,
+  se dice que $\alpha$ \emph{ocurre a partir de $i$ en} $\beta$ cuandos se de que existan palabras $\delta, \gamma$ tales que
+  $\beta = \delta\alpha\gamma$ y $|\delta| = i - 1$
+
+  Notese que una palabra $\alpha$ puede ocurrir en $\beta$ a partir de $i$ y tambien a partir de $j$, con $i \neq j$. Por ejemplo, $aba$ ocurre dos veces en la palabra
+  $$abacaba$$
+
+  Cuando dos ocurrencias no se superpongan en alguna posicion, se las llamara \emph{disjuntas}
+
+  A veces, diremos que una ocurrencia esta \emph{contenida} o \emph{sucede} dentro de otra. Por ejemplo,
+  la segunda ocurrencia de $b$ esta contenida en la segunda ocurrencia de $aba$ 
+
+  Tambien se podra hablar de \emph{reemplazos} de ocurrencias por palabras. Por ejemplo, podriamos reemplazar las ocurrencias de $aca$ por $abacaba$, dando como resultado
+  $$ ababacababa$$
+  
+  En algunos casos, se debera especificar
+  que los reemplazos se haran \emph{simultaneamente} en vez de \emph{secuencialmente}. Por ejemplo, no es lo mismo primero reemplazar $aca$ por $d$ y luego $d$ por $bb$
+  $$abbbba$$
+
+  Que hacerlo simultaneamente dando como resultado
+  $$abdba$$
+\end{definition}
+
+\subsection{Subterminos}
+
+\begin{definition}
+  Sean $s, t \in T^\tau$. Diremos que $s$ es \emph{subtermino} (\emph{propio}) de $t$ si (no es igual a $t$ y) $s$ es subpalabra de $t$.
+\end{definition}
+
+\begin{lemma}
+  Sean $r, s, t \in T^\tau$
+  \begin{enumerate}
+    \item Si $s \neq t = f(\succession{t}{1}{n})$ y $s$ ocurre en $t$, entonces dicha ocurrencia sucede dentro de algun $t_j,\ j = 1, \dots, n$
+    \item Si $r, s$ ocurren en $t$, entonces dichas ocurrencias son disjuntas o una ocurre dentro de otra. En particular las distintas ocurrencias de $r$ en $t$ son disjuntas
+    \item Si $t'$ es el resultado de reemplazar una ocurrencia de $s$ en $t$ por $r$, entonces $t' \in T^\tau$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsection{Formulas}
+
+\begin{definition}
+  Sea $\tau$ un tipo. Las palabras de alguna de las siguientes dos formas:
+  \begin{alignat*}{3}
+    &(t \equiv s), \text{ con } t, s \in T^\tau\\
+    &r(\succession{t}{1}{n}), \text{ con } r \in \mathcal{R}_n, n \geq 1, \text{ y } \succession{t}{1}{n} \in T^\tau
+  \end{alignat*}
+  seran llamadas \emph{formulas atomicas de tipo} $\tau$
+\end{definition}
+
+\begin{definition}
+  Dado un tipo $\tau$ definamos recursivamente los conjuntos de palabras $F_k^\tau$, con $k \geq 0$, de la siguiente manera:
+  \begin{alignat*}{3}
+    &F_0^\tau &\ =&\ \{\text{formulas atomicas}\}\\
+    &F_{k+1}^\tau &\ =&\ F_k^\tau \cup \{\neg\varphi: \varphi \in F_k^\tau\} \cup \{(\varphi \lor \psi): \varphi, \psi \in F_k^\tau\} \cup \{(\varphi \land \psi): \varphi, \psi \in F_k^\tau\}\\
+    &&\ &\ \cup \{(\varphi \rightarrow \psi): \varphi, \psi \in F_k^\tau\} \cup \{(\varphi \leftrightarrow \psi): \varphi, \psi \in F_k^\tau\}\\
+    &&\ &\ \cup \{\forall v\varphi: \varphi \in F_k^\tau, v \in Var\} \cup \{\exists v\varphi: \varphi \in F_k^\tau, v \in Var\}
+  \end{alignat*}
+
+  Sea 
+  $$
+  F^\tau = \bigcup_{k \geq 0} F_k^\tau
+  $$
+
+  Los elementos de $F^\tau$ seran llamados \emph{formulas de tipo} $\tau$
+\end{definition}
+
+\begin{lemma}
+  Supongamos $\varphi \in F_k^\tau$, con $k \geq 1$. Entonces $\varphi$ es de alguna de las siguientes formas:
+  \begin{itemize}
+    \item $(t\equiv s)$, con $t, s \in T^\tau$
+    \item $r(\succession{t}{1}{n})$, con $r \in \mathcal{R}_n, \succession{t}{1}{n} \in T^\tau$
+    \item $(\varphi_1 \eta \varphi_2)$, con $\eta \in \{\land, \lor, \rightarrow, \leftrightarrow\}$, $\varphi_1, \varphi_2 \in F_{k-1}^\tau$
+    \item $\neg\varphi_1$, con $\varphi_1 \in F_{k-1}^\tau$
+    \item $Qv\varphi_1$, con $Q \in \{\forall, \exists\}, v \in Var$ y $\varphi_1 \in F_{k-1}^\tau$
+  \end{itemize}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsection{Unicidad de la lectura de formulas}
+\begin{proposition}[Mordizqueo de formulas]
+  Si $\varphi, \psi \in F^\tau$ y $x, y, z$ son tales que $\varphi = xy$, $\psi = yz$ y $y \neq \epsilon$, entonces
+  $z = \epsilon$ y $x \in (\{\neg\} \cup \{Qv : Q \in \{\forall, \exists\} \text{ y } v \in Var\})^*$. En particular ningun tramo inicial
+  propio de una formula es una formula
+\end{proposition}
+\noproof
+\begin{theorem}[Lectura unica de formulas]
+  Dada $\varphi \in F^\tau$ se da una y solo una de las siguientes:
+  \begin{itemize}
+    \item $(t\equiv s)$, con $t, s \in T^\tau$
+    \item $r(\succession{t}{1}{n})$, con $r \in \mathcal{R}_n, \succession{t}{1}{n} \in T^\tau$
+    \item $(\varphi_1 \eta \varphi_2)$, con $\eta \in \{\land, \lor, \rightarrow, \leftrightarrow\}$, $\varphi_1, \varphi_2 \in F^\tau$
+    \item $\neg\varphi_1$, con $\varphi_1 \in F^\tau$
+    \item $Qv\varphi_1$, con $Q \in \{\forall, \exists\}, v \in Var$ y $\varphi_1 \in F^\tau$
+  \end{itemize}
+\end{theorem}
+\begin{proof}
+  TODO
+\end{proof}
+\subsection{Subformulas}
+\begin{definition}
+  Una formula $\varphi$ sera llamada una \emph{subformula (propia)} de una formula $\psi$, cuando $\varphi$ (sea no igual a $\psi$ y)
+  tenga alguna ocurrencia en $\psi$.
+\end{definition}
+\begin{lemma}
+  Sea $\tau$ un tipo
+  \begin{enumerate}
+    \item Las formulas atomicas no tienen subformulas propias
+    \item Si $\varphi$ ocurre propiamente en $(\psi\eta\phi)$, entonces tal ocurrencia es en $\psi$ o en $\phi$
+    \item Si $\varphi$ ocurre propiamente en $\neg\psi$, entonces tal ocurrencia es en $\psi$
+    \item Si $\varphi$ ocurre propiamente en $Qx_k\psi$, entonces tal ocurrencia es en $\psi$
+    \item Si $\varphi_1, \varphi_2$ ocurren en $\varphi$, entonces dichas ocurrencias son disjuntas o una contiene a la otra
+    \item Si $\lambda'$ es el resultado de reemplazar alguna ocurrencia de $\varphi$ en $\lambda$ por $\psi$, entonces $\lambda' \in F^\tau$
+  \end{enumerate}
+\end{lemma}
+\noproof
+\end{document}
