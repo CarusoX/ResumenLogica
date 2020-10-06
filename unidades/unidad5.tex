@@ -1,0 +1,125 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+\section{Algebras de Boole}
+\begin{definition}
+  Un reticulado \reticulAlg se llamara \emph{distributivo} cuando cumpla la siguiente propiedad
+
+  \begin{equation*}
+    Dis_1\quad\infbin{x}{(\supbin{y}{z})} = \supbin{(\infbin{x}{y})}{(\infbin{x}{z})} \text{ cualesquiera sean } x, y, z\in L
+  \end{equation*}
+
+  Diremos que un reticulado acotado \reticulAcot (resp. complementado \reticulCompl) es \emph{distributivo}
+  cuando \reticulAlg lo sea.
+
+  Consideremos la distributividad dual a $Dis_1$, es decir:
+
+  \begin{equation*}
+    Dis_2\quad\supbin{x}{(\infbin{y}{z})} = \infbin{(\supbin{x}{y})}{(\supbin{x}{z})} \text{ cualesquiera sean } x, y, z\in L
+  \end{equation*}
+\end{definition}
+
+\begin{lemma}
+  Sea \reticulAlg un reticulado. Entonces \reticulAlg satisface $Dis_1 \iff$ \reticulAlg satisface $Dis_2$
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{definition}
+  Por un \emph{Algebra de Boole} entenderemos un reticulado complementado distributivo.
+\end{definition}
+
+\begin{lemma}
+  Si \reticulAcot un reticulado acotado y distributivo, entonces todo elemento tiene a lo sumo un complemento.
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}
+  Sea \algBoole un algebra de Boole, y sean $x, y \in B$. Se tiene que $y = \supbin{(\infbin{y}{x})}{(\infbin{y}{x^c})}$
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{theorem}
+  Sea \algBoole un algebra de Boole.
+  \begin{enumerate}
+    \item $(\infbin{x}{y})^c = \supbin{x^c}{y^c}$
+    \item $(\supbin{x}{y})^c = \infbin{x^c}{y^c}$
+    \item $x^{cc} = x$
+    \item $\infbin{x}{y} = 0 \iff y \leq x^c$
+    \item $x\leq y \iff y^c \leq x^c$
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  TODO
+\end{proof}
+
+\section{Teoremas del filtro primo y de Rasiova Sikorski}
+\begin{definition}
+  Un \emph{filtro} de un reticulado \reticulAlg sera un subconjunto $F \subseteq L$ tal que:
+  \begin{enumerate}
+    \item $F \neq \emptyset$
+    \item $x, y \in F \Rightarrow \infbin{x}{y} \in F$
+    \item $x \in F, x \leq y \Rightarrow y \in F$
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Dado un conjunto $S \subseteq L$, denotemos con $[S)$ el siguiente conunto:
+  $$
+  \{y \in L : y \geq \succession[\textbf{ i }]{s}{1}{n}, \text{ para algunos } \succession{s}{1}{n} \in S, n \geq 1\}
+  $$
+\end{definition}
+\begin{lemma}
+  Supongamos que $S$ es no vacio. Entonces $[S)$ es un filtro. Mas aun, si $F$ es un filtro y $S \subseteq F$, entonces
+  $[S) \subseteq F$. Es decir, $[S)$ es el menor filtro que contiene a $S$.
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{definition}
+  Sea \poset un poset. Un subconjunto $C \subseteq P$ sera llamado una \emph{cadena} si para cada
+  $x, y \in C$ se tiene que $x \leq y$ o $y \leq x$
+\end{definition}
+
+\begin{lemma}[Zorn]
+  Sea \poset un poset y supogamos cada cadena de \poset tiene cota superior. Entonces
+  hay un elemento maximal en \poset
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{definition}
+  Un filtro $F$ de un reticulado \reticulAlg sera llamado \emph{primo} cuando se cumplan:
+  \begin{enumerate}
+    \item $F \neq L$
+    \item $\supbin{x}{y} \in F \Rightarrow x \in F \text{ o } y \in F$
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Teorema del Filtro Primo]
+  Sea \reticulAlg un reticulado distributivo y $F$ un filtro. Supongamos $x_0 \in L - F$. Entonces hay un filtro primo
+  $P$ tal que $x_0 \notin P$ y $F \subseteq P$
+\end{theorem}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{theorem}[Rasiova y Sikorski]
+  Sea \algBoole un algebra de Boole. Sea $x \in B, x \neq 0$. Supongamos que $(A_1, A_2, \dots)$ es un infinitupla 
+  de subconjuntos de $B$ tal que existe inf($A_j$), para cada $j = 1, 2, \dots$. Entonces hay un filtro primo $P$ 
+  el cual cumple:
+  \begin{enumerate}
+    \item $x \in P$
+    \item $A_j \subseteq P \Rightarrow inf(A_j) \in P$, para cada $j = 1, 2, \dots$
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  \underline{Se acepta sin demostracion}
+\end{proof}
+\end{document}
