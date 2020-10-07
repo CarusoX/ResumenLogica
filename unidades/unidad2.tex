@@ -33,7 +33,7 @@ Dado un poset \poset. con $P$ finito, podemos realizar un diagrama llamado \emph
   \end{enumerate}
 \end{enumerate}
 La relacion de $\leq$ puede ser reconstruida facilmente apartir del diagrama. $a \leq b$ sucedera si y solo si
-$p_a = p_b$ p hay una sucesion de caminos ascendentes de segmentos desde $p_a$ hasta $p_b$.
+$p_a = p_b$ o hay una sucesion de caminos ascendentes de segmentos desde $p_a$ hasta $p_b$.
 
 \subsection{Elementos maximales, maximos, minimales y minimos}
 \begin{definition}
@@ -163,7 +163,16 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  (1) Claramente (\supbin{x}{y}) es cota superior de $x$. Por lo tanto $x \leq \supbin{x}{y}$
+  
+  (2) Claramente (\infbin{x}{y}) es cota inferior de $x$. Por lo tanto $\infbin{x}{y} \leq x$
+  
+  (3) Supongamos $(\supbin{x}{x}) = z \neq x$. Tenemos que $z$ es cota superior de $x$ por lo tanto $x \leq z$.
+  Pero tambien $x$ es cota superior de $x$ y por lo tanto $z$ no puede ser la minima cota superior. El caso del infimo es analogo.
+
+  (4) $(\supbin{x}{y}) = \sup(\{x, y\}) = \sup(\{y, x\}) = (\supbin{y}{x})$
+
+  (5) $(\infbin{x}{y}) = \inf(\{x, y\}) = \inf(\{y, x\}) = (\infbin{y}{x})$
 \end{proof}
 
 \begin{lemma}
@@ -175,10 +184,14 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  (1) $\Rightarrow$ (2) Claramente $y$ es cota superior de $\{x, y\}$ por (1). Y trivialmente es la minima ya que es igual a uno de sus elementos.
+
+  (2) $\Rightarrow$ (3) Claremente $y$ es cota superior de $\{x, y\}$, por lo tanto $x \leq y$. Luego se tiene que $x$ es cota inferior de $\{x, y\}$. Trivialmente es la maxima.
+
+  (3) $\Rightarrow$ (1) Claramente $x$ es cota inferior de $\{x, y\}$, por lo tanto $x \leq y$.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}[Leyes de absorcion]
   Dado un reticulado \reticul y elementos $x, y \in L$, se tiene que:
   \begin{enumerate}
     \item $\supbin{x}{(\infbin{x}{y})} = x$
@@ -186,7 +199,9 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  (1) Claramente $(\infbin{x}{y}) \leq x$, y por lo tanto $\supbin{(\infbin{x}{y})}{x} = x$
+
+  (2) Claramente $x \leq (\supbin{x}{y})$, y por lo tanto $\infbin{x}{(\supbin{x}{y})} = x$
 \end{proof}
 
 \begin{lemma}
@@ -197,7 +212,28 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  (1) Notese que \supbin{x}{(\supbin{y}{z})} es cota superior de $\{x, y, z\}$ ya que:
+  \begin{alignat*}{3}
+    & x \leq \supbin{x}{(\supbin{y}{z})}\\
+    & y \leq (\supbin{y}{z}) \leq \supbin{x}{(\supbin{y}{z})}\\
+    & z \leq (\supbin{y}{z}) \leq \supbin{x}{(\supbin{y}{z})}
+  \end{alignat*}
+  En particular, tenemos que \supbin{x}{(\supbin{y}{z})} es cota superior de $\{x, y\}$, y entonces tenemos que
+  $\supbin{x}{y} \leq \supbin{x}{(\supbin{y}{z})}$. Es decir, \supbin{x}{(\supbin{y}{z})} es cota superior de $\{\supbin{x}{y}, z\}$, y por lo tanto 
+  $\supbin{(\supbin{x}{y})}{z} \leq \supbin{x}{(\supbin{y}{z})}$.
+
+  Notese ahora que \supbin{(\supbin{x}{y})}{z} es cota superior de $\{x, y, z\}$, ya que:
+  \begin{alignat*}{3}
+    & x \leq (\supbin{x}{y}) \leq \supbin{(\supbin{x}{y})}{z}\\
+    & y \leq (\supbin{x}{y}) \leq \supbin{(\supbin{x}{y})}{z}\\
+    & z \leq \supbin{(\supbin{x}{y})}{z}\\
+  \end{alignat*}
+  En particular, tenemos que \supbin{(\supbin{x}{y})}{z} es cota superior de $\{y, z\}$, y por lo tanto $\supbin{y}{z} \leq \supbin{(\supbin{x}{y})}{z}$.
+  Es decir, \supbin{(\supbin{x}{y})}{z} es cota superior de $\{x, \supbin{y}{z}\}$, y por lo tanto $\supbin{x}{(\supbin{y}{z})} \leq \supbin{(\supbin{x}{y})}{z}$.
+  
+  Luego tenemos que \supbin{(\supbin{x}{y})}{z} = \supbin{x}{(\supbin{y}{z})}
+
+  (2) Es analoga, si alguien la quiere hacer
 \end{proof}
 
 \begin{lemma}
@@ -209,22 +245,39 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  (1) Notese que
+  \begin{alignat*}{3}
+    &x \leq z \leq \supbin{z}{w}\\
+    &y \leq w \leq \supbin{z}{w}
+  \end{alignat*}
+  Luego \supbin{z}{w} es cota superior de $\{x, y\}$ y por lo tanto $\supbin{x}{y} \leq \supbin{z}{w}$
+
+  (2) Notese que
+  \begin{alignat*}{3}
+    &z \geq x \geq \infbin{x}{y}\\
+    &w \geq y \geq \infbin{x}{y}
+  \end{alignat*}
+  Luego $\infbin{x}{y}$ es cota inferior de $\{z, w\}$ y por lo tanto $\infbin{x}{y} \leq \infbin{z}{w}$
 \end{proof}
 \begin{lemma}
   Dado un reticulado \reticul y elementos $x, y, z \in L$, se tiene que\\
   $\supbin{(\infbin{x}{y})}{(\infbin{x}{z})} \leq \infbin{x}{(\supbin{y}{z})}$
 \end{lemma}
 \begin{proof}
-  TODO
+  Notese que
+  \begin{alignat*}{3}
+    &(\infbin{x}{y}), (\infbin{x}{z}) \leq x\\
+    &(\infbin{x}{y}), (\infbin{x}{z}) \leq \supbin{y}{z}
+  \end{alignat*}
+  Tenemos entonces que $(\infbin{x}{y}), (\infbin{x}{z}) \leq \infbin{x}{(\supbin{y}{z})}$ y por lo tanto $\supbin{(\infbin{x}{y})}{(\infbin{x}{z})} \leq \infbin{x}{(\supbin{y}{z})}$
 \end{proof}
 \begin{lemma}
   Sea \reticul un reticulado. Dados elementos $\succession{x}{1}{n} \in L$, con $n \geq 2$,
   se tiene que:
-  \begin{alignat}{2}
+  \begin{alignat*}{2}
     &\supbin{(\dots\supbin{(\supbin{x_1}{x_2})}{\dots})}{x_n} &= \sup({\{\succession{x}{1}{n}}\})\\
     &\infbin{(\dots\infbin{(\infbin{x_1}{x_2})}{\dots})}{x_n} &= \inf({\{\succession{x}{1}{n}}\})        
-  \end{alignat}
+  \end{alignat*}
 \end{lemma}
 \begin{proof}
   TODO
