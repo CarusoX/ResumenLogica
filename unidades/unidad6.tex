@@ -2,6 +2,32 @@
 \begin{document}
 \section{Sintaxis de la logica de primer orden}
 
+\subsection{Ocurrencias}
+
+\begin{definition}
+  Dadas palabras $\alpha, \beta \in \Sigma^*$, con $|\alpha|, |\beta| \geq 1$, y un natural $i \in \{1, \dots, |\beta|\}$,
+  se dice que $\alpha$ \emph{ocurre a partir de $i$ en} $\beta$ cuandos se de que existan palabras $\delta, \gamma$ tales que
+  $\beta = \delta\alpha\gamma$ y $|\delta| = i - 1$
+
+  Notese que una palabra $\alpha$ puede ocurrir en $\beta$ a partir de $i$ y tambien a partir de $j$, con $i \neq j$. Por ejemplo, $aba$ ocurre dos veces en la palabra
+  $$abacaba$$
+
+  Cuando dos ocurrencias no se superpongan en alguna posicion, se las llamara \emph{disjuntas}
+
+  A veces, diremos que una ocurrencia esta \emph{contenida} o \emph{sucede} dentro de otra. Por ejemplo,
+  la segunda ocurrencia de $b$ esta contenida en la segunda ocurrencia de $aba$ 
+
+  Tambien se podra hablar de \emph{reemplazos} de ocurrencias por palabras. Por ejemplo, podriamos reemplazar las ocurrencias de $aca$ por $abacaba$, dando como resultado
+  $$ ababacababa$$
+  
+  En algunos casos, se debera especificar
+  que los reemplazos se haran \emph{simultaneamente} en vez de \emph{secuencialmente}. Por ejemplo, no es lo mismo primero reemplazar $aca$ por $d$ y luego $d$ por $bb$
+  $$abbbba$$
+
+  Que hacerlo simultaneamente dando como resultado
+  $$abdba$$
+\end{definition}
+
 \subsection{Variables}
 
 \begin{definition}
@@ -100,33 +126,7 @@ $$
   TODO
 \end{proof}
 
-\subsection{Ocurrencias}
-
-\begin{definition}
-  Dadas palabras $\alpha, \beta \in \Sigma^*$, con $|\alpha|, |\beta| \geq 1$, y un natural $i \in \{1, \dots, |\beta|\}$,
-  se dice que $\alpha$ \emph{ocurre a partir de $i$ en} $\beta$ cuandos se de que existan palabras $\delta, \gamma$ tales que
-  $\beta = \delta\alpha\gamma$ y $|\delta| = i - 1$
-
-  Notese que una palabra $\alpha$ puede ocurrir en $\beta$ a partir de $i$ y tambien a partir de $j$, con $i \neq j$. Por ejemplo, $aba$ ocurre dos veces en la palabra
-  $$abacaba$$
-
-  Cuando dos ocurrencias no se superpongan en alguna posicion, se las llamara \emph{disjuntas}
-
-  A veces, diremos que una ocurrencia esta \emph{contenida} o \emph{sucede} dentro de otra. Por ejemplo,
-  la segunda ocurrencia de $b$ esta contenida en la segunda ocurrencia de $aba$ 
-
-  Tambien se podra hablar de \emph{reemplazos} de ocurrencias por palabras. Por ejemplo, podriamos reemplazar las ocurrencias de $aca$ por $abacaba$, dando como resultado
-  $$ ababacababa$$
-  
-  En algunos casos, se debera especificar
-  que los reemplazos se haran \emph{simultaneamente} en vez de \emph{secuencialmente}. Por ejemplo, no es lo mismo primero reemplazar $aca$ por $d$ y luego $d$ por $bb$
-  $$abbbba$$
-
-  Que hacerlo simultaneamente dando como resultado
-  $$abdba$$
-\end{definition}
-
-\subsection{Subterminos}
+\subsubsection{Subterminos}
 
 \begin{definition}
   Sean $s, t \in T^\tau$. Diremos que $s$ es \emph{subtermino} (\emph{propio}) de $t$ si (no es igual a $t$ y) $s$ es subpalabra de $t$.
@@ -186,7 +186,7 @@ $$
   TODO
 \end{proof}
 
-\subsection{Unicidad de la lectura de formulas}
+\subsubsection{Unicidad de la lectura de formulas}
 \begin{proposition}[Mordizqueo de formulas]
   Si $\varphi, \psi \in F^\tau$ y $x, y, z$ son tales que $\varphi = xy$, $\psi = yz$ y $y \neq \epsilon$, entonces
   $z = \epsilon$ y $x \in (\{\neg\} \cup \{Qv : Q \in \{\forall, \exists\} \text{ y } v \in Var\})^*$. En particular ningun tramo inicial
@@ -206,7 +206,7 @@ $$
 \begin{proof}
   TODO
 \end{proof}
-\subsection{Subformulas}
+\subsubsection{Subformulas}
 \begin{definition}
   Una formula $\varphi$ sera llamada una \emph{subformula (propia)} de una formula $\psi$, cuando $\varphi$ (sea no igual a $\psi$ y)
   tenga alguna ocurrencia en $\psi$.

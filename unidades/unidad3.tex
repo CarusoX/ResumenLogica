@@ -30,8 +30,39 @@
   cualesquiera sean $x, y \in L$
 \end{theorem}
 \begin{proof}
-  TODO
+  $\leq$ es reflexiva en $L$, pues $x \leq x \iff \supbin{x}{x} = x$
+
+  $\leq$ es antisimetrico en $L$, pues si $x \leq y$ tenemos que $\supbin{x}{y} = y$, y por otro lado,
+  tenemos que $y \leq x$ y entonces $\supbin{x}{y} = x$. Luego $x = y$
+
+  $\leq$ es transitivo, pues si suponemos que $x \leq y$ y $y \leq z$ entonces \\
+  $\supbin{x}{z} = \supbin{x}{(\supbin{y}{z})} = \supbin{(\supbin{x}{y})}{z} = \supbin{y}{z} = z$. Luego $x \leq z$
+
+  Tenemos entonces que $\leq$ es un orden parcial sobre $L$.
+  
+  Veamos ahora que $\sup(\{x, y\}) = \supbin{x}{y}$. Es claro que \supbin{x}{y} es cota superior de $\{x, y\}$.
+  Supongamos que $x, y \leq z$, entonces:
+  $$
+  \supbin{(\supbin{x}{y})}{z} = \supbin{x}{(\supbin{y}{z})} = \supbin{x}{z} = z
+  $$
+  Luego $\supbin{x}{y} \leq z$ y por lo tanto \supbin{x}{y} es la menor cota superior.
+
+  Para probar que $\inf(\{x, y\}) = \infbin{x}{y}$, primero probaremos que para todo $u, v \in L$,
+  $$
+  u \leq v \iff \infbin{u}{v} = u
+  $$
+  Supongamos $\supbin{u}{v} = v$, entonces $\infbin{u}{v} = \infbin{u}{(\supbin{u}{v})} = u$
+
+  Ahora si veamos que $\inf(\{x, y\}) = \infbin{x}{y}$. Es claro que \infbin{x}{y} es cota inferior de $\{x, y\}$.
+  Supongamos que $z \leq x, y$, entonces:
+  $$
+  \infbin{(\infbin{x}{y})}{z} = \infbin{x}{(\infbin{y}{z})} = \infbin{x}{z} = z
+  $$
+  Luego $z \leq \infbin{x}{y}$ y por lo tanto \infbin{x}{y} es la mayor cota inferior. 
 \end{proof}
+
+\subsection{Subreticulados}
+
 \begin{definition}
   Dados reticulados \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} diremos que \reticulAlg
   es un \emph{subreticulado de} \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} si se dan las siguientes condiciones:
@@ -49,6 +80,9 @@
   Sea \reticulAlg un reticulado. $S$ es subuniverso de \reticulAlg $\iff$ \reticulAlgDef{S}{\textbf{s}\vert_{S \times S}}{\textbf{i}\vert_{S \times S}}
   es un subreticulado de \reticulAlg
 \end{remark}
+
+\subsection{Homomorfismo de reticulados}
+
 \begin{definition}
   Sean \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} reticulados. Una funcion \functype{F}{L}{L'}
   sera llamada un \emph{homomorfismo} de \reticulAlg \emph{en} \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} si
@@ -74,7 +108,24 @@
   entonces $F$ es un isomorfismo
 \end{lemma}
 \begin{proof}
-  TODO
+  Debemos probar que $F^{-1}$ es tambien un homomorfismo, es decir que para todo $x, y \in L'$:
+  \begin{alignat*}{2}
+    &F^{-1}(x \textbf{ s' }y) &\ = \supbin{F^{-1}(x)}{F^{-1}(y)}\\
+    &F^{-1}(x \textbf{ i' }y) &\ = \infbin{F^{-1}(x)}{F^{-1}(y)}\\    
+  \end{alignat*}
+
+  Sean $z, w \in L$ los unicos elementos de $L$ tal que cumplen que $F(z) = x$ y $F(w) = y$. Estos elementos
+  existen y son unicos pues $F$ es biyectiva. Entonces, tenemos que:
+  \begin{alignat*}{2}
+    &F^{-1}(F(z) \textbf{ s' }F(w)) &\ = \supbin{F^{-1}(F(z))}{F^{-1}(F(w))}\\
+    &F^{-1}(F(z) \textbf{ i' }F(w)) &\ = \infbin{F^{-1}(F(z))}{F^{-1}(F(w))}\\    
+  \end{alignat*}
+
+  Y por propiedades de homomorfismo y de funciones con inversa tenemos que:
+  \begin{alignat*}{2}
+    &F^{-1}(F(\supbin{z}{w})) &\ = \supbin{z}{w}\\
+    &F^{-1}(F(\infbin{z}{w})) &\ = \infbin{z}{w}\\    
+  \end{alignat*}
 \end{proof}
 \begin{lemma}
   Sean \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} reticulados y sea \functype{F}{\reticulAlg}{\reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}}
@@ -82,7 +133,13 @@
   es tambien un homomorfismo de \reticulAlg en \reticulAlgDef{I_F}{\textbf{s}'\vert_{I_F \times I_F}}{\textbf{i}'\vert_{I_F \times I_F}}
 \end{lemma}
 \begin{proof}
-  TODO
+  Ya que $L$ no es vacio tenemos que $I_F$ tambien es no vacio. Sean $a, b \in I_F$. Sean $x, y \in L$ tales que $F(x) = a$ y $F(y) = b$.
+  Se tiene que:
+  \begin{alignat*}{3}
+    &a \textbf{ s' }b = F(x) \textbf{ s' } F(y) &\ =&\ F(\supbin{x}{y}) \in I_F&\\
+    &a \textbf{ i' }b = F(x) \textbf{ i' } F(y) &\ =&\ F(\infbin{x}{y}) \in I_F&
+  \end{alignat*}
+  Por lo tanto $I_F$ es cerrado bajo \textbf{ s' } y \textbf{ i' }
 \end{proof}
 \begin{lemma}
   Sean \reticulAlg y \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} reticulados y sean \posetdef{L}{\leq} y \posetdef{L'}{\leq'}
@@ -90,8 +147,25 @@
   \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} $\iff$ $F$ es un isomorfismo de \posetdef{L}{\leq} en \posetdef{L'}{\leq'}
 \end{lemma}
 \begin{proof}
-  TODO
+  ${}$\\
+  $\Rightarrow$\\
+  Supongamos $F$ es un isomorfismo de \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}. Sean $x, y \in L$ tales que $x \leq y$.
+  Tenemos que $y = \supbin{x}{y}$, por lo cual $F(y) = F(\supbin{x}{y}) = F(x) \textbf{ s' }F(y)$, produciendo $F(x) \leq' F(y)$.
+  
+  Ahora sean $x, y \in L'$ tales que $x \leq' y$. Tenemos que $y = x \textbf{ s' } y$, por lo cual $F^{-1}(y) = F^{-1}(x \textbf{ s' }y) = \supbin{F^{-1}(x)}{F^{-1}(y)}$
+  produciendo $F^{-1}(x) \leq F^{-1}(y)$.
+
+  $\Leftarrow$\\
+  Supongamos $F$ es un isomorfismo de \posetdef{L}{\leq} en \posetdef{L'}{\leq'}. Sean $x, y \in L$ tales que $y = \supbin{x}{y}$. Tenemos entonces
+  que $x \leq y$ y por lo tanto $F(x) \leq' F(y)$, produciendo $F(y) = F(\supbin{x}{y}) = F(x) \textbf{ s' }F(y)$
+
+  Ahora sean $x, y \in L'$ tales que $y = x \textbf{ s' } y$. Tenemos entonces que $x\leq'y$ y por lo tanto $F^{-1}(x) \leq F^{-1}(y)$, produciendo
+  $F^{-1}(y) = F^{-1}(x \textbf{ s' }y) = \supbin{F^{-1}(x)}{F^{-1}(y)}$
+
 \end{proof}
+
+\subsection{Congruencia de reticulados}
+
 \begin{definition}
   Sea \reticulAlg un reticulado. Una \emph{congruencia sobre} \reticulAlg sera una relacion de equivalencia
   $\theta$ la cual cumpla:
@@ -127,7 +201,13 @@
   Si \functype{F}{\reticulAlg}{\reticulAlgDef{L'}{s'}{i'}} es un \emph{homomorfismo}, entonces \text{ker }F es una \emph{congruencia sobre} \reticulAlg
 \end{lemma}
 \begin{proof}
-  TODO
+  Ya sabemos que $\ker F$ es una relacion de equivalencia, veamos que en este caso cumple la propiedad para ser congruencia.
+
+  Sean $x, x', y, y' \in L$ tal que $x\theta x'$ y $y\theta y'$. Luego, tenemos que $F(x) = F(x')$ y $F(y) = F(y')$.
+  Entonces claramente $F(\supbin{x}{y}) = F(x) \textbf{ s' } F(y) = F(x') \textbf{ s' } F(y') = F(\supbin{x'}{y'})$, y por lo tanto 
+  $(\supbin{x}{y})\theta(\supbin{x'}{y'})$
+  
+  Claramente tambien $F(\infbin{x}{y}) = F(x) \textbf{ i' } F(y) = F(x') \textbf{ i' } F(y') = F(\infbin{x'}{y'})$, y por lo tanto $(\infbin{x}{y})\theta(\infbin{x'}{y'})$
 \end{proof}
 
 \begin{lemma}
@@ -136,7 +216,15 @@
   Ademas ker $\pi_\theta$ = $\theta$.
 \end{lemma}
 \begin{proof}
-  TODO
+  Sean $x, y \in L$. Tenemos que
+  $$
+  \pi_\theta(\supbin{x}{y}) = (\supbin{x}{y})/\theta = x/\theta \overset{\sim}{\textbf{ s }} y/\theta = \pi_\theta(x) \overset{\sim}{\textbf{ s }} \pi_\theta(y)
+  $$
+  $$
+  \pi_\theta(\infbin{x}{y}) = (\infbin{x}{y})/\theta = x/\theta \overset{\sim}{\textbf{ i }} y/\theta = \pi_\theta(x) \overset{\sim}{\textbf{ i }} \pi_\theta(y)
+  $$
+  Por lo tanto $\pi_\theta$ conserva la operacion supremo e infimo.
+
 \end{proof}
 
 \end{document}

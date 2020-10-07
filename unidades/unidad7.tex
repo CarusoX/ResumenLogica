@@ -1,0 +1,150 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+\subsection{Variables libres}
+\begin{definition}
+  Definimos recursivamente la relacion \emph{"v ocurre libremente en $\varphi$ a partir de i"},
+  donde $v \in Var, \varphi \in F^\tau$ y $i \in \{1, \dots, |\varphi|\}$ de la siguiente manera:
+  \begin{enumerate}
+    \item Si $\varphi$ es atomica, entonces $v$ ocurre libremente en $\varphi$ a partir de $i \iff v$ ocurre en $\varphi$ a partir de $i$ 
+    \item Si $\varphi = (\varphi_1\eta\varphi_2)$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i \iff v$
+      ocurre libremente en $\varphi_1$ a partir de $i - 1$ o $v$ ocurre libremente en $\varphi_2$ a partir de $i - |(\varphi_1\eta|$
+    \item Si $\varphi = \neg\varphi_1$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i \iff v$ ocurre libremente en $\varphi_1$ a partir de $i - 1$
+    \item Si $\varphi = Qw\varphi_1$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i \iff v \neq w$ y $v$ ocurre libremente en $\varphi_1$ a partir de $i - |Qw|$  
+  \end{enumerate}
+
+  Dados $v \in Var, \varphi \in F^\tau$ y $i \in \{1, \dots, |\varphi|\}$, diremos que \emph{"v ocurre acotadamente en $\varphi$
+  a partir de i} cuando $v$ ocurre en $\varphi$ a partir de $i$ y $v$ no ocurre libremente en $\varphi$ a partir de $i$
+
+\end{definition}
+
+\begin{definition}
+  Dada una formula $\varphi$, sea
+  $$Li(\varphi) = \{v \in Var : \text{ hay un } i \text{ tal que } v \text{ ocurre libremente en } \varphi \text{ a partir de } i\}$$
+  Los elementos de $Li(\varphi)$ seran llamados \emph{variables libres de} $\varphi$. Una \emph{sentencia} sera una formula
+  $\varphi$ tal que $Li(\varphi) = \emptyset$. Usaremos $S^\tau$ para denotar el conjunto de las sentencias de tipo $\tau$.
+\end{definition}
+
+\begin{lemma}
+  Sea $\tau$ un tipo
+  \begin{enumerate}
+    \item $Li((t\equiv s)) = \{v \in Var : v \text{ ocurre en } t \text{ o } v \text{ ocurre en } s\}$
+    \item $Li(r(\succession{t}{1}{n})) = \{v \in Var : v \text{ ocurre en algun } t_i\}$
+    \item $Li(\neg\varphi) = Li(\varphi)$
+    \item $Li((\varphi\eta\psi)) = Li(\varphi) \cup Li(\psi)$
+    \item $Li(Qx_j\varphi) = Li(\varphi) - \{x_j\}$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\section{Semantica de la logica de primer orden}
+
+\subsection{Estructuras de tipo $\tau$}
+\begin{definition}
+  Sea $A$ un conjunto y sea $n \in \mathbf{N}$. Por una \emph{operacion n-aria sobre A}, entenderemos
+  una funcion cuyo dominio es $A^n$ y cuya imagen esta contenida en $A$.
+\end{definition}
+
+\begin{definition}
+  Sea $A$ un conjunto y sea $n \in \mathbf{N}$. Por una \emph{relacion n-aria sobre A} entenderemos un subconjunto de $A^n$.
+\end{definition}
+
+\begin{definition}
+  Sea $A$ un conjunto, $n \in \mathbf{N}$ y $\tau$ un tipo. Una \emph{estructura o modelo de tipo $\tau$} sera un par $\mathbf{A} = (A, i)$ tal que:
+  \begin{enumerate}
+    \item $A$ es un conjunto no vacio llamado el \emph{universo} de $\mathbf{A}$
+    \item $i$ es una funcion con dominio $\mathcal{C} \cup \mathcal{F} \cup \mathcal{R}$ tal que: \begin{enumerate}
+      \item para cada $c \in \mathcal{C}$, $i(c)$ es un elemento de $A$
+      \item para cada $f \in \mathcal{F}_n$, $i(f)$ es un elemento de $A$
+      \item para cada $r \in \mathcal{R}_n$, $i(r)$ es un elemento de $A$
+    \end{enumerate}
+  \end{enumerate}
+\end{definition}
+
+\begin{lemma}
+  Dados $A, B$ conjuntos finitos no vacios, hay $|B|^{|A|}$ funciones tales que su dominio es $A$ y 
+  su imagen esta contenida en $B$.
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsection{El valor de un termino de una estructura}
+\begin{definition}
+  Sea $\mathbf{A} = (A, i)$ una estructura de tipo $\tau$. Una \emph{asignacion} de $\mathbf{A}$ sera un elemento
+  de $A^\mathbf{N} = \{\text{infinituplas de elementos de } A\}$. Si $\vec{a} = (a_1, a_2, \dots)$ es una asignacion,
+  entonces diremos que $a_j$ es \emph{el valor que $\vec{a}$ le asigna a la variable $x_j$}
+\end{definition}
+
+\begin{definition}
+  Sea $\mathbf{A} = (A, i)$ una estructura de tipo $\tau$, $t \in T^\tau$ y $\vec{a} \in A^\mathbf{N}$ una asignacion,
+  definimos recursivamente $t^\mathbf{A}[\vec{a}]$: 
+  \begin{enumerate}
+    \item Si $t = x_i \in Var$, entonces $t^\mathbf{A}[\vec{a}] = a_i$
+    \item Si $t = c \in \mathcal{C}$, entonces $t^\mathbf{A}[\vec{a}] = i(c)$
+    \item Si $t = f(\succession{t}{1}{n})$ con $f \in \mathcal{F}_n, n \geq 1$ y $\succession{t}{1}{n} \in T^\tau$, entonces 
+      $t^\mathbf{A}[\vec{a}] = i(f)(t_1^\mathbf{A}[\vec{a}], \dots, t_n^\mathbf{A}[\vec{a}])$
+  \end{enumerate}
+
+  El elemento $t^\mathbf{A}[\vec{a}]$ sera llamado el \emph{valor de t en la estructura $\mathbf{A}$ para la asignacion $\vec{a}$} 
+\end{definition}
+
+\begin{lemma}
+  Sea $\mathbf{A}$ una estructura de tipo $\tau$ y sea $t \in T^\tau$. Supongamos que $\vec{a}, \vec{b}$ son asignaciones
+  tales que $a_i = b_i$, cada vez que $x_i$ ocurra en $t$. Entonces $t^\mathbf{A}[\vec{a}] = t^\mathbf{B}[\vec{b}]$
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsection{El valor de verdad de una formula en un estructura}
+\begin{definition}
+  Sea $\vec{a} \in A^\mathbf{N}$ una asignacion y $a \in A$, denotaremos con $\downarrow_i^a(\vec{a})$ a la asignacion
+  que resulta de reemplazar en $\vec{a}$ el i-esimo elemento por $a$. 
+\end{definition}
+\begin{definition}
+  Sea $\mathbf{A}$ una estructura de tipo $\tau$, $\vec{a} \in A^\mathbf{N}$ una asignacion y $\varphi \in F^\tau$, definimos entonces
+  recursivamente la relacion $A \models \varphi[\vec{a}]$ (escribiremos $A \not\models \varphi[\vec{a}]$ cuando no se de $A \models \varphi[\vec{a}]$):
+  \begin{enumerate}
+    \item Si $\varphi = (t\equiv s)$, entonces $\mathbf{A} \models \varphi[\vec{a}] \iff t^\mathbf{A}[\vec{a}] = s^\mathbf{A}[\vec{a}]$
+    \item Si $\varphi = r(\succession{t}{1}{m})$, entonces $\mathbf{A} \models \varphi[\vec{a}] \iff (t_1^\mathbf{A}[\vec{a}], \dots, t_m^\mathbf{A}[\vec{a}]) \in i(r)$
+    \item Si $\varphi = (\varphi_1 \land \varphi_2)$, entonces $\mathbf{A} \models \varphi[\vec{a}] \iff \mathbf{A}\models\varphi_1[\vec{a}]$ y $\mathbf{A}\models\varphi_2[\vec{a}]$ 
+    \item Si $\varphi = (\varphi_1 \lor \varphi_2)$, entonces $\mathbf{A} \models \varphi[\vec{a}] \iff \mathbf{A}\models\varphi_1[\vec{a}]$ o $\mathbf{A}\models\varphi_2[\vec{a}]$ 
+    \item Si $\varphi = (\varphi_1 \rightarrow \varphi_2)$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi_2[\vec{a}]$ o $\mathbf{A}\not\models\varphi_1[\vec{a}]$
+    \item Si $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff $ ya sea se dan $\mathbf{A}\models\varphi_1[\vec{a}]$ y $\mathbf{A}\models\varphi_2[\vec{a}]$ o se dan $\mathbf{A}\not\models\varphi_1[\vec{a}]$ y $\mathbf{A}\not\models\varphi_2[\vec{a}]$
+    \item Si $\varphi = \neg\varphi_1$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\not\models\varphi_1[\vec{A}]$
+    \item Si $\varphi = \forall x_i \varphi_1$, entocnes $\mathbf{A}\models\varphi[\vec{a}] \iff $ para cada $a \in A$, se da que $\mathbf{A}\models\varphi_1[\downarrow_i^a(\vec{a})]$
+    \item Si $\varphi = \exists x_i \varphi_1$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff $ hay un $a \in A$ tal que $\mathbf{A}\models\varphi_1[\downarrow_i^a(\vec{a})]$
+  \end{enumerate}
+
+  Cuando se de $\mathbf{A}\models\varphi[\vec{a}]$ diremos que la \emph{estructura $\mathbf{A}$ satisface $\varphi$ en la asignacion $\vec{a}$} y en tal caso
+  diremos que $\varphi$ \emph{es verdadera en $\mathbf{A}$ para la asignacion $\vec{a}$}.
+
+  Cuando se de $\mathbf{A}\not\models\varphi[\vec{a}]$ diremos que la \emph{estructura $\mathbf{A}$ no satisface $\varphi$ en la asignacion $\vec{a}$} y en tal caso
+  diremos que $\varphi$ \emph{es falsa en $\mathbf{A}$ para la asignacion $\vec{a}$}.
+
+  Tambien hablaremos del \emph{valor de verdad de $\varphi$ en $\mathbf{A}$ para la asignacion $\vec{a}$} el cual sera 
+  igual a 1 si se da $\mathbf{A}\models\varphi[\vec{a}]$ y 0 en caso contrario.
+\end{definition}
+
+\begin{lemma}
+  Supongamos que $\vec{a}, \vec{b}$ son asignaciones tales que si $x_i \in Li(\varphi)$, entonces $a_i = b_i$. Entonces
+  $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi[\vec{b}]$
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{corollary}
+  Si $\varphi$ es una sentencia, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi[\vec{b}]$, cualesquiera sean 
+  las asignaciones $\vec{a}, \vec{b}$
+\end{corollary}
+
+\begin{definition}
+  Dada una sentencia $\varphi$, diremos que $\varphi$ es \emph{verdadera} en $\mathbf{A}$ cuando su valor de verdad sea 1, y, en caso de que 
+  su valor de verdad sea 0, diremos que es \emph{falsa}
+
+  Ademas una sentencia de tipo $\tau$ sera llamada \emph{universalmente valida} si es verdadera en cada modelo de tipo $\tau$
+\end{definition}
+
+\end{document}
