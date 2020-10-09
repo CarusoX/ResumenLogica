@@ -147,4 +147,69 @@
   Ademas una sentencia de tipo $\tau$ sera llamada \emph{universalmente valida} si es verdadera en cada modelo de tipo $\tau$
 \end{definition}
 
+\subsection{Equivalencia de formulas}
+\begin{definition}
+  Dadas $\varphi, \psi \in F^\tau$ diremos que $\varphi$ y $\psi$ son \emph{equivalentes} cuande se de la siguiente condicion:
+  $$
+  \mathbf{A} \models \varphi[\vec{a}] \iff \mathbf{A} \models \psi[\vec{a}], \text{ para cada modelo de tipo } \tau, \mathbf{A} \text{ y cada } \vec{a} \in A^\mathbf{N}
+  $$  
+  
+  Escribiremos $\varphi \sim \psi$ cuando $\varphi$ y $\psi$ sean equivalentes. Notese que $\sim$ es una relacion de equivalencia.
+\end{definition}
+
+\begin{lemma}
+  Son validas las siguientes propiedades:
+  \begin{enumerate}
+    \item Si $Li(\phi) \cup Li(\psi) \subseteq \{x_{i_1}, \dots, x_{i_n}\}$, entonces $\phi \sim \psi \iff$ la sentencia $\forall x_{i_1},\dots,\forall x_{i_n}(\phi \leftrightarrow \psi)$ es universalmente valida
+    \item Si $\phi_i \sim \psi_i$, $i = 1, 2$, entonces $\neg\phi_1 \sim \neg\psi_1, (\phi_1\eta\phi_2)\sim(\psi_1\eta\psi_2)$ y $Qv\phi_1\sim Qv\psi_1$
+    \item Si $\phi\sim\psi$ y $\alpha'$ es el resultado de reemplazar en una formula $\alpha$ algunas (posiblemente 0) ocurrencias de $\phi$ por $\psi$, entonces $\alpha \sim \alpha'$ 
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsection{Homomorfismos}
+\begin{definition}
+  Dado un modelo de tipo $\tau$, $\mathbf{A} = (A, i)$, para cada $s\in\mathcal{C}\cup\mathcal{F}\cup\mathcal{R}$, usaremos $s^\mathbf{A}$
+  para denotar a $i(s)$.
+\end{definition}
+
+\begin{definition}
+  Sean $\mathbf{A}, \mathbf{B}$ modelos de tipo $\tau$. Una funcion \functype{F}{A}{B} sera un \emph{homomorfismo de $\mathbf{A}$ en $\mathbf{B}$}
+  si se cumplen las siguientes: \begin{enumerate}
+    \item $F(c^\mathbf{A}) = c^\mathbf{B}$, para todo $c \in \mathcal{C}$
+    \item $F(f^\mathbf{A}(\succession{a}{1}{n})) = f^\mathbf{B}(F(a_1), \dots, F(a_n))$, para cada $f \in \mathcal{F}_n, \succession{a}{1}{n} \in A$
+    \item $\succession{a}{1}{n} \in r^\mathbf{A}$ implica $(F(a_1), \dots, F(a_n)) \in r^\mathbf{B}$, para todo $r \in \mathcal{R}_n, \succession{a}{1}{n}\in A$
+  \end{enumerate}
+
+  Un \emph{isomorfismo de $\mathbf{A}$ en $\mathbf{B}$} sera un homomorfismo de $\mathbf{A}$ en $\mathbf{B}$ el cual sea biyectivo y cuya inversa
+  sea un homomorfismo de $\mathbf{B}$ en $\mathbf{A}$. Diremos que los modelos $\mathbf{A}$ y $\mathbf{B}$ son \emph{isomorfos} (en simbolos: $\mathbf{A} \overset{\sim}{=} \mathbf{B}$) 
+  cuando haya un isomorfismo $F$ de $\mathbf{A}$ en $\mathbf{B}$.
+
+  Diremos que \functype{F}{\mathbf{A}}{\mathbf{B}} es un \emph{homomorfismo} para expresar que $F$ es un homomorfismo de $\mathbf{A}$ en $\mathbf{B}$
+
+  Diremos que \functype{F}{\mathbf{A}}{\mathbf{B}} es un \emph{isomorfismo} para expresar que $F$ es un isomorfismo de $\mathbf{A}$ en $\mathbf{B}$
+\end{definition}
+
+\begin{lemma}
+  Sea \functype{F}{\mathbf{A}}{\mathbf{B}} un homomorfismo. Entonces
+  $$
+  F(t^\mathbf{A}[(a_1, a_2, \dots)]) = t^\mathbf{B}[(F(a_1), F(a_2), \dots)]
+  $$
+  para cada $t \in T^\tau, (a_1, a_2, \dots) \in A^\mathbf{N}$
+\end{lemma}
+
+\begin{lemma}
+  Supongamos que \functype{F}{\mathbf{A}}{\mathbf{B}} es un isomorfismo. Sea $\varphi \in F^\tau$. Entonces
+  $$
+  \mathbf{A}\models\varphi[(a_1, a_2, \dots)] \iff \mathbf{B}\models\varphi[(F(a_1), F(a_2),\dots)]
+  $$
+  para cada $(a_1, a_2, \dots) \in A^\mathbf{N}$. En particular $\mathbf{A}$ y $\mathbf{B}$ satisfacen las mismas
+  sentencias de tipo $\tau$.
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
 \end{document}
