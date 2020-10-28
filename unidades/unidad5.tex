@@ -22,7 +22,26 @@
   Sea \reticulAlg un reticulado. Entonces \reticulAlg satisface $Dis_1 \iff$ \reticulAlg satisface $Dis_2$
 \end{lemma}
 \begin{proof}
-  TODO
+  Supongamos \reticulAlg satisface $Dis_1$. Notese que
+  \begin{alignat*}{3}
+    &\infbin{(\supbin{x}{y})}{(\supbin{x}{z})} &\ =&\ \supbin{(\infbin{(\supbin{x}{y})}{x})}{(\infbin{(\supbin{x}{y})}{z})} &\quad(Dis_1 + idempotencia)\\
+    & &\ =&\ \supbin{x}{(\infbin{z}{(\supbin{x}{y})})} &\quad (Dis_1)\\
+    & &\ =&\ \supbin{x}{(\supbin{(\infbin{z}{x})}{(\infbin{z}{y})})}&\quad (Conmutatividad)\\
+    & &\ =&\ \supbin{(\infbin{z}{y})}{(\supbin{(\infbin{z}{x})}{x})}&\quad (idempotencia)\\
+    & &\ =&\ \supbin{(\infbin{z}{y})}{x}
+  \end{alignat*}
+  
+  Por lo tanto cumple $Dis_2$.
+  
+  Supongamos ahora \reticulAlg satisface $Dis_2$. Notese que
+  \begin{alignat*}{3}
+    &\supbin{(\infbin{x}{y})}{(\infbin{x}{z})} &\ =&\ \infbin{(\supbin{(\infbin{x}{y})}{x})}{(\supbin{(\infbin{x}{y})}{z})} &\quad(Dis_2 + idempotencia)\\
+    & &\ =&\ \infbin{x}{(\supbin{z}{(\infbin{x}{y})})} &\quad (Dis_2)\\
+    & &\ =&\ \infbin{x}{(\infbin{(\supbin{z}{x})}{(\supbin{z}{y})})}&\quad (Conmutatividad)\\
+    & &\ =&\ \infbin{(\supbin{z}{y})}{(\infbin{(\supbin{z}{x})}{x})}&\quad (idempotencia)\\
+    & &\ =&\ \infbin{(\supbin{z}{y})}{x}
+  \end{alignat*}
+  Por lo tanto cumple $Dis_1$.
 \end{proof}
 
 \begin{definition}
@@ -33,14 +52,25 @@
   Si \reticulAcot un reticulado acotado y distributivo, entonces todo elemento tiene a lo sumo un complemento.
 \end{lemma}
 \begin{proof}
-  TODO
+  Supongamos $x \in L$ tiene complementos $y, z$. Se tiene que:
+  $$
+  y = \infbin{y}{1} = \infbin{y}{(\supbin{x}{z})} = \supbin{(\infbin{y}{x})}{(\infbin{y}{z})} = \supbin{0}{(\infbin{y}{z})} = \infbin{y}{z}
+  $$
+  $$
+  z = \infbin{z}{1} = \infbin{z}{(\supbin{x}{y})} = \supbin{(\infbin{z}{x})}{(\infbin{z}{y})} = \supbin{0}{(\infbin{z}{y})} = \infbin{z}{y} 
+  $$
+
+  Por lo tanto $y \leq z$ y $z \leq y$, entonces $y = z$.
 \end{proof}
 
 \begin{lemma}
   Sea \algBoole un algebra de Boole, y sean $x, y \in B$. Se tiene que $y = \supbin{(\infbin{y}{x})}{(\infbin{y}{x^c})}$
 \end{lemma}
 \begin{proof}
-  TODO
+  Se tiene que:
+  $$
+  y = \infbin{y}{1} = \infbin{y}{(\supbin{x}{x^c})} = \supbin{(\infbin{y}{x})}{(\infbin{y}{x^c})}
+  $$
 \end{proof}
 
 \begin{theorem}
@@ -78,7 +108,14 @@
   $[S) \subseteq F$. Es decir, $[S)$ es el menor filtro que contiene a $S$.
 \end{lemma}
 \begin{proof}
-  TODO
+  Ya que $S \subseteq [S)$, tenemos que $[S) \neq \emptyset$.
+  
+  Claramente $[S)$ cumple la propiedad (3), pues $x \in [S), x\leq y \Rightarrow y \in [S)$
+
+  Veamos que cumple la 2. Sean $y, z \in S$, entonces tenemos que $y \geq \succession[\textbf{ i }]{s}{1}{n}$ y
+  $z \geq \succession[\textbf{ i }]{t}{1}{m}$, con $\succession{s}{1}{n}, \succession{t}{1}{m} \in S$. Claramente $\infbin{y}{z} >= \infbin{\succession[\textbf{ i }]{s}{1}{n}}{\succession[\textbf{ i }]{t}{1}{m}}$
+
+  Dado este resultado, diremos que $[S)$ es el \emph{filtro generado por S}.
 \end{proof}
 
 \begin{definition}
@@ -91,7 +128,29 @@
   hay un elemento maximal en \poset
 \end{lemma}
 \begin{proof}
-  TODO
+  Supongamos que el lema es falso, es decir, tenemos un poset \poset tal que cada cadena de \poset tiene cota superior, 
+  pero para cada $x \in P$, se tiene que existe un $y \in P$ tal que $x < y$.
+
+  Por definicion $P \neq \emptyset$, (en caso de que se permitiese $P = \emptyset$, de todas formas la cadena vacia debe tener cota superior, y por lo tanto $P \neq \emptyset$)
+
+  Sea $z \in P$ un elemento cualquiera, y sea $b$ una funcion que asigna a cada cadena de $P$
+  un elemento mayor a su cota superior (cota superior estricta).
+  En particular elegimos $b$ tal que $b(\{\}) = z$
+
+  Definimos una cadena $A \subseteq P$ como \emph{valida} cuando se cumpla la siguiente propiedad:
+  \begin{itemize}
+    \item Para todo $x \in A$, se tiene que $x = b(\{y \in A : y < x\})$
+  \end{itemize}
+
+  Es facil ver que si $A$ y $B$ son dos cadenas \emph{validas} distintas, entonces $A \subset B$ o $B \subset A$
+
+  Con esta ultima afirmacion, si tenemos una cadena valida $A$ y un $x \in A$, siempre que exista un $y < x$,
+  se tiene que o $y \in A$ o $y$ no esta en ninguna cadena valida.
+
+  Se sigue que $U = $ "union de todas las cadenas \emph{validas} posibles", es tambien, una cadena \emph{valida}.
+
+  Sea $x = b(U)$. Pero entonces $U \cup \{x\}$ es una \emph{cadena} valida tambien. Ademas $U = U \cup \{x\}$ por definicion de U, 
+  y por lo tanto $x \in U$. \abs, pues $x$ deberia ser cota superior \underline{estricta} de $U$
 \end{proof}
 
 \begin{definition}
@@ -107,7 +166,38 @@
   $P$ tal que $x_0 \notin P$ y $F \subseteq P$
 \end{theorem}
 \begin{proof}
-  TODO
+  Sea 
+  $$
+  \mathcal{F} = \{F_1 : F_1 \text{ es un filtro}, x_0 \not\in F_1 \text{ y } F \subseteq F_1\}
+  $$
+  Notese que $\mathcal{F} \neq \emptyset$, por lo cual \posetdef{\mathcal{F}}{\subseteq} es un poset. Veamos que cada cadena en 
+  \posetdef{\mathcal{F}}{\subseteq} tiene cota superior. Sea $C$ una cadena. Si $C = \emptyset$, entonces cualquier elemento de $\mathcal{F}$
+  es cota de $C$. Supongamos entonces $C \neq \emptyset$. Sea 
+  $$
+  G = \{x \in L : x \in F_1, \text{ para algun } F_1 \in C\}
+  $$
+  Veamos que $G$ es un filtro. Es claro que $G$ es no vacio. Supongamos $x, y \in G$. Sean $F_1, F_2 \in \mathcal{F}$ tales que
+  $x \in F_1$ y $y \in F_2$. Si $F_1 \subseteq F_2$, entonces ya que $F_2$ es un filtro, tenemos que $\infbin{x}{y} \in F2 \subseteq G$.
+  Similarmente, si $F_2 \subseteq F_1$, entonces $\infbin{x}{y} \in F_1 \subseteq G$. No es necesario ver que pasa si
+  $F_1 \not\subseteq F_2$ y $F_2 \not\subseteq F_1$ ya que $C$ es una cadena.
+
+  Por otro lado, sean $x \in G$ e $y$ tal que $x \leq y$. Dado que $x \in G$, tenemos que $x \in F_1$ para algun $F_1 \in C$. Como $F_1$
+  es un filtro, tenemos que $y \in F_1$, y por lo tanto $y \in G$. Hemos demostrado que G es un filtro.
+
+  Ademas, $x_0 \not\in G$, por lo que $G \in \mathcal{F}$ es cota superior de $C$. Por lema de Zorn, \posetdef{\mathcal{F}}{\subseteq}
+  tiene un elemento maximal $P$. Veamos que $P$ es un filtro primo. Supongamos $\supbin{x}{y} \in P$ y $x, y \not\in P$. Notese que $[P \cup \{x\})$ es un filtro el
+  cual contiene propiamente a $P$. Entonces ya que $P$ es maximal de \posetdef{\mathcal{F}}{\subseteq}, tenemos que $x_0 \in [P \cup \{x\})$.
+  Analogamente tenemos que $x_0 \in [P \cup \{y\})$. Por lo tanto, tenemos elementos $\succession{p}{1}{n} \in P$ tal que:
+  $$
+  x_0 \geq \succession[\textbf{ i }]{p}{1}{n} \textbf{ i } x
+  $$
+  Identicamente tenemos elementos $\succession{q}{1}{m} \in P$ tales que:
+  $$
+  x_0 \geq \succession[\textbf{ i }]{q}{1}{m} \textbf{ i } y
+  $$
+  Sea $p = \succession[\textbf{ i }]{p}{1}{n} \textbf{ i }\succession[\textbf{ i }]{q}{1}{m}$, tenemos que
+  $x_0 \geq \infbin{p}{x}$ y $x_0 \geq \infbin{p}{y}$.
+  Se tiene entonces que $x_0 \geq \supbin{(\infbin{p}{x})}{(\infbin{p}{y})} = \infbin{p}{(\supbin{x}{y})} \in P$. \abs\ pues $x_0\not\in P$
 \end{proof}
 
 \begin{theorem}[Rasiova y Sikorski]

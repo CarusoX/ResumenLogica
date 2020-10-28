@@ -1,0 +1,176 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+\section{Notacion declaratoria para terminos}
+\begin{definition}
+  Sea $t$ un termino de tipo $\tau$, entonces escribiremos $t =_d t(\succession{v}{1}{n})$
+  para declarar que \succession{v}{1}{n} son variables distintas tales que toda variable que ocurre en 
+  $t$ pertenece a $\{\succession{v}{1}{n}\}$
+\end{definition}
+
+\begin{convention}
+  Cuando hayamos hecho la declaracion $t =_d t(\succession{v}{1}{n})$, si \succession{P}{1}{n}
+  son palabras cualesquiera, entonces $t(\succession{P}{1}{n})$ denotara la palabra que resulta de reemplazar
+  simultaneamente cada ocurrencia de $v_1$ por $P_1$, $\dots$, cada ocurrencia de $v_n$ por $P_n$
+\end{convention}
+\begin{convention}
+  Cuando hayamos declarado $t =_d t(\succession{v}{1}{n})$, si $\mathbf{A}$ es un modelo de 
+  tipo $\tau$ y $\succession{a}{1}{n} \in A$, entonces con $t^\mathbf{A}[\succession{a}{1}{n}]$
+  denotaremos al elemento $t^\mathbf{A}[\vec{b}]$, donde $\vec{b}$ es una asignacion tal que a cada
+  $v_i$ le asigna el valor $a_i$
+\end{convention}
+
+\begin{lemma}
+  Sea $\tau$ un tipo cualquiera y supongamos $t \in T^\tau$. Si $t =_d t(\succession{v}{1}{n})$,
+  entonces se da alguna de las siguientes: \begin{enumerate}
+    \item $t = c$, para algun $c \in \mathcal{C}$
+    \item $t = v_j$, para algun $j$
+    \item $t = f(\succession{t}{1}{m})$, con $f \in \mathcal{F}_m$ y $\succession{t}{1}{m} \in T^\tau$ tales
+    que las variables que ocurren en cada uno de ellos estan en $\{\succession{v}{1}{n}\}$
+  \end{enumerate}
+\end{lemma}
+
+\begin{convention}
+  Cuando hayamos declarado $t =_d t(\succession{v}{1}{n})$ y se de el caso (3) del lema anterior,
+  tendremos hechas las declaraciones $t_1 =_d t_1(\succession{v}{1}{n}), \dots, t_m =_d t_m(\succession{v}{1}{n})$
+\end{convention}
+
+\begin{lemma}
+  Sea $\tau$ un tipo cualquiera y $t \in T^\tau$. Supongamos $t =_d t(\succession{v}{1}{n})$. Sea
+  $\mathbf{A}$ un modelo de tipo $\tau$. Sean $\succession{a}{1}{n} \in A$. Se tiene que: \begin{enumerate}
+    \item Si $t = c$, entonces $t^\mathbf{A}[\succession{a}{1}{n}] = c^\mathbf{A}$
+    \item Si $t = v_j$, entonces $t^\mathbf{A}[\succession{a}{1}{n}] = a_j$
+    \item Si $t = f(\succession{t}{1}{m})$, con $f \in \mathcal{F}_m$ y $\succession{t}{1}{m} \in T^\tau$, entonces
+    $$
+    t^\mathbf{A}[\succession{a}{1}{n}] = f^\mathbf{A}(t_1^\mathbf{A}[\succession{a}{1}{n}],\dots, t_m^\mathbf{A}[\succession{a}{1}{n}])
+    $$
+  \end{enumerate}
+\end{lemma}
+
+\section{Notacion declaratoria para formulas}
+\begin{definition}
+  Si $\varphi$ es una formula de tipo $\tau$, entonces escribiremos $\varphi =_d \varphi(\succession{v}{1}{n})$ para 
+  declarar que \succession{v}{1}{n} son variables distintas tales que $Li(\varphi) \subseteq \{\succession{v}{1}{n}\}$.
+\end{definition}
+
+\begin{convention}
+  Cuando hayamos hecho la declaracion $\varphi =_d \varphi(\succession{v}{1}{n})$, si $\succession{P}{1}{n}$ son palabras 
+  cualesquiera, entonces $\varphi(\succession{P}{1}{n})$ denotaria la palabra que resulta de 
+  reemplazar simultaneamente cada ocurrencia libre de $v_1$ en $\varphi$ por $P_1$, $\dots$, cada ocurrencia libre de $v_n$
+  en $\varphi$ por $P_n$ 
+\end{convention}
+
+\begin{convention}
+  Cuando hayamos declarado $\varphi =_d \varphi(\succession{v}{1}{n})$, si $\mathbf{A}$ es un modelo 
+  de tipo $\tau$ y $\succession{a}{1}{n} \in A$, entonces $\mathbf{A} \models \varphi[\succession{a}{1}{n}]$
+  significara que $\mathbf{A}\models\varphi[\vec{b}]$, donde $\vec{b}$ es una asignacion tal que a 
+  cada $v_i$ le asigna el valor $a_i$. En general, $\mathbf{A}\not\models\varphi[\succession{a}{1}{n}]$ significara que
+  no sucede $\mathbf{A}\models\varphi[\succession{a}{1}{n}]$
+\end{convention}
+
+\begin{lemma}
+  Sea $\tau$ un tipo cualquiera y $\varphi \in F^\tau$. Supongamos $\varphi =_d \varphi(\succession{v}{1}{n})$, entonces 
+  se cumple una y solo una de las siguientes: \begin{enumerate}
+    \item $\varphi = (t\equiv s)$, con $t, s \in T^\tau$, unicos y tales que las variables que ocurren en $t$ o en $s$ estan todas en $\{\succession{v}{1}{n}\}$
+    \item $\varphi = r(\succession{t}{1}{m})$, con $r \in \mathcal{R}_m$ y $\succession{t}{1}{m} \in T^\tau$, unicos y tales que las variables que ocurren en cada $t_i$ estan todas en $\{\succession{v}{1}{n}\}$
+    \item $\varphi = (\varphi_1 \land \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, unicas y tales que $Li(\varphi_1)\cup Li(\varphi_2) \subseteq \{\succession{v}{1}{n}\}$
+    \item $\varphi = (\varphi_1 \lor \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, unicas y tales que $Li(\varphi_1)\cup Li(\varphi_2) \subseteq \{\succession{v}{1}{n}\}$
+    \item $\varphi = (\varphi_1 \rightarrow \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, unicas y tales que $Li(\varphi_1)\cup Li(\varphi_2) \subseteq \{\succession{v}{1}{n}\}$
+    \item $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, unicas y tales que $Li(\varphi_1)\cup Li(\varphi_2) \subseteq \{\succession{v}{1}{n}\}$
+    \item $\varphi = \neg\varphi_1$, con $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}\}$
+    \item $\varphi = \forall v_j\varphi_1$, con $v_j \in \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}\}$
+    \item $\varphi = \forall v_j\varphi_1$, con $v_j \in Var - \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}, v\}$
+    \item $\varphi = \exists v_j\varphi_1$, con $v_j \in \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}\}$
+    \item $\varphi = \exists v_j\varphi_1$, con $v_j \in Var - \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}, v\}$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{convention}
+  Cuando hayamos declarado $\varphi =_d \varphi(\succession{v}{1}{n})$ entonces:
+  \begin{itemize}
+    \item Si se da el caso (1) del lema anterior, supondremos tacitamente que tambien hemos hecho las declaraciones $t =_d t(\succession{v}{1}{n})$ y $s =_d s(\succession{v}{1}{n})$
+    \item Si se da el caso (2) del lema anterior, supondremos tacitamente que tambien hemos hecho las declaraciones $t_1 =_d t_1(\succession{v}{1}{n}), \dots, t_m =_d t_m(\succession{v}{1}{n})$
+    \item Si se da alguno de los casos (3), (4), (5) o (6) del lema anterior, supondremos tacitamente que tambien hemos hecho las declaraciones $\varphi_1 =_d \varphi_1(\succession{v}{1}{n})$ y $\varphi_2(\succession{v}{1}{n})$
+    \item Si se da alguno de los casos (7), (8) o (10) del lema anterior, supondremos tacitamente que tambien hemos hecho la declaracion $\varphi_1 =_d \varphi_1(\succession{v}{1}{n})$
+    \item Si se da alguno de los casos (9) u (11) del lema anterior, supondremos tacitamente que tambien hemos hecho la declaracion $\varphi_1 =_d \varphi_1(\succession{v}{1}{n}, v)$
+  \end{itemize}
+\end{convention}
+
+\begin{lemma}
+  Supongamos $\varphi =_d \varphi(\succession{v}{1}{n})$. Sea $\mathbf{A} = (A, i)$ un modelo de tipo $\tau$
+  y sean $\succession{a}{1}{n} \in A$. Entonces: \begin{enumerate}
+    \item Si $\varphi = (t \equiv s)$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff t^\mathbf{A}[\succession{a}{1}{n}] = s^\mathbf{A}[\succession{a}{1}{n}]$
+    \item Si $\varphi = r(\succession{t}{1}{m})$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff (t_1^\mathbf{A}[\succession{a}{1}{n}],\dots,t_m^\mathbf{A}[\succession{a}{1}{n}]) \in r^\mathbf{A}$
+    \item Si $\varphi = (\varphi_1 \land \varphi_2)$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\models\varphi_1[\succession{a}{1}{n}]$ y $\mathbf{A}\models\varphi_2[\succession{a}{1}{n}]$
+    \item Si $\varphi = (\varphi_1 \lor \varphi_2)$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\models\varphi_1[\succession{a}{1}{n}]$ o $\mathbf{A}\models\varphi_2[\succession{a}{1}{n}]$
+    \item Si $\varphi = (\varphi_1 \rightarrow \varphi_2)$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\models\varphi_2[\succession{a}{1}{n}]$ o $\mathbf{A}\not\models\varphi_1[\succession{a}{1}{n}]$
+    \item Si $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff$ ya sea se dan $\mathbf{A}\models\varphi_1[\succession{a}{1}{n}]$ y $\mathbf{A}\models\varphi_2[\succession{a}{1}{n}]$, o se dan $\mathbf{A}\not\models\varphi_1[\succession{a}{1}{n}]$ y $\mathbf{A}\not\models\varphi_2[\succession{a}{1}{n}]$
+    \item Si $\varphi = \neg\varphi_1$, entonces\\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\not\models\varphi_1[\succession{a}{1}{n}]$
+    \item Si $\varphi = \forall v_j \varphi_1$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\models\varphi_1[\succession{a}{1}{j-1},a,\succession{a}{j+1}{n}]$, para todo $a \in A$
+    \item Si $\varphi = \forall v \varphi_1$, con $v\not\in\{\succession{v}{1}{n}\}$ y $\varphi_1 =_d \varphi_1(\succession{v}{1}{n},v)$, entonces\\ $\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\models\varphi_1[\succession{a}{1}{n},a]$, para todo $a \in A$
+    \item Si $\varphi = \exists v_j \varphi_1$, entonces \\$\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\models\varphi_1[\succession{a}{1}{j-1},a,\succession{a}{j+1}{n}]$, para algun $a \in A$
+    \item Si $\varphi = \exists v \varphi_1$, con $v\not\in\{\succession{v}{1}{n}\}$ y $\varphi_1 =_d \varphi_1(\succession{v}{1}{n},v)$, entonces\\ $\mathbf{A}\models\varphi[\succession{a}{1}{n}] \iff \mathbf{A}\models\varphi_1[\succession{a}{1}{n},a]$, para algun $a \in A$
+  \end{enumerate}
+\end{lemma}
+
+\noproof
+
+\section*{Dos teoremas de reemplazo}
+
+\begin{theorem}[De reemplazo para terminos]
+  $ $\\
+  Supongamos $t =_d t(\succession{w}{1}{k}), s_1 =_d s_1(\succession{v}{1}{n}), \dots, s_k =_d s_k(\succession{v}{1}{n})$.
+  Todas las variables de $t(\succession{s}{1}{k})$ estan en $\{\succession{v}{1}{n}\}$ y si declaramos
+  $t(\succession{s}{1}{k}) =_d t(\succession{s}{1}{k})(\succession{v}{1}{n})$, entonces para cada 
+  estructura $\mathbf{A}$ y $\succession{a}{1}{n} \in A$ se tiene que:
+  $$
+  t(\succession{s}{1}{k})^\mathbf{A}[\succession{a}{1}{n}] = t^\mathbf{A}[s_1^\mathbf{A}[\succession{a}{1}{n}], \dots, s_k^\mathbf{A}[\succession{a}{1}{n}]]
+  $$
+\end{theorem}
+
+\noproof
+\begin{definition}
+  Sea $\varphi \in F^\tau$, $v, w \in Var$. Diremos que $v$ es \emph{sustituible por w en $\varphi$} cuando ninguna ocurrencia libre de $v$ en $\varphi$ sucede dentro de una 
+  ocurrencia de una subformula de la forma $Q w \psi$ en $\varphi$.
+\end{definition}
+
+\begin{lemma}
+  Sea $\varphi \in F^\tau$, $v, w \in Var$. Se cumplen las siguientes propiedades: \begin{enumerate}
+    \item Si $\varphi$ es atomica, entonces $v$ es sustituible por $w$ en $\varphi$
+    \item Si $\varphi = (\varphi_1\eta\varphi_2)$, entonces $v$ es sustituible por $w$ en $\varphi \iff v$ es sustituible por $w$ en $\varphi_1$ y $\varphi_2$
+    \item Si $\varphi = \neg\varphi_1$, entonces $v$ es sustituible por $w$ en $\varphi \iff v$ es sustituible por $w$ en $\varphi_1$
+    \item Si $\varphi = Qv\varphi_1$, entonces $v$ es sustituible por $w$ en $\varphi$
+    \item Si $\varphi = Qw\varphi_1$ y $v \in Li(\varphi_1)$, entonces $v$ no es sustituible por $w$ en $\varphi$
+    \item Si $\varphi = Qw\varphi_1$ y $v \not\in Li(\varphi_1)$, entonces $v$ es sustituible por $w$ en $\varphi$
+    \item Si $\varphi = Qu\varphi_1$, con $u \neq v, w$, entonces $v$ es sustituible por $w$ en $\varphi \iff v$ es sustituible por $w$ en $\varphi_1$
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{theorem}
+  Supongamos $\varphi =_d \varphi(\succession{w}{1}{k}), t_1 =_d t_1(\succession{v}{1}{n}), \dots, t_k =_d t_k(\succession{v}{1}{n})$
+  y supongamos ademas que cada $w_j$ es sustituible por $t_j$ en $\varphi$. Entonces: \begin{enumerate}
+    \item $Li(\varphi(\succession{t}{1}{k})) \subseteq \{\succession{v}{1}{n}\}$
+    \item Si declaramos $\varphi(\succession{t}{1}{k}) =_d \varphi(\succession{t}{1}{k})(\succession{v}{1}{n})$, entonces para cada estructura $\mathbf{A}$ y $\vec{a} \in A^n$ se tiene
+    $$
+    \mathbf{A}\models\varphi(\succession{t}{1}{k})[\vec{a}] \iff \mathbf{A}\models\varphi[t_1^\mathbf{A}[\vec{a}], \dots, t_k^\mathbf{A}[\vec{a}]]
+    $$
+  \end{enumerate}
+\end{theorem}
+
+\noproof
+
+\section*{Elementos definibles}
+\begin{definition}
+Sea $\mathbf{A}$ un modelo de tipo $\tau$. Diremos que un elemento de $a$ de $A$ es \emph{definible} en $\mathbf{A}$
+si hay una formula $\varphi =_d \varphi(v)$ tal que $\mathbf{A}\models\varphi[a]$ y para cada $b \in A -\{a\}$ se tiene que
+$A\not\models\varphi[b]$. Es decir, $a$ es el unico elemento de $A$ que cumple $\mathbf{A}\models\varphi[a]$. En tal caso
+tambien diremos que $\varphi$ \emph{define a} en $\mathbf{A}$.
+\end{definition}
+
+\end{document}

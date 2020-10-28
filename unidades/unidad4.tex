@@ -82,7 +82,17 @@
   \end{lemma}
 
   \begin{proof}
-    TODO
+    (1) Cuando hablemos de $z, w \in L/\theta$, automaticamente tendremos definidos $x, y \in L$ tal que $x/\theta = z$ y $y/\theta = w$. Demostraremos una a una las propiedades que se deben cumplir:
+    \begin{itemize}
+      \item $\supbincongr{z}{z} = \infbincongr{z}{z} = z$, cualesquiera sea $z \in L/\theta$, pues $\supbin{x}{x} = \infbin{x}{x} = x$
+      \item $\supbincongr{z}{w} = \supbincongr{w}{z}$, cualesquiera sean $z, w \in L/\theta$, pues $\supbin{x}{y} = \supbin{y}{x}$
+      \item $\infbincongr{z}{w} = \infbincongr{w}{z}$, cualesquiera sean $z, w \in L/\theta$, pues $\infbin{x}{y} = \infbin{y}{x}$
+      \item ... Faciles de demostrar ...
+      \item $\supbincongr{0/\theta}{z} = z$, para cada $z \in L/\theta$, pues $\supbin{0}{x} = x$
+      \item $\supbincongr{1/\theta}{z} = 1$, para cada $z \in L/\theta$, pues $\supbin{1}{x} = 1$
+    \end{itemize}
+
+    (2) Es directo de su analogo para reticulados ternas. Capaz en un futuro lo hago
   \end{proof}
 
   \begin{lemma}
@@ -90,7 +100,7 @@
     reticulados acotados, entonces ker $F$ es una congruencia sobre \reticulAcot
   \end{lemma}
   \begin{proof}
-    TODO
+    Es directo de su analogo para reticulados ternas. Capaz en un futuro lo hago
   \end{proof}
 
   \section{Reticulados complementados}
@@ -194,7 +204,15 @@
     \end{enumerate}
   \end{lemma}
   \begin{proof}
-    TODO
+    (1) Por un lema anterior, ya sabemos que \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} es un reticulado acotado.
+    Osea solo nos falta ver que \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} satisface las propiedades de reticulado complementado.
+    Sea $x/\theta \in L/\theta$. Sabemos que $\supbin{x}{x^c} = 1$ y por lo tanto $\supbincongr{x/\theta}{x^c/\theta} = (\supbin{x}{x^c})/\theta = 1/\theta$.
+    Similarmente, sabemos que $\infbin{x}{x^c} = 0$ y por lo tanto $\infbincongr{x}{x^c} = 0/\theta$
+
+    (2) Por lema anterior tenemos que $\pi_\theta$ es un homomorfismo de \reticulAcot en \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$.
+    Notese que por definicion de ${}^{\overset{\sim}{c}}$ tenemos que $x^c/\theta = (x/\theta)^{\overset{\sim}{c}}$, y por lo tanto $\pi_\theta(x^c) = (\pi_\theta(x))^{\overset{\sim}{c}}$,
+    cualquiera sea $x \in L$.
+
   \end{proof}
 
   \begin{lemma}

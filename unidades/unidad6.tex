@@ -28,6 +28,16 @@
   $$abdba$$
 \end{definition}
 
+\begin{definition}
+  Diremos que $\alpha$ es subpalabra (propia) de $\beta$ cuando ($\alpha \notin \{\epsilon, \beta \}$ y) existan palabras
+  $\delta, \gamma$, tales que $\beta = \delta\alpha\gamma$ 
+\end{definition}
+
+\begin{definition}
+  Diremos que $\beta$ es un \emph{tramo inicial} (\emph{propio}) de $\alpha$ si hay una palabra de $\gamma$ tal que $\alpha = \beta\gamma$ (y $\beta \notin \{\epsilon, \alpha\}$).
+  En forma similar se define \emph{tramo final} (\emph{propio})
+\end{definition}
+
 \subsection{Variables}
 
 \begin{definition}
@@ -47,10 +57,6 @@ Denotaremos con $x_i$ al i-esimo elemento de $Var$, para cada $i \in \mathbf{N}$
 \end{definition}
 
 \subsection{Tipos}
-\begin{definition}
-  Diremos que $\alpha$ es subpalabra (propia) de $\beta$ cuando ($\alpha \notin \{\epsilon, \beta \}$ y) existan palabras
-  $\delta, \gamma$, tales que $\beta = \delta\alpha\gamma$ 
-\end{definition}
 \begin{definition}
   Por un tipo (de primer orden) entenderemos una 4-upla $\tau = (\mathcal{C}, \mathcal{F}, \mathcal{R}, a)$ tal que:
   \begin{enumerate}
@@ -103,11 +109,6 @@ $$
 \end{proof}
 
 \subsubsection{Unicidad de la lectura de terminos}
-
-\begin{definition}
-  Diremos que $\beta$ es un \emph{tramo inicial} (\emph{propio}) de $\alpha$ si hay una palabra de $\gamma$ tal que $\alpha = \beta\gamma$ (y $\beta \notin \{\epsilon, \alpha\}$).
-  En forma similar se define \emph{tramo final} (\emph{propio})
-\end{definition}
 
 \begin{lemma}[Mordizqueo de Terminos]
   Sean $s, t \in T^\tau$ y supongamos que hay palabras $x, y, z$, con $y \neq \epsilon$ tales que $s = xy$ y $t = yz$. Entonces 
