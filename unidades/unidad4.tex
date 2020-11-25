@@ -43,7 +43,7 @@
     Escribiremos \functype{F}{\reticulAcot}{\reticulAcotDef{L'}{s'}{i'}{0'}{1'}} cuando $F$ sea un homomorfismo
   de \reticulAcot en \reticulAcotDef{L'}{s'}{i'}{0'}{1'}
 
-  Escribiremos \reticulAcot $\overset{\sim}{=}$ \reticulAcotDef{L'}{s'}{i'}{0'}{1'} cuando exista
+  Escribiremos \reticulAcot $\tilde{=}$ \reticulAcotDef{L'}{s'}{i'}{0'}{1'} cuando exista
   un isomorfismo de \reticulAcot en \reticulAcotDef{L'}{s'}{i'}{0'}{1'}
   \end{definition}
 
@@ -63,21 +63,21 @@
   \begin{definition}
     Sea \reticulAcot un reticulado acotado. Una \emph{congruencia sobre} \reticulAcot sera una
     relacion de equivalencia $\theta$ la cual sera una congruencia sobre \reticulAlg. Tenemos definidas sobre
-    $L/\theta$ dos operaciones binarias $\overset{\sim}{\textbf{s}}$ y $\overset{\sim}{\text{i}}$
+    $L/\theta$ dos operaciones binarias $\tilde{\textbf{s}}$ y $\tilde{\text{i}}$
     \begin{alignat*}{2}
       \supbincongr{x/\theta}{y/\theta} &=& (\supbin{x}{y})/\theta\\
       \infbincongr{x/\theta}{y/\theta} &=& (\infbin{x}{y})/\theta
     \end{alignat*}
 
-    La 5-upla \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} es llamada
+    La 5-upla \reticulAcotDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{0/\theta}{1/\theta} es llamada
     \emph{cociente de} \reticulAcot sobre $\theta$ y la denotaremos con $\reticulAcot/\theta$
   \end{definition}
 
   \begin{lemma}
     Sea \reticulAcot un reticulado acotado y $\theta$ una congruencia sobre \reticulAcot.
     \begin{enumerate}
-      \item \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} es un reticulado acotado
-      \item $\pi_\theta$ es un homomorfismo de \reticulAcot en \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$
+      \item \reticulAcotDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{0/\theta}{1/\theta} es un reticulado acotado
+      \item $\pi_\theta$ es un homomorfismo de \reticulAcot en \reticulAcotDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$
     \end{enumerate}
   \end{lemma}
 
@@ -159,7 +159,7 @@
     Escribiremos \functype{F}{\reticulCompl}{\reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}} cuando $F$ sea un homomorfismo de\\
     \reticulCompl en \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}
 
-    Escribiremos \reticulCompl $\overset{\sim}{=}$ \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} cuando exista
+    Escribiremos \reticulCompl $\tilde{=}$ \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'} cuando exista
     un isomorfismo de \reticulCompl en \reticulComplDef{L'}{s'}{i'}{{}^{c'}}{0'}{1'}
   \end{definition}
 
@@ -184,33 +184,33 @@
       \item $x/\theta = y/\theta$ implica $x^c/\theta = y^c/\theta$
     \end{enumerate}
 
-    Las condiciones anteriores nos permiten definir sobre $L/\theta$ dos operaciones binarias $\overset{\sim}{\textbf{s}}$ y $\overset{\sim}{\text{i}}$
-    y una operacion binaria ${}^{\overset{\sim}{c}}$ de la siguiente manera:
+    Las condiciones anteriores nos permiten definir sobre $L/\theta$ dos operaciones binarias $\tilde{\textbf{s}}$ y $\tilde{\text{i}}$
+    y una operacion binaria ${}^{\tilde{c}}$ de la siguiente manera:
     \begin{alignat*}{3}
       \supbincongr{x/\theta}{y/\theta} &=&\ & (\supbin{x}{y})/\theta\\
       \infbincongr{x/\theta}{y/\theta} &=&\ & (\infbin{x}{y})/\theta\\
-      (x/\theta)^{\overset{\sim}{c}} &=&\ & x^c/\theta
+      (x/\theta)^{\tilde{c}} &=&\ & x^c/\theta
     \end{alignat*}
 
-    La 6-upla \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} es llamada
+    La 6-upla \reticulComplDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{{}^{\tilde{c}}}{0/\theta}{1/\theta} es llamada
     \emph{cociente de} \reticulCompl sobre $\theta$ y la denotaremos con $\reticulCompl/\theta$
   \end{definition}
 
   \begin{lemma}
     Sea \reticulCompl un reticulado complementado y $\theta$ una congruencia sobre \reticulCompl.
     \begin{enumerate}
-      \item \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} es un reticulado complementado
-      \item $\pi_\theta$ es un homomorfismo de \reticulCompl en \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$
+      \item \reticulComplDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{{}^{\tilde{c}}}{0/\theta}{1/\theta} es un reticulado complementado
+      \item $\pi_\theta$ es un homomorfismo de \reticulCompl en \reticulComplDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{{}^{\tilde{c}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$
     \end{enumerate}
   \end{lemma}
   \begin{proof}
-    (1) Por un lema anterior, ya sabemos que \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} es un reticulado acotado.
-    Osea solo nos falta ver que \reticulComplDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{{}^{\overset{\sim}{c}}}{0/\theta}{1/\theta} satisface las propiedades de reticulado complementado.
+    (1) Por un lema anterior, ya sabemos que \reticulAcotDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{0/\theta}{1/\theta} es un reticulado acotado.
+    Osea solo nos falta ver que \reticulComplDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{{}^{\tilde{c}}}{0/\theta}{1/\theta} satisface las propiedades de reticulado complementado.
     Sea $x/\theta \in L/\theta$. Sabemos que $\supbin{x}{x^c} = 1$ y por lo tanto $\supbincongr{x/\theta}{x^c/\theta} = (\supbin{x}{x^c})/\theta = 1/\theta$.
     Similarmente, sabemos que $\infbin{x}{x^c} = 0$ y por lo tanto $\infbincongr{x}{x^c} = 0/\theta$
 
-    (2) Por lema anterior tenemos que $\pi_\theta$ es un homomorfismo de \reticulAcot en \reticulAcotDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$.
-    Notese que por definicion de ${}^{\overset{\sim}{c}}$ tenemos que $x^c/\theta = (x/\theta)^{\overset{\sim}{c}}$, y por lo tanto $\pi_\theta(x^c) = (\pi_\theta(x))^{\overset{\sim}{c}}$,
+    (2) Por lema anterior tenemos que $\pi_\theta$ es un homomorfismo de \reticulAcot en \reticulAcotDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}{0/\theta}{1/\theta} cuyo nucleo es $\theta$.
+    Notese que por definicion de ${}^{\tilde{c}}$ tenemos que $x^c/\theta = (x/\theta)^{\tilde{c}}$, y por lo tanto $\pi_\theta(x^c) = (\pi_\theta(x))^{\tilde{c}}$,
     cualquiera sea $x \in L$.
 
   \end{proof}

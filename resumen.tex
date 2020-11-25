@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsthm}
+\usepackage{amsmath, amsthm, amssymb}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage{hyperref}
 \usepackage{xspace}
@@ -30,11 +30,11 @@
 \newcommand{\poset}{\ensuremath{(P, \leq)}\xspace}
 \newcommand{\posetdef}[2]{\ensuremath{(#1, #2)}\xspace}
 \newcommand{\reticul}{\ensuremath{(L, \leq)}\xspace}
-\newcommand{\supbin}[2]{\ensuremath{#1\textbf{ s }#2}}
-\newcommand{\infbin}[2]{\ensuremath{#1\textbf{ i }#2}}
-\newcommand{\supbincongr}[2]{\ensuremath{#1\overset{\sim}{\textbf{ s }}#2}}
-\newcommand{\infbincongr}[2]{\ensuremath{#1\overset{\sim}{\textbf{ i }}#2}}
-\newcommand{\succession}[4][,]{\ensuremath{#2_{#3}#1 \dots#1 #2_{#4}}}
+\newcommand{\supbin}[2]{\ensuremath{#1\textbf{ s }#2}\xspace}
+\newcommand{\infbin}[2]{\ensuremath{#1\textbf{ i }#2}\xspace}
+\newcommand{\supbincongr}[2]{\ensuremath{#1\tilde{\textbf{ s }}#2}\xspace}
+\newcommand{\infbincongr}[2]{\ensuremath{#1\tilde{\textbf{ i }}#2}\xspace}
+\newcommand{\succession}[4][,]{\ensuremath{#2_{#3}#1 \dots#1 #2_{#4}}\xspace}
 
 % Unidad 3
 \newcommand{\reticulAlg}{\ensuremath{(L, \textbf{s}, \textbf{i})}\xspace}
@@ -49,6 +49,22 @@
 % Unidad 5
 \newcommand{\algBoole}{\ensuremath{(B, \textbf{s}, \textbf{i}, {}^c, 0, 1)}\xspace}
 
+% Unidad 9
+\newcommand{\forder}{\ensuremath{(\Sigma,\tau)}\xspace}
+\newcommand{\bloq}[2]{\ensuremath{\langle#1,#2\rangle}\xspace}
+\newcommand{\padec}{\ensuremath{(\pmb{\varphi}, \mathbf{J})}\xspace}
+\newcommand{\pvarphi}{\ensuremath{\pmb{\varphi}}\xspace}
+\newcommand{\proves}{\ensuremath{\vdash}}
+
+% Unidad 10
+\newcommand{\trel}{\ensuremath{\dashv\vdash_{T}}}
+\newcommand{\supt}[2]{\ensuremath{#1\ \mathbf{s}^T\ #2}\xspace}
+\newcommand{\inft}[2]{\ensuremath{#1\ \mathbf{i}^T\ #2}\xspace}
+\newcommand{\algLin}{\ensuremath{(S^\tau/\trel, s^T, i^T, {}^{c^T},0^T,1^T)}}
+
+% Unidad 11
+\newcommand{\aritp}{\ensuremath{(\{0,1\},\{+^2,.^2\},\{\leq\},a)}\xspace}
+\newcommand{\pomega}{\ensuremath{\pmb{\omega}}\xspace}
 
 
 \title{Resumen de Lógica}
@@ -67,5 +83,8 @@
 \subfile{unidades/unidad6.tex}
 \subfile{unidades/unidad7.tex}
 \subfile{unidades/unidad8.tex}
-
+\subfile{unidades/unidad9.tex}
+\subfile{unidades/unidad10.tex}
+\subfile{unidades/unidad11.tex}
+\subfile{unidades/unidad12.tex}
 \end{document}

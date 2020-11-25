@@ -1,0 +1,92 @@
+% !TeX root = ../resumen.tex
+
+\begin{document}
+
+\section{Teorema de la completitud}
+
+\begin{lemma}
+  Sean $\tau=(\mathcal{C},\mathcal{F},\mathcal{R},a)$ y $\tau'=(\mathcal{C}',\mathcal{F}',\mathcal{R}',a')$ tipos. Se cumplen: \begin{enumerate}
+    \item Si $\mathcal{C}\subseteq\mathcal{C}', \mathcal{F}\subseteq\mathcal{F}',\mathcal{R}\subseteq\mathcal{R}'$ y $a'|_{\mathcal{F}\cup\mathcal{R}}=a$,
+    entonces $\forder\proves\varphi$ implica $(\Sigma,\tau')\proves\varphi$
+    \item Si $\mathcal{C}\subseteq\mathcal{C}', \mathcal{F}\subseteq\mathcal{F}',\mathcal{R}\subseteq\mathcal{R}'$ y $a'=a$, entonces $(\Sigma,\tau')\proves\varphi$
+    implica $\forder\proves\varphi$, cada vez que $\Sigma\cup\{\varphi\}\subseteq S^\tau$
+  \end{enumerate} 
+\end{lemma}
+\noproof
+
+\begin{lemma}[Lema del infimo]
+  Sea $T=\forder$ una teoria y supongamos que $\tau$ tiene una cantidad infinita de nombres de constante que no ocurren en las sentencias de $Sigma$.
+  Entonces para cada formula $\varphi=_d\varphi(v)$, se tiene que en el algebra de Lindembaym $\mathcal{A}_T$:
+  $$
+  [\forall v\varphi(v)]_T=\inf(\{[\varphi]_T:t\in T_c^\tau\})
+  $$
+  
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{lemma}[Lema de Coincidencia]
+  Sea $\tau=(\mathcal{C},\mathcal{F},\mathcal{R},a)$ y $\tau'=(\mathcal{C}',\mathcal{F}',\mathcal{R}',a')$ dos tipos cualesquiera y sea $\tau_\cap=(\mathcal{C}_\cap,\mathcal{F}_\cap,\mathcal{R}_\cap,a_\cap)$ donde:
+  \begin{alignat*}{3}
+    &\mathcal{C}_\cap&\ =&\ \mathcal{C}\cap\mathcal{C}'\\
+    &\mathcal{F}_\cap&\ =&\ \{f\in\mathcal{F}\cap\mathcal{F}':a(f)=a'(f)\}\\
+    &\mathcal{R}_\cap&\ =&\ \{r\in\mathcal{R}\cap\mathcal{R}':a(r)=a'(r)\}\\
+    &a_\cap&\ =&\ a|_{\mathcal{F}_\cap\cup\mathcal{R}_\cap}
+  \end{alignat*}
+  Entonces $\tau_\cap$ es un tipo tal que $T^{\tau_\cap}=T^\tau\cap T^{\tau'}$ y $F^{\tau_\cap}=F^\tau\cap F^{\tau'}$. Sean $\mathbf{A}$
+  y $\mathbf{A'}$ modelos de tipo $\tau$ y $\tau'$ respectivamente. Supongamos $A=A'$ y que $c^\mathbf{A}=c^\mathbf{A'}$, para cada $c\in\mathcal{C}_\cap$,
+  $f^\mathbf{A}=f^\mathbf{A'}$, para cada $f\in\mathcal{F}_\cap$ y $r^\mathbf{A}=r^\mathbf{A'}$, para cada $r\in\mathcal{R}_\cap$. Entonces se cumplen: \begin{enumerate}
+    \item Para cada $t=_d t(\vec{v})\in T^{\tau_\cap}$ se tiene que $t^\mathbf{A}[\vec{a}]=t^\mathbf{A'}[\vec{a}]$, para cada $\vec{a}\in A^n$
+    \item Para cada $\varphi =_d \varphi(\vec{v})\in F^{\tau_\cap}$ se tiene que $\mathbf{A}\models\varphi[\vec{a}]\iff\mathbf{A'}\models\varphi[\vec{a}]$
+    \item Si $\Sigma\cup\{\varphi\}\subseteq S^{\tau_\cap}$, entonces $\forder\models\varphi\iff(\Sigma,\tau')\models\varphi$
+  \end{enumerate}
+\end{lemma}
+
+\noproof
+
+\begin{lemma}
+  Sea $\tau$ un tipo. Hay una infinitupla $(\gamma_1,\gamma_2,\dots)\in {F^\tau}^\mathbf{N}$ tal que:\begin{enumerate}
+    \item $|Li(\gamma_j)|\leq 1$, para cada $j=1,2,\dots$
+    \item Si $|Li(\gamma)|\leq 1$, entonces $\gamma=\gamma_j$ para algun $j\in\mathbf{N}$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{theorem}[Teorema de Completitud]
+  Sea $T=\forder$ una teoria de primer orden. Si $T\models\varphi$, entonces $T\proves\varphi$
+\end{theorem}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{corollary}
+  Toda teoria consistente tiene un modelo
+\end{corollary}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{corollary}[Teorema de Compacidad]
+  Sea $\forder$ una teoria. \begin{enumerate}
+    \item Si \forder es tal que $(\Sigma_0,\tau)$ tiene un modelo, para cada subconjunto finito $\Sigma_0\subseteq\Sigma$, entonces \forder tiene un modelo
+    \item Si $\forder\models\varphi$, entonces hay un subconjunto finito $\Sigma_0\subseteq\Sigma$ tal que $(\Sigma_0,\tau)\models\varphi$
+  \end{enumerate}
+\end{corollary}
+
+\section{Interpretacion semantica del algebra de Lindembaum}
+\begin{definition}
+  Sea $T=\forder$ una teoria. Dada $\varphi\in S^\tau$ definamos
+  $$
+  \text{Mod}_T(\varphi)=\{\mathbf{A}:\mathbf{A} \text{ es modelo de } T \text{ y } \mathbf{A}\models\varphi\}
+  $$
+\end{definition}
+
+\begin{lemma}
+  Dadas $\varphi,\psi \in S^\tau$, se tiene:\begin{enumerate}
+    \item $[\varphi]_T\leq^T[\psi]_T\iff$ $\emph{Mod}_T(\varphi)\subseteq\emph{Mod}_T(\psi)$
+    \item $[\varphi]_T=[\psi]_T\iff$ $\emph{Mod}_T(\varphi)=\emph{Mod}_T(\psi)$
+    \item $[\varphi]_T<^T[\psi]_T\iff$ $\emph{Mod}_T(\varphi)\subsetneqq\emph{Mod}_T(\psi)$
+  \end{enumerate}
+\end{lemma}
+\end{document}

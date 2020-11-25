@@ -84,7 +84,21 @@
   \end{enumerate}
 \end{theorem}
 \begin{proof}
-  TODO
+  $ $\\
+  (1) Veamos que $\supbin{x^c}{y^c}$ es complemento de $\infbin{x}{y}$:
+  $$
+  \supbin{(\supbin{x^c}{y^c})}{(\infbin{x}{y})} = \infbin{(\supbin{(\supbin{x^c}{y^c})}{x})}{(\supbin{(\supbin{x^c}{y^c})}{y})} = \infbin{1}{1} = 1
+  $$
+  $$
+  \infbin{(\supbin{x^c}{y^c})}{(\supbin{x}{y})} = \supbin{(\infbin{(\supbin{x^c}{y^c})}{x})}{(\infbin{(\supbin{x^c}{y^c})}{y})} = \supbin{0}{0} = 0
+  $$
+  Como es un algebra de Boole, se tiene que el complemento es unico y por lo tanto $(\infbin{x}{y})^c = \supbin{x^c}{y^c}$.\\
+  (2) TODO - Ez pez igual al (1)\\
+  (3) Por definicion, $x$ es complemento de $x^c$. Como tenemos un algebra de Boole, este complemento es unico y por lo tanto $x^{cc} = x$\\
+  (4) TODO - Ez pez usar lema anterior\\
+  (5) Supongamos $x \leq y$. Entonces $\infbin{x}{y} = x$, lo cual por (1) nos dice que $\supbin{x^c}{y^c} = x^c$,
+  obteniendo $y^c \leq x^c$. Supongamos ahora $y^c \leq x^c$, luego $\infbin{x^c}{y^c} = y^c$, lo cual por (1) nos dice que $\supbin{x^{cc}}{y^{cc}} = y^{cc}$.
+  Esto por (3) nos dice que $\supbin{x}{y} = y$ y por lo tanto $x \leq y$.
 \end{proof}
 
 \section{Teoremas del filtro primo y de Rasiova Sikorski}

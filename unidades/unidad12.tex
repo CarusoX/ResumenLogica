@@ -1,0 +1,104 @@
+% !TeX root = ../resumen.tex
+
+\begin{document}
+
+\section{La aritmetica de Peano}
+
+\begin{definition}
+  Sea $\tau_A = \aritp$. Denotaremos con \pomega a la estructura de tipo $\tau_A$
+  que tiene a $\omega$ como universo e interpreta los nombres $\tau_A$ en la manera usual, es decir:
+  \begin{alignat*}{4}
+    &\ 0^{\pomega} &\ =&\ 0\\
+    &\ 1^{\pomega} &\ =&\ 1\\
+    &\leq^{\pomega} &\ =&\ \{(n,m)\in \omega^2: n\leq m\}\\
+    &+^{\pomega}(n,m) &\ =&\ n+m, \text{ para cada } n,m\in\omega\\
+    &\ .^{\pomega}(n,m) &\ =&\ n.m, \text{ para cada } n,m\in\omega
+  \end{alignat*}
+
+  Sea $\Sigma$ el conjunto formado por las siguientes sentencias:\begin{enumerate}
+    \item $\forall x_1 \forall x_2 \forall x_3\ x_1+(x_2+x_3)\equiv(x_1+x_2)+x_3$
+    \item $\forall x_1 \forall x_2\ x_1+x_2\equiv x_2+x_1$
+    \item $\forall x_1 \forall x_2 \forall x_3\ x_1.(x_2.x_3)\equiv(x_1.x_2).x_3$
+    \item $\forall x_1 \forall x_2\ x_1.x_2\equiv x_2.x_1$ 
+    \item $\forall x_1\ x_1+0\equiv x_1$
+    \item $\forall x_1\ x_1.0\equiv 0$
+    \item $\forall x_1\ x_1.1\equiv 1$
+    \item $\forall x_1 \forall x_2 \forall x_3\ x_1.(x_2+x_3)\equiv(x_1.x_2)+(x_1.x_3)$
+    \item $\forall x_1 \forall x_2 \forall x_3\ (x_1+x_3\equiv x_2+x_3\rightarrow x_1\equiv x_2)$
+    \item $\forall x_1\ x_1\leq x_1$
+    \item $\forall x_1 \forall x_2 \forall x_3\ ((x_1\leq x_2\land x_2\leq x_3)\rightarrow x_1\leq x_3)$
+    \item $\forall x_1 \forall x_2\ ((x_1\leq x_2 \land x_2\leq x_1)\rightarrow x_1\equiv x_2)$
+    \item $\forall x_1 \forall x_2\ (x_1\leq x_2 \lor x_2\leq x_1)$
+    \item $\forall x_1 \forall x_2\ (x_1\leq x_2 \rightarrow \exists x_3\ x_2\equiv x_1+x_3)$
+    \item $0<1$
+  \end{enumerate}
+
+  Es facil ver que estas sentencias son satisfechas por \pomega, por lo cual \pomega es un modelo de la teoria $(\Sigma, \tau_A)$. Definamos
+  $$
+  Verd_{\pomega} = \{\varphi: S^{\tau_A}:\pomega\models\varphi\}
+  $$
+
+  \end{definition}
+  \begin{remark}
+    
+  Sea $\mathbf{Q}^{\geq 0}$ la estructura de tipo $\tau_A$ que tiene a ${r\in\mathbf{Q}:r\geq0}$ como universo e interpreta
+  los nombres de $\tau_A$ de la manera usual. Notese que $\mathbf{Q}^{\geq 0}$ tambien es un modelo de la teoria $(\Sigma, \tau_A)$ definida justo antes.
+  Pero entonces los teoremas de $(\Sigma,\tau_A)$ deben ser verdaderos en $\mathbf{Q}^{\geq 0}$, pero la sentencia 
+  $\forall x (x\leq1\rightarrow (x\equiv0\land x\equiv1))$ es falsa en $\mathbf{Q}^{\geq 0}$, por lo cual no es 
+  un teorema de $(\Sigma,\tau_A)$, sin embargo pertenece a $Verd_{\pomega}$.
+  
+  Es decir, los axiomas que habiamos definido antes son demasiado generales y deberiamos agregar axiomas mas caracteristicos de la estructura
+  particular de \pomega.
+  \end{remark}
+
+  \begin{definition}
+    Dada una formula $\psi\in F^{\tau_A}$ y variables \succession{v}{1}{n+1}, con $n\geq0$, tales que $Li(\psi)\subseteq\{\succession{v}{1}{n+1}\}$ y $v_i\neq v_j$ siempre que $i\neq j$,
+    denotaremos con $Ind_{\psi,\succession{v}{1}{n+1}}$ a la siguiente sentencia de tipo $\tau_A$
+    $$
+    \succession{\forall v}{1}{n}\ ((\psi(\vec{v},0)\land\forall v_{n+1}\ (\psi(\vec{v},v_{n+1})\rightarrow\psi(\vec{v},+(v_{n+1},1))))\rightarrow\forall v_{n+1}\ \psi(\vec{v},v_{n+1}))
+    $$
+    donde suponemos que hemos declarado $\psi=_d\psi(\succession{v}{1}{n+1})$.
+
+    Sea $\Sigma_A$ el conjunto que resulta de agregarla al $\Sigma$ definido anteriormente todas las sentencias de la forma $Ind_{\psi,\succession{v}{1}{n+1}}$.
+    La teoria $(\Sigma_A,\tau_A)$ sera llamada \emph{Aritmetica DE Peano} y la denotaremos con $Arit$.
+  \end{definition}
+
+  \begin{lemma}
+    \pomega es un modelo de $Arit$
+  \end{lemma}
+
+  \begin{remark}
+    $Ind_{\psi,\succession{v}{1}{n+1}}$ es verdadera en \pomega
+  \end{remark}
+
+  \begin{remark}
+    $\mathbf{Q}^{\geq 0}$ no es un modelo de $Arit$
+  \end{remark}
+
+  \begin{definition}
+    Definimos la funcion \functype{\widehat{\ \ }}{\omega}{\{(\ )\ ,\ +\ 0\ 1\}^*} de la siguiente manera:
+    \begin{alignat*}{3}
+      &\widehat{0} &\ =&\ 0\\
+      &\widehat{1} &\ =&\ 1\\
+      &\widehat{n+1} &\ =&\ +(\widehat{n},1),\text{ para cada }n\geq1
+    \end{alignat*}
+  \end{definition}
+
+  \begin{proposition}
+    Hay un modelo de Arit el cual no es isomorfo a \pomega
+  \end{proposition}
+
+  \begin{lemma}
+    Las siguientes sentencias son teoremas de la aritmetica de Peano:
+    \begin{enumerate}
+      \item $\forall x\ 0\leq x$
+      \item $\forall x\ (x\leq0\rightarrow x\equiv 0)$
+      \item $\forall x\forall y\ (x+y\equiv0\rightarrow x\equiv0\land y\equiv0)$
+      \item $\forall x\ (\neg(x\equiv0)\rightarrow\exists z(x\equiv z+1))$
+      \item $\forall x\forall y\ (x<y\rightarrow x+1\leq y)$
+      \item $\forall x\forall y\ (x<y+1\rightarrow x\leq y)$
+      \item $\forall x\forall y\ (x\leq y+1\rightarrow (x\leq y\lor x\equiv y+1))$
+    \end{enumerate}
+  \end{lemma}
+
+\end{document}

@@ -5,13 +5,13 @@
   Una terna \reticulAlg, donde $L$ es un conjunto y \textbf{s}, \textbf{i} son dos operaciones
   binarias sobre $L$ sera llamada \emph{reticulado} cuando cumpla:
   \begin{enumerate}
-    \item $\supbin{x}{x} = \infbin{x}{x} = x$, cualesquiera sea $x \in L$
-    \item $\supbin{x}{y} = \supbin{y}{x}$, cualesquiera sean $x,y \in L$
-    \item $\infbin{x}{y} = \infbin{y}{x}$, cualesquiera sean $x,y \in L$
-    \item $\supbin{(\supbin{x}{y})}{z} = \supbin{x}{(\supbin{y}{z})}$, cualesquiera sean $x,y,z \in L$
-    \item $\infbin{(\infbin{x}{y})}{z} = \infbin{x}{(\infbin{y}{z})}$, cualesquiera sean $x,y,z \in L$
-    \item $\supbin{x}{(\infbin{x}{y})} = x$, cualesquiera sean $x,y \in L$
-    \item $\infbin{x}{(\supbin{x}{y})} = x$, cualesquiera sean $x,y \in L$
+    \item[(I1)] $\supbin{x}{x} = \infbin{x}{x} = x$, cualesquiera sea $x \in L$
+    \item[(I2)] $\supbin{x}{y} = \supbin{y}{x}$, cualesquiera sean $x,y \in L$
+    \item[(I3)] $\infbin{x}{y} = \infbin{y}{x}$, cualesquiera sean $x,y \in L$
+    \item[(I4)] $\supbin{(\supbin{x}{y})}{z} = \supbin{x}{(\supbin{y}{z})}$, cualesquiera sean $x,y,z \in L$
+    \item[(I5)] $\infbin{(\infbin{x}{y})}{z} = \infbin{x}{(\infbin{y}{z})}$, cualesquiera sean $x,y,z \in L$
+    \item[(I6)] $\supbin{x}{(\infbin{x}{y})} = x$, cualesquiera sean $x,y \in L$
+    \item[(I7)] $\infbin{x}{(\supbin{x}{y})} = x$, cualesquiera sean $x,y \in L$
   \end{enumerate}
 
   En tal caso que \reticulAlg sea un reticulado, diremos que $L$ es el \emph{universo} del reticulado.
@@ -99,7 +99,7 @@
   Escribiremos \functype{F}{\reticulAlg}{\reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}} cuando $F$ sea un homomorfismo
   de \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}
 
-  Escribiremos \reticulAlg $\overset{\sim}{=}$ \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} cuando exista
+  Escribiremos \reticulAlg $\tilde{=}$ \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'} cuando exista
   un isomorfismo de \reticulAlg en \reticulAlgDef{L'}{\textbf{s}'}{\textbf{i}'}
 \end{definition}
 
@@ -173,7 +173,7 @@
   x\theta x' \text{ y } y\theta y' \Rightarrow (\supbin{x}{y})\theta(\supbin{x'}{y'}) \text{ y } (\infbin{x}{y})\theta(\infbin{x'}{y'})
   $$
 
-  Gracias a tal propiedad podemos definir sobre $L/\theta$ dos operaciones binarias $\overset{\sim}{\textbf{s}}$ y $\overset{\sim}{\text{i}}$
+  Gracias a tal propiedad podemos definir sobre $L/\theta$ dos operaciones binarias $\tilde{\textbf{s}}$ y $\tilde{\text{i}}$
   \begin{alignat*}{2}
     \supbincongr{x/\theta}{y/\theta} &=& (\supbin{x}{y})/\theta\\
     \infbincongr{x/\theta}{y/\theta} &=& (\infbin{x}{y})/\theta
@@ -181,20 +181,29 @@
 \end{definition}
 
 \begin{definition}
-  La terna \reticulAlgDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}} es llamada \emph{cociente de} \reticulAlg sobre $\theta$,
+  La terna \reticulAlgDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}} es llamada \emph{cociente de} \reticulAlg sobre $\theta$,
   y la denotaremos con $\reticulAlg/\theta$
 \end{definition}
 
 \begin{lemma}
-  \reticulAlgDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}} es un reticulado. El orden
-  parcial $\overset{\sim}{\leq}$ asociado a este reticulado cumple:
+  \reticulAlgDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}} es un reticulado. El orden
+  parcial $\tilde{\leq}$ asociado a este reticulado cumple:
   $$
-  x/\theta \overset{\sim}{\leq} y/\theta \iff y\theta(\supbin{x}{y})
+  x/\theta \tilde{\leq} y/\theta \iff y\theta(\supbin{x}{y})
   $$
 \end{lemma}
 
 \begin{proof}
-  TODO
+  Veamos que la estructura \reticulAlgDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}} cumple las propiedades para ser reticulado una a una.
+  Sea $x/\theta, y/\theta, z/\theta$ elementos cualesquiera de $L/\theta$.
+  \begin{itemize}
+    \item[(I1)] $\supbincongr{x/\theta}{x/\theta} = \infbincongr{x/\theta}{x/\theta} = x/\theta$, pues $\supbin{x}{x} = \infbin{x}{x} = x$
+    \item[(I2)] $\supbincongr{x/\theta}{y/\theta} = \supbincongr{y/\theta}{x/\theta}$, pues $\supbin{x}{y} = \supbin{y}{x}$
+    \item[(I3)] $\infbincongr{x/\theta}{y/\theta} = \infbincongr{y/\theta}{x/\theta}$, pues $\infbin{x}{y} = \infbin{y}{x}$
+    \item[] ... 
+  \end{itemize}
+  Ahora veamos que el orden parcial $\tilde{\leq}$ dado se cumple en este reticulado. Por definicion, \\$x/\theta \tilde{\leq} y/\theta \iff y/\theta = \supbincongr{x/\theta}{y/\theta}$,
+  por lo cual $x/\theta \tilde{\leq} y/\theta \iff y/\theta = (\supbin{x}{y})/\theta$ y por lo tanto $y\theta(\supbin{x}{y})$
 \end{proof}
 
 \begin{lemma}
@@ -212,16 +221,16 @@
 
 \begin{lemma}
   Sea \reticulAlg un reticulado y sea $\theta$ una congruencia sobre \reticulAlg. Entonces $\pi_\theta$ es un 
-  homomorfismo de \reticulAlg en \reticulAlgDef{L/\theta}{\overset{\sim}{\textbf{s}}}{\overset{\sim}{\textbf{i}}}.
+  homomorfismo de \reticulAlg en \reticulAlgDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}.
   Ademas ker $\pi_\theta$ = $\theta$.
 \end{lemma}
 \begin{proof}
   Sean $x, y \in L$. Tenemos que
   $$
-  \pi_\theta(\supbin{x}{y}) = (\supbin{x}{y})/\theta = x/\theta \overset{\sim}{\textbf{ s }} y/\theta = \pi_\theta(x) \overset{\sim}{\textbf{ s }} \pi_\theta(y)
+  \pi_\theta(\supbin{x}{y}) = (\supbin{x}{y})/\theta = x/\theta \tilde{\textbf{ s }} y/\theta = \pi_\theta(x) \tilde{\textbf{ s }} \pi_\theta(y)
   $$
   $$
-  \pi_\theta(\infbin{x}{y}) = (\infbin{x}{y})/\theta = x/\theta \overset{\sim}{\textbf{ i }} y/\theta = \pi_\theta(x) \overset{\sim}{\textbf{ i }} \pi_\theta(y)
+  \pi_\theta(\infbin{x}{y}) = (\infbin{x}{y})/\theta = x/\theta \tilde{\textbf{ i }} y/\theta = \pi_\theta(x) \tilde{\textbf{ i }} \pi_\theta(y)
   $$
   Por lo tanto $\pi_\theta$ conserva la operacion supremo e infimo.
 

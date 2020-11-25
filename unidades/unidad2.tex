@@ -94,7 +94,7 @@ de \poset en \posetdef{P'}{\leq'}
 \begin{definition}
   Sea \poset y \posetdef{P'}{\leq'} posets. Una funcion \functype{F}{P}{P'} sera llamada un \emph{isomorfismo de}
   \poset en \posetdef{P'}{\leq'} si $F$ es biyectiva, F es un homomorfismo de \poset en \posetdef{P'}{\leq'}
-  y $F^{-1}$ es un homomorfismo de \posetdef{P'}{\leq'} en \poset. Escribiremos \poset $\overset{\sim}{=}$ \posetdef{P'}{\leq'}
+  y $F^{-1}$ es un homomorfismo de \posetdef{P'}{\leq'} en \poset. Escribiremos \poset $\tilde{=}$ \posetdef{P'}{\leq'}
   cuando exista un isomorfismo de \poset en \posetdef{P'}{\leq'} y en tal caso diremos que \poset y \posetdef{P'}{\leq'}
   son isomorfos.
 \end{definition}
@@ -280,6 +280,22 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{alignat*}
 \end{lemma}
 \begin{proof}
-  TODO
+  Lo haremos por induccion en $n$. Claramente el resultado vale para $n = 2$. Supongamos que vale para $n$
+  y veamos entonces que vale para $n + 1$. Sean $\succession{x}{1}{n+1} \in L$.
+  Por hipotesis tenemos que 
+  $$
+  \supbin{(\dots\supbin{(\supbin{x_1}{x_2})}{\dots})}{x_n} = \sup({\{\succession{x}{1}{n}}\})
+  $$
+  Es claro que $\supbin{(\dots\supbin{(\supbin{x_1}{x_2})}{\dots})}{x_{n+1}}$ es cota superior de $\{\succession{x}{1}{n+1}\}$. Sea $z$ otra cota superior de 
+  $\{\succession{x}{1}{n+1}\}$, entonces tenemos que:
+  $$
+  \supbin{(\dots\supbin{(\supbin{x_1}{x_2})}{\dots})}{x_n} \leq z
+  $$
+  Pero ademas $x_{n+1} \leq z$ y por lo tanto:
+  $$
+  \supbin{(\dots\supbin{(\supbin{x_1}{x_2})}{\dots})}{x_{n+1}} \leq z
+  $$
+  La demostracion para el infimo es analoga.
+
 \end{proof}
 \end{document}

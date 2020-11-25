@@ -29,12 +29,12 @@
 \end{definition}
 
 \begin{definition}
-  Diremos que $\alpha$ es subpalabra (propia) de $\beta$ cuando ($\alpha \notin \{\epsilon, \beta \}$ y) existan palabras
+  Diremos que $\alpha$ es subpalabra (propia) de $\beta$ cuando ($\alpha \notin \{\varepsilon, \beta \}$ y) existan palabras
   $\delta, \gamma$, tales que $\beta = \delta\alpha\gamma$ 
 \end{definition}
 
 \begin{definition}
-  Diremos que $\beta$ es un \emph{tramo inicial} (\emph{propio}) de $\alpha$ si hay una palabra de $\gamma$ tal que $\alpha = \beta\gamma$ (y $\beta \notin \{\epsilon, \alpha\}$).
+  Diremos que $\beta$ es un \emph{tramo inicial} (\emph{propio}) de $\alpha$ si hay una palabra de $\gamma$ tal que $\alpha = \beta\gamma$ (y $\beta \notin \{\varepsilon, \alpha\}$).
   En forma similar se define \emph{tramo final} (\emph{propio})
 \end{definition}
 
@@ -105,14 +105,21 @@ $$
 \end{lemma}
 
 \begin{proof}
-  TODO
+  $ $\\
+  Caso $k=1$: Es directo ya que por definicion:
+  $$
+  T_1^\tau=Var\cup\mathcal{C}\cup\{f(\succession{t}{1}{n}):f\in\mathcal{F}_n, n\geq1,\succession{t}{1}{n}\in T_0^\tau\}
+  $$
+  Caso $k\implies k+1$. Sea $t\in T^\tau_{k+1}$. Por definicion tenemos que $t\in T^\tau_k$ o
+  $t = f(\succession{t}{1}{n})$ con $f\in\mathcal{F}_n,n\geq1,\succession{t}{1}{n}\in T_k^\tau$. Si se da $t\in T^\tau_k$ entonces 
+  aplicamos hipotesis inductiva. Si no se da tal cosa, entonces es justamente lo que nos dice el enunciado del lema.
 \end{proof}
 
 \subsubsection{Unicidad de la lectura de terminos}
 
 \begin{lemma}[Mordizqueo de Terminos]
-  Sean $s, t \in T^\tau$ y supongamos que hay palabras $x, y, z$, con $y \neq \epsilon$ tales que $s = xy$ y $t = yz$. Entonces 
-  $x = z = \epsilon$ o $s, t \in \mathcal{C}$. En particular si un termino es tramo inicial o final de otro termino, entonces dichos terminos son iguales.
+  Sean $s, t \in T^\tau$ y supongamos que hay palabras $x, y, z$, con $y \neq \varepsilon$ tales que $s = xy$ y $t = yz$. Entonces 
+  $x = z = \varepsilon$ o $s, t \in \mathcal{C}$. En particular si un termino es tramo inicial o final de otro termino, entonces dichos terminos son iguales.
 \end{lemma}
 \noproof
 
@@ -124,7 +131,14 @@ $$
   \end{enumerate}
 \end{theorem}
 \begin{proof}
-  TODO
+  Solo necesitamos demostrar la unicidad del punto 2, el resto ya se demostro. Supongamos que
+  $$
+  t=f(\succession{t}{1}{n})=g(\succession{s}{1}{m})
+  $$
+  con $n,m\geq1,f\in\mathcal{F}_n,g\in\mathcal{F}_m,\succession{t}{1}{n},\succession{s}{1}{m}\in T^\tau$. Claramente $f=g$ y por lo tanto $n=m=a(f)$.
+  Ahora bien, si leemos letra por letra apartir del primer parentesis `(`, terminara primero $t_1$ o $s_1$, pero nunca deben diferir entre si. Esto nos dice
+  que $t_1$ es tramo inicial de $s_1$ o viceversa. Por lema anterior, $t_1=s_1$. Con el mismo razonamiento podemos demostrar que se cumple 
+  $t_2=s_2,\dots,t_n=s_n$
 \end{proof}
 
 \subsubsection{Subterminos}
@@ -142,7 +156,25 @@ $$
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  $ $\\
+  (1) Haremos analisis por casos:
+  \begin{itemize}
+    \item Si $s$ ocurriera en $t$ a partir de $i\in\{1,\dots,|f|\}$, entonces tenemos que $s$ es de la forma $g(\succession{s}{1}{m})$ (no puede ser ni $Var$ ni $\mathcal{C}$), y por lo tanto $g$ es tramo final de $f$ \abs
+    \item Es claro que $s$ no comienza ni con ",", ni con "(", ni con ")"
+    \item 
+    Solo queda el caso en el que la ocurrencia de $s$ comienza en algun $t_j$. (Fotocopia dice $\rightarrow$ Lema de Mordizqueo para Terminos nos conduce a que debe estar contenida en $t_j$ y listo, pero yo soy menos picante y no entiendo porque)
+    
+    Supongamos que la ocurrencia no esta contenida en $t_j$, y sea $t_k$ ($j<k$) el ultimo termino que forma parte de la ocurrencia (aunque sea parcialmente).
+    
+    Es evidente que este $k$ existe, pues la ocurrencia de $s$ no puede tomar el ultimo parentesis de $t$, sino, seria tramo final de $t$ y podriamos aplicar Lema de Mordizqueo para terminos directamente. Ademas, $s$ no puede terminar con una ",".
+    
+    Sea $n=|t_j|$ y $m=|t_k|$. Se usara la notacion $p[i]$ para referirse a la letra i-esima de $p$.
+
+    Tenemos entonces que $s=t_j[l]\dots t_j[n],t_{j+1},\dots t_{k-1},t_k[1]\dots t_k[r]$
+    Notese que hay una coma justo despues de $t_j[n]$, por lo tanto apartir de algun $i\in\{l,\dots,n\}$ debe comenzar el nombre de una funcion.
+    Esta funcion no cierra su parentesis dentro de $t_j$. Es importante notar que los parentesis se cierran a la derecha, no a la izquierda, osea que no nos importa 
+    la parte $t_j[1]\dots t_j[l-1]$, y por lo tanto esto nos dice que los parentesis en $t_j$ no estan balanceados \abs
+  \end{itemize}
 \end{proof}
 
 \subsection{Formulas}
@@ -189,8 +221,8 @@ $$
 
 \subsubsection{Unicidad de la lectura de formulas}
 \begin{proposition}[Mordizqueo de formulas]
-  Si $\varphi, \psi \in F^\tau$ y $x, y, z$ son tales que $\varphi = xy$, $\psi = yz$ y $y \neq \epsilon$, entonces
-  $z = \epsilon$ y $x \in (\{\neg\} \cup \{Qv : Q \in \{\forall, \exists\} \text{ y } v \in Var\})^*$. En particular ningun tramo inicial
+  Si $\varphi, \psi \in F^\tau$ y $x, y, z$ son tales que $\varphi = xy$, $\psi = yz$ y $y \neq \varepsilon$, entonces
+  $z = \varepsilon$ y $x \in (\{\neg\} \cup \{Qv : Q \in \{\forall, \exists\} \text{ y } v \in Var\})^*$. En particular ningun tramo inicial
   propio de una formula es una formula
 \end{proposition}
 \noproof

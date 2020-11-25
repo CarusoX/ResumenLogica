@@ -1,0 +1,147 @@
+% !TeX root = ../resumen.tex
+\begin{document}
+
+\section{Propiedades basicas de pruebas y teoremas}
+
+\begin{lemma}[Cambio de indice de hipotesis]
+  Sea \padec una prueba formal de $\varphi$ en \forder. Sea $m\in\mathbf{N}$ tal que 
+  $\mathbf{J}_i\neq\emph{HIPOTESIS}\overline{m}$, para cada $i=1=\dots,n(\pvarphi)$. Supongamos
+  que $\mathbf{J}_i=\emph{HIPOTESIS}\overline{k}$ y que $\mathbf{J}_j=\emph{TESIS}\overline{k}\alpha$,
+  con $[\alpha]_1\not\in Num$. Sea $\tilde{\mathbf{J}}$ el resultados de reemplazar en $\mathbf{J}$
+  la justificacion $\mathbf{J}_i$ por \emph{HIPOTESIS}$\overline{m}$ y reemplazar la justificacion $\mathbf{J}_j$
+  por \emph{TESIS}$\overline{m}\alpha$. Entonces $(\pvarphi,\tilde{\mathbf{J}})$ es una prueba formal de 
+  $\varphi$ en \forder.
+\end{lemma}
+\noproof
+
+\begin{lemma}[Cambio de constantes auxiliares]
+  Sea \padec una prueba formal de $\varphi$ en \forder. Sea $\mathcal{C}_1$ el conjunto de nombres de constante 
+  que ocurren en \pvarphi y que no pertenecen a $\mathcal{C}$. Sea $e\in \mathcal{C}_1$. Sea $\tilde{e}\not\in\mathcal{C}\cup\mathcal{C}_1$
+  tal que $(\mathcal{C}\cup(\mathcal{C}_1-\{e\})\cup\{\tilde{e}\},\mathcal{F},\mathcal{R},a)$ es un tipo.
+  Sea $\tilde{\pvarphi_i}=$ resultado de reemplazar en $\pvarphi_i$ cada ocurrencia de $e$ por $\tilde{e}$.
+  Entonces $(\succession{\tilde{\pvarphi}}{1}{n(\pvarphi)},\mathbf{J})$ es una prueba forma de $\varphi$ en \forder.
+\end{lemma}
+\noproof
+
+\begin{lemma}
+  Sea \forder una teoria. \begin{enumerate}
+    \item Si $\forder\proves\succession{\varphi}{1}{n}$ y $(\Sigma\cup\{\succession{\varphi}{1}{n}\},\tau)\proves\varphi$, entonces $\forder\proves\varphi$
+    \item Si $\forder\proves\succession{\varphi}{1}{n}$ y $\varphi$ se deduce por alguna regla universal a partir de $\succession{\varphi}{1}{n}$, entonces $\forder\proves\varphi$
+    \item $\forder\proves(\varphi\rightarrow\psi)$ si y solo si $(\Sigma\cup\{\varphi\},\tau)\proves\psi$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\subsection{Consistencia}
+\begin{definition}
+  Una teoria \forder sera \emph{inconsistente} cuando haya una sentencia $\varphi$ tal que $\forder\proves(\varphi\land\neg\varphi)$.
+  Una teoria \forder sera \emph{consistente} cuando no sea inconsistente.
+\end{definition}
+
+\begin{lemma}
+  Sea \forder una teoria. \begin{enumerate}
+    \item Si \forder es inconsistente, entonces $\forder\proves\varphi$, para toda sentencia $\varphi$
+    \item Si \forder es consistente y $\forder\proves\varphi$, entonces $(\Sigma\cup\{\varphi\},\tau)$ es consistente
+    \item Si $\forder\not\proves\neg\varphi$, entonces $(\Sigma\cup\{\varphi\},\tau)$ es consistente
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{definition}
+  Dada \forder una teoria, escribiremos $\forder\models\varphi$ cuando $\varphi$ sea verdadera en todo modelo de \forder.
+\end{definition}
+
+\begin{theorem}[Teorema de Correccion]
+  $\forder\proves\varphi \implies \forder\models\varphi$
+\end{theorem}
+\noproof
+\begin{corollary}
+  Si \forder tiene un modelo, entonces \forder es consistente.
+\end{corollary}
+\begin{proof}
+  Supongamos $\mathbf{A}$ es un modelo de \forder. Si \forder fuera inconsistente, tendriamos que hay una $\varphi\in S^\tau$
+  tal que $\forder\proves(\varphi\land\neg\varphi)$, lo cual por el teorema de Correccion nos diria que $\mathbf{A}\models(\varphi\land\neg\varphi)$
+\end{proof}
+
+\section{El algebra de Lindenbaum}
+\begin{definition}
+  Sea $T=\forder$ una teoria. Definimos la siguiente relacion sobre $S^\tau$.
+  $$
+  \varphi\trel\psi \iff T\vdash\left(\varphi\leftrightarrow\psi\right)
+  $$
+\end{definition}
+
+\begin{lemma}
+  \trel es una relacion de equivalencia
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{definition}
+  Sea $\tau$ un tipo y $\varphi\in S^\tau$. Se dice que $\varphi$ es \emph{refutable} en \forder si $\forder\proves\neg\varphi$
+\end{definition}
+
+\begin{lemma}
+  Dada una teoria $T=\forder$, se tiene que:\begin{enumerate}
+    \item $\{\varphi\in S^\tau:\varphi\text{ es un teorema de }T\}\in S^\tau/\trel$
+    \item $\{\varphi\in S^\tau:\varphi\text{ es refutable en }T\}\in S^\tau/\trel$
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\begin{definition}
+  Dada una teoria $T=\forder$ y $\varphi\in S^\tau$, $[\varphi]_T$ denotara la clase de $\varphi$ con respecto
+  a la relacion de equivalencia \trel. Definiremos sobre $S^\tau/\trel$ la siguiente operacion binaria $s^T$:
+  $$
+  \supt{[\varphi]_T}{[\psi]_T} = [(\varphi\lor\psi)]_T 
+  $$
+
+  En forma analoga, definimos una operacion binaria $i^T$ sobre $S^\tau/\trel$:
+  $$
+  \inft{[\varphi]_T}{[\psi]_T} = [(\varphi\land\psi)]_T 
+  $$
+
+  Ademas definimos una operacion unaria ${}^{c^T}$ sobre $S^\tau/\trel$:
+  $$
+  ([\varphi]_T)^{c^T} = [\neg\varphi]_T
+  $$
+
+  Denotaremos ademas con $1^T$ al conjunto $\{\varphi\in S^\tau:\varphi\text{ es un teorema de }T\}$ y con
+  $0^T$ al conjunto $\{\varphi\in S^\tau:\varphi\text{ es refutable en }T\}$.
+\end{definition}
+
+\begin{remark}[$s^T$ bien definida]
+  Si $[\varphi]_T=[\varphi']_T$ y $[\psi]_T=[\psi']_T$, entonces $[(\varphi\lor\psi)]_T=[(\varphi'\lor\psi')]_T$
+\end{remark}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{theorem}
+  Sea $T=\forder$ una teoria. Entonces \algLin es un algebra de Boole.
+\end{theorem}
+\begin{proof}
+  TODO
+\end{proof}
+
+\begin{definition}
+  Dada una teoria $T=\forder$, denotaremos con $\mathcal{A}_T$ al algebra de Boole \algLin. El algebra
+  $\mathcal{A}_T$ sera llamada el \emph{algebra de Lindenbaum de la teoria T}. 
+\end{definition}
+\begin{lemma}
+  Sea $T$ una teoria y sea $\leq^T$ el orden parcial asociado al algebra de Boole $\mathcal{A}_T$ (es decir $[\varphi]_T\leq^T [\psi]_T  \iff \supt{[\varphi]_T}{[\psi]_T}=[\psi]_T$),
+  entonces se tiene que:
+  $$
+  [\varphi]_T\leq^T[\psi]_T \iff T\proves(\varphi\rightarrow\psi)
+  $$
+\end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
+\end{document}
