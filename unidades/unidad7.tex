@@ -35,7 +35,22 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  Para $(1), (2)$, tenemos por definiciones que si $v\in Var$ ocurren en $(t\equiv s)$ (resp. en $(r(\succession{t}{1}{n}))$), entonces 
+  $v$ ocurre en $t$ o $v$ ocurre en $s$ (resp. $v$ ocurre en algun $t_i$).
+
+  Para $(3)$, notar que si $v \in Li(\varphi)$, entonces $v$ ocurre libremente a partir de $i$ en $\varphi$, y entonces ocurrira libremente a partir de $i+1$ en $\neg\varphi$
+  y por lo tanto $v \in Li(\neg\varphi)$. Ahora bien si $v \in Li(\neg\varphi)$, entonces ocurre libremente a partir de $i$, pero por definicion ocurre libremente a partir de $i-1$ en $\varphi$, y entonces $v \in L(\varphi)$
+
+  Para $(4)$, notar que si $v \in Li((\varphi\eta\psi))$, entonces $v$ ocurre libremente en $(\varphi\eta\psi)$ a partir de i. Por definicion, tenemos que $v$ ocurre libremente en $\varphi$ a partir de $i-1$ o 
+  $v$ ocurre libremente en $\psi$ a partir de $i - |(\varphi\eta|$, con lo cual $v\in Li(\varphi)\cup Li(\psi)$.
+  Ahora si $v \in Li(\varphi)\cup Li(\psi)$, tenemos 2 casos. Si $v \in Li(\varphi)$, entonces $v$ ocurre libremente en $\varphi$ a partir de $i$, y por definicion 
+  $v$ ocurre libremente en $(\varphi\eta\psi)$ a partir de $i+1$, con lo cual $v \in Li((\varphi\eta\psi))$. Si $v\in Li(\psi)$, entonces $v$ ocurre libremente en $\psi$ a partir de i, y por definicion
+  $v$ ocurre libremente en $(\varphi\eta\psi)$ a partir de $i+|(\varphi\eta|$, y por lo tanto $v \in Li((\varphi\eta\psi))$.
+
+  Para $(5)$ supongamos que $v\in Li(Q x_j \varphi)$, entonces hay un $i$ tal que $v$ ocurre libremente 
+  en $Q x_j \varphi$ a partir de i. Por definicion tenemos que $v \neq x_j$ y $v$ ocurre libremente en $\varphi$ a partir de $i - |Q x_j|$, con lo cual $v \in Li(\varphi) - \{x_j\}$
+  Supogamos ahora que $v \in Li(\varphi) - \{x_j\}$. Por definicion tenemos que hay un $i$ tal que $v$ ocurre libremente en $\varphi$ a partir de $i$. Ya que $v \neq x_j$ esto 
+  nos dice por definicion que $v$ ocurre libremente en $Q x_j \varphi$ a partir de $i + |Q x_j|$, con lo cual $v \in Li(Q x_j \varphi)$
 \end{proof}
 
 \section{Semantica de la logica de primer orden}
@@ -67,7 +82,10 @@
   su imagen esta contenida en $B$.
 \end{lemma}
 \begin{proof}
-  TODO
+  Notese que a cada elemento $a\in A$ podemos asignarle cualquier $b\in B$, esto nos da facilmente $|B|^{|A|}$ funciones posibles.
+  Mas formalmente, deberiamos probar que la siguiente funcion es biyectiva:
+  \funcdef{F}{\{f: D_f = A \text{ y } I_f \subseteq B\}}{B^{|A|}}{f}{(f(a_1), \dots, f(a_n))}
+  Lo cual es bastante facil de hacer.
 \end{proof}
 
 \subsection{El valor de un termino de una estructura}
@@ -95,7 +113,19 @@
   tales que $a_i = b_i$, cada vez que $x_i$ ocurra en $t$. Entonces $t^\mathbf{A}[\vec{a}] = t^\mathbf{B}[\vec{b}]$
 \end{lemma}
 \begin{proof}
-  TODO
+  Sea Teo$_k$ la proposicion que dice que el lema vale para $t\in T_k^\tau$.
+
+  Teo$_0$ es facil de probar (constantes no cambian con las asignaciones, y las simples variables obviamente tendran el mismo valor).
+  
+  Veamos Teo$_k$ $\implies$ Teo$_{k+1}$. Supongamos $t\in T^\tau_{k+1} - T^\tau_k$ y sean $\vec{a}, \vec{b}$ asignaciones 
+  tales que $a_i = b_i$ cada vez que $x_i$ ocurra en $t$. Notese que $t = f(\succession{t}{1}{n})$, con $f\in\mathcal{F}_n, n\geq 1, \succession{t}{1}{n}\in T^\tau_k$.
+  Para cada $j = 1,\dots,n$ tenemos que $a_i=b_i$ cada vez que $x_i$ ocurra en $t_j$, entonces por hipotesis inductiva tenemos que 
+  $$
+  t_j^\mathbf{A}[\vec{a}] = t_j^\mathbf{A}[\vec{b}], j = 1,\dots,n
+  $$ 
+
+  Se tiene entonces que
+  $t^\mathbf{A}[\vec{a}] = i(f)(t_1^\mathbf{A}[\vec{a}], \dots, t_n^\mathbf{A}[\vec{a}]) = i(f)(t_1^\mathbf{A}[\vec{b}], \dots, t_n^\mathbf{A}[\vec{b}]) = t^\mathbf{A}[\vec{b}]$
 \end{proof}
 
 \subsection{El valor de verdad de una formula en un estructura}
@@ -139,6 +169,9 @@
   Si $\varphi$ es una sentencia, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi[\vec{b}]$, cualesquiera sean 
   las asignaciones $\vec{a}, \vec{b}$
 \end{corollary}
+\begin{proof}
+  Trivial ya que las sentencias no tienen variables libres, y por lo tanto aplica el lema anterior.
+\end{proof}
 
 \begin{definition}
   Dada una sentencia $\varphi$, diremos que $\varphi$ es \emph{verdadera} en $\mathbf{A}$ cuando su valor de verdad sea 1, y, en caso de que 
@@ -199,6 +232,10 @@
   $$
   para cada $t \in T^\tau, (a_1, a_2, \dots) \in A^\mathbf{N}$
 \end{lemma}
+
+\begin{proof}
+  TODO
+\end{proof}
 
 \begin{lemma}
   Supongamos que \functype{F}{\mathbf{A}}{\mathbf{B}} es un isomorfismo. Sea $\varphi \in F^\tau$. Entonces

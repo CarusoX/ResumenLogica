@@ -175,6 +175,20 @@ $$
     Esta funcion no cierra su parentesis dentro de $t_j$. Es importante notar que los parentesis se cierran a la derecha, no a la izquierda, osea que no nos importa 
     la parte $t_j[1]\dots t_j[l-1]$, y por lo tanto esto nos dice que los parentesis en $t_j$ no estan balanceados \abs
   \end{itemize}
+
+  (2) Supongamos $t \in Var \cup \mathcal{C}$, si $r, s$ ocurren en $t$, entonces $r=s=t$ y por lo tanto $r$ esta contenida en la ocurrencia de $s$.\\
+  Ahora supongamos que vale para $T^\tau_{k}$ y veamos para $T^\tau_{k+1}$. Si $t\in T^\tau_{k}$ podemos aplicar hipotesis directamente, y sino, tenemos que 
+  $t=f(\succession{t}{1}{n})$, para $f\in\mathcal{F}_n,n\geq1,\succession{t}{1}{n}\in T^\tau_k$. Si $r$ o $s$ ocurren a partir de algun $i\in\{1,\dots,|f|\}$, entonces
+  solo pueden ocurrir a partir de $1$, y eso hace que las ocurrencias se contengan trivialmente. Ahora si no pasa esto, las ocurrencias suceden dentro de los $t_i$. Sean 
+  \succession{r}{1}{q} y \succession{s}{1}{w} los indices de los terminos donde ocurren $r$ y $s$ respectivamente. Tomemos cualquier $1\leq x\leq q$ y $1\leq y\leq w$. Si $r_x = s_y$ entonces 
+  por hipotesis las ocurrencias se contienen o son disjuntas, y sino, las ocurrencias son claramente disjuntas.
+
+  (3) Supongamos $t\in Var \cup \mathcal{C}$, si $s$ ocurre en $t$ entonces $s = t$. Si reemplazamos la ocurrencia por $r$, entonces $t' = r$ es un termino.
+  Ahora supongamos que vale para $T^\tau_k$ y veamos para $T^\tau_{k+1}$. Si $t\in T^\tau_k$ entonces vale por hipotesis. Si $t=f(\succession{t}{1}{n})$, 
+  con $f\in\mathcal{F}_n, n\geq1, \succession{t}{1}{n}\in T^\tau_k$, de nuevo tenemos dos casos. Si $s$ ocurre apartir de $\{1,\dots,|f|\}$
+  entonces $s$ ocurre a partir de 1, y por lo tanto $t=s$, y por lo tanto $t'=r$ es termino. Sino, $s$ ocurre en algun $t_i$, y por hipotesis, reemplazar en ese termino la ocurrencia nos da como resultado un termino,
+  y por lo tanto $t'\in T^\tau$ es termino.
+
 \end{proof}
 
 \subsection{Formulas}
@@ -216,7 +230,7 @@ $$
   \end{itemize}
 \end{lemma}
 \begin{proof}
-  TODO
+  Induccion en $k$ simple.
 \end{proof}
 
 \subsubsection{Unicidad de la lectura de formulas}
@@ -228,16 +242,23 @@ $$
 \noproof
 \begin{theorem}[Lectura unica de formulas]
   Dada $\varphi \in F^\tau$ se da una y solo una de las siguientes:
-  \begin{itemize}
+  \begin{enumerate}
     \item $(t\equiv s)$, con $t, s \in T^\tau$
     \item $r(\succession{t}{1}{n})$, con $r \in \mathcal{R}_n, \succession{t}{1}{n} \in T^\tau$
     \item $(\varphi_1 \eta \varphi_2)$, con $\eta \in \{\land, \lor, \rightarrow, \leftrightarrow\}$, $\varphi_1, \varphi_2 \in F^\tau$
     \item $\neg\varphi_1$, con $\varphi_1 \in F^\tau$
     \item $Qv\varphi_1$, con $Q \in \{\forall, \exists\}, v \in Var$ y $\varphi_1 \in F^\tau$
-  \end{itemize}
+  \end{enumerate}
+  Mas aun, tales descomposiciones son unicas.
 \end{theorem}
 \begin{proof}
-  TODO
+  Si una formula $\varphi$ satisface $(1)$, entonces $\varphi$ no puede contener simbolos del alfabeto $\{\land,\lor,\rightarrow,\leftrightarrow\}$ lo 
+  cual garantiza que $\varphi$ no puede satisfacer $(3)$. Ademas $\varphi$ no puede satisfacer $(2), (4), (5)$ ya que comienza con "(".
+  Es facil ver que cumplir $(2), (3), (4), (5)$ es excluyente tambien.
+
+  La unicidad de la decomposicion de $(4), (5)$ es obvia. La de $(3)$ se desprende del lema anterior (supongamos que 
+  lo descomponemos de otra forma, entonces $\varphi_1$ sera tramo inicial propio de $\varphi_1'$ o al reves). 
+  La de $(1), (2)$ se desprenden del lema analogo para terminos.
 \end{proof}
 \subsubsection{Subformulas}
 \begin{definition}

@@ -29,7 +29,7 @@
     \item $\forall x_1 \forall x_2 \forall x_3\ ((x_1\leq x_2\land x_2\leq x_3)\rightarrow x_1\leq x_3)$
     \item $\forall x_1 \forall x_2\ ((x_1\leq x_2 \land x_2\leq x_1)\rightarrow x_1\equiv x_2)$
     \item $\forall x_1 \forall x_2\ (x_1\leq x_2 \lor x_2\leq x_1)$
-    \item $\forall x_1 \forall x_2\ (x_1\leq x_2 \rightarrow \exists x_3\ x_2\equiv x_1+x_3)$
+    \item $\forall x_1 \forall x_2\ (x_1\leq x_2 \leftrightarrow \exists x_3\ x_2\equiv x_1+x_3)$
     \item $0<1$
   \end{enumerate}
 
@@ -68,11 +68,24 @@
   \end{lemma}
 
   \begin{remark}
-    $Ind_{\psi,\succession{v}{1}{n+1}}$ es verdadera en \pomega
+    $Ind_{\psi,\succession{v}{1}{n+1}}$ es verdadera en \pomega.
+    \begin{proof}
+       Supongamos que no. Entonces existen valores $\vec{v}=(\succession{v}{1}{n})$ tal que 
+       $$
+       \pomega\not\models ((\psi(\vec{v},0)\land(\forall v_{n+1}\ (\psi(\vec{v}, v_{n+1})\rightarrow\psi(\vec{v},+(v_{n+1},1))))\rightarrow\forall v_{n+1}\ \psi(\vec{v},v_{n+1}))[(\succession{v}{1}{n},\dots)]
+       $$
+       Pero entonces $\pomega\models(\psi(\vec{v},0)\land(\forall v_{n+1}\ (\psi(\vec{v}, v_{n+1})\rightarrow\psi(\vec{v},+(v_{n+1},1))))$ y 
+       $\pomega\not\models\forall v_{n+1}\ \psi(\vec{v},v_{n+1})$, por lo tanto existe un valor para $v_{n+1}$ que no satisface $\psi(\vec{v},v_{n+1})$.
+       Es facil ver que ese valor no puede ser 0, y por lo tanto no puede ser 1, y por lo tanto no puede ser 2, $\dots$. \abs
+      
+      \end{proof}
   \end{remark}
 
   \begin{remark}
     $\mathbf{Q}^{\geq 0}$ no es un modelo de $Arit$
+    \begin{proof}
+      TODO
+    \end{proof}
   \end{remark}
 
   \begin{definition}
@@ -100,5 +113,81 @@
       \item $\forall x\forall y\ (x\leq y+1\rightarrow (x\leq y\lor x\equiv y+1))$
     \end{enumerate}
   \end{lemma}
+  \begin{proof}
+    \begin{singlespace}
+      Prueba de (1) - TODO
+    \end{singlespace}
+    \begin{singlespace}
+      Prueba de (2)
+      \begin{flalign*}
+      &1.&\quad& x_0\leq0 & & & & \text{HIPOTESIS}1\\
+      &2.&\quad& \forall x\ 0\leq x & & & & \text{TEOREMA}\\
+      &3.&\quad& 0\leq x_0 & & & & \text{PARTICULARIZACION}(2)\\
+      &4.&\quad& x_0\leq0\land0\leq x_0 & & & & \text{CONJUNCIONINTRODUCCION}(1,3)\\
+      &5.&\quad& \forall x_1\forall x_2\ ((x_1\leq x_2\land x_2\leq x_1)\rightarrow x_1\equiv x_2) & & & & \text{AXIOMAPROPIO}\\
+      &6.&\quad& \forall x_2 ((x_0\leq x_2\land x_2\leq x_0)\rightarrow x_0\equiv x_2) & & & & \text{PARTICULARIZACION}(5)\\
+      &7.&\quad& ((x_0\leq 0\land 0\leq x_0)\rightarrow x_0\equiv 0) & & & & \text{PARTICULARIZACION}(6)\\
+      &8.&\quad& x_0\equiv0 & & & & \text{TESIS1MODUSPONENS}(4,7)\\
+      &9.&\quad& (x_0\leq0\rightarrow x_0\equiv 0) & & & & \text{CONCLUSION}\\
+      &10.&\quad& \forall x\ (x\leq 0\rightarrow x\equiv 0) & & & & \text{GENERALIZACION}(9)\\
+    \end{flalign*}
+  \end{singlespace}
+  \begin{singlespace}
+  Prueba de (3) \begin{flalign*}
+      &1.&\quad& x_0+y_0\equiv 0 & & & & \text{HIPOTESIS}1\\
+      &2.&\quad& 0\equiv x_0+y_0 & & & & \text{COMMUTATIVIDAD}(1)\\
+      &3.&\quad& \exists x_3\ (0\equiv x_0+x_3) & & & & \text{EXISTENCIA}(2)\\
+      &4.&\quad& \forall x_1\forall x_2\ (x_1\leq x_2\leftrightarrow \exists x_3\ x_2\equiv x_1+x_3) & & & & \text{AXIOMAPROPIO}\\
+      &5.&\quad& (x_0\leq0\leftrightarrow\exists x_3\ 0\equiv x_0+x_3) & & & & \text{PARTICULARIZACION}^2(5)\\
+      &6.&\quad& x_0\leq0 & & & & \text{REEMPLAZO}(5,3)\\
+      &7.&\quad& \forall x\ (x\leq0\rightarrow x\equiv 0) & & & & \text{TEOREMA}\\
+      &8.&\quad& (x_0\leq0\rightarrow x_0\equiv0) & & & & \text{PARTICULARIZACION}(7)\\
+      &9.&\quad& x_0\equiv0 & & & & \text{MODUSPONENS}(6,8)\\
+      &10.&\quad& 0 + y_0 \equiv 0 & & & & \text{REEMPLAZO}(9,1)\\
+      &11.&\quad& \forall x_1\ x_1+0\equiv x_1 & & & & \text{AXIOMAPROPIO}\\
+      &12.&\quad& y_0+0\equiv y_0 & & & & \text{PARTICULARIZACION}(11)\\
+      &13.&\quad& \forall x_1\forall x_2\ x_1+x_2\equiv x_2+x_1 & & & &\text{AXIOMAPROPIO}\\
+      &14.&\quad& y_0+0\equiv 0+y_0 & & & &\text{PARTICULARIZACION}^2(13)\\
+      &15.&\quad& 0+y_0\equiv y_0 & & & & \text{REEMPLAZO}(14, 12)\\
+      &16.&\quad& y_0\equiv0 & & & & \text{TRANSITIVIDAD}(15, 10)\\
+      &17.&\quad& x_0\equiv0\land y_0\equiv 0 & & & & \text{TESIS1CONJUNCIONINTRODUCCION}(12,16)\\
+      &18.&\quad& (x_0+y_0\equiv0\rightarrow(x_0\equiv0\land y_0\equiv0)) & & & & \text{CONCLUSION}\\
+      &19.&\quad& \forall x\forall y\ (x+y\equiv0 \rightarrow(x\equiv0\land y\equiv0)) & & & & \text{GENERALIZACION}^2(18)\\
+    \end{flalign*}
+    \begin{singlespace}
+      Prueba de (4) - TODO
+    \end{singlespace}
+  \end{singlespace}
+  \begin{singlespace}
+    Prueba de (5) - TODO
+  \end{singlespace}
+  \begin{singlespace}
+    Prueba de (6) - TODO
+  \end{singlespace}
+  \begin{singlespace}
+    Prueba de (7)
+    \begin{flalign*}
+      &1.&\quad& x_0\leq y_0+1 & & & & \text{HIPOTESIS}1\\
+      &2.&\quad& x_0\leq y_0 & & & & \text{HIPOTESIS}2\\
+      &3.&\quad& (x_0<y_0+1\rightarrow x_0+1\leq y_0+1) & & & & \text{PARTICULARIZACION}^2(2)\\
+      &4.&\quad& x_0+1\leq y_0+1 & & & & \text{TESIS1MODUSPONENS}(1,3)\\
+      &5.&\quad& (x_0<y_0+1\rightarrow x_0+1\leq y_0+1)& & & & \text{CONCLUSION}\\
+      &6.&\quad& x_0\leq0 & & & & \text{REEMPLAZO}(5,3)\\
+      &7.&\quad& \forall x\ (x\leq0\rightarrow x\equiv 0) & & & & \text{TEOREMA}\\
+      &8.&\quad& (x_0\leq0\rightarrow x_0\equiv0) & & & & \text{PARTICULARIZACION}(7)\\
+      &9.&\quad& x_0\equiv0 & & & & \text{MODUSPONENS}(6,8)\\
+      &10.&\quad& 0 + y_0 \equiv 0 & & & & \text{REEMPLAZO}(9,1)\\
+      &11.&\quad& \forall x_1\ x_1+0\equiv x_1 & & & & \text{AXIOMAPROPIO}\\
+      &12.&\quad& y_0+0\equiv y_0 & & & & \text{PARTICULARIZACION}(11)\\
+      &13.&\quad& \forall x_1\forall x_2\ x_1+x_2\equiv x_2+x_1 & & & &\text{AXIOMAPROPIO}\\
+      &14.&\quad& y_0+0\equiv 0+y_0 & & & &\text{PARTICULARIZACION}^2(13)\\
+      &15.&\quad& 0+y_0\equiv y_0 & & & & \text{REEMPLAZO}(14, 12)\\
+      &16.&\quad& y_0\equiv0 & & & & \text{TRANSITIVIDAD}(15, 10)\\
+      &17.&\quad& x_0\equiv0\land y_0\equiv 0 & & & & \text{TESIS1CONJUNCIONINTRODUCCION}(12,16)\\
+      &18.&\quad& (x_0+y_0\equiv0\rightarrow(x_0\equiv0\land y_0\equiv0)) & & & & \text{CONCLUSION}\\
+      &19.&\quad& \forall x\forall y\ (x+y\equiv0 \rightarrow(x\equiv0\land y\equiv0)) & & & & \text{GENERALIZACION}^2(18)\\
+    \end{flalign*}
+  \end{singlespace}
+\end{proof}
 
 \end{document}

@@ -31,7 +31,18 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  $ $
+
+  (1) Como $\forder\proves\succession{\varphi}{1}{n}$, hay una prueba formal $(\succession[]{s}{1}{k_i},\succession[]{J}{1}{k_i})$ para cada $\varphi_i$.
+  Si $\forder\proves\varphi$, terminamos. Sino, comencemos la prueba de $\varphi$ concatenando las pruebas de todas las $\varphi_i$, reasignando los indices correspondientes 
+  en las justificaciones. Ahora en esta prueba podemos usar $\succession{\varphi}{1}{n}$ para probar $\varphi$. Como $(\Sigma\cup\{\succession{\varphi}{1}{n}\},\tau\})\proves\tau$, usamos 
+  esa prueba formal seguido de lo que fuimos construyendo, reemplazando los indices correspondientes, y cambiando las apariciones de AXIOMAPROPIO cuando hablamos de alguna $\succession{\varphi}{1}{n}$
+  por EVOCACION con el indice correspondiente.
+  
+  (2) En particular, el lema dice que $(\{\succession{\varphi}{1}{n}\},\tau)\proves\varphi$. Por lo tanto $(\Sigma\cup\{\succession{\varphi}{1}{n}\},\tau)\proves\varphi$. Por (1) queda demostrado
+  $\forder\proves\varphi$.
+
+  (3) TODO
 \end{proof}
 
 \subsection{Consistencia}
@@ -48,7 +59,15 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  $ $
+
+  (1) Si \forder es inconsistente, entonces por definicion $\forder\proves(\psi\land\neg\psi)$. Dada una sentencia cualquiera 
+  $\varphi$, tenemos que $\varphi$ se deduce por la regla del absurdo a partir de $\psi\land\neg\psi$, y por lema anterior $\forder\proves\varphi$.
+
+  (2) Supongamos que \forder es consistente y $\forder\proves\varphi$. Si $(\Sigma\cup\{\varphi\},\tau)$ fuera inconsistente,
+  entonces $(\Sigma\cup\{\varphi\},\tau)\proves(\psi\land\neg\psi)$, y por lema anterior $\forder\proves(\psi\land\neg\psi)$, \abs
+
+  (3) Si \forder fuera inconsistente, $\forder\proves\neg\varphi$, \abs. Luego \forder es consistente.
 \end{proof}
 
 \begin{definition}
@@ -79,7 +98,14 @@
   \trel es una relacion de equivalencia
 \end{lemma}
 \begin{proof}
-  TODO
+  La relacion es reflexiva que $(\varphi\leftrightarrow\varphi)$ es un axioma logico, y por lo tanto\\
+  $((\varphi\leftrightarrow\varphi),\text{AXIOMALOGICO})$ es una prueba formal de $(\varphi\leftrightarrow\varphi)$ en $T$.
+  
+  La relacion es simetrica, pues supongamos $\varphi\trel\psi$, es decir $T\proves(\varphi\leftrightarrow\psi)$. Como 
+  $(\psi\leftrightarrow\varphi)$ se deduce de $(\varphi\leftrightarrow\psi)$ por la regla de commutatividad, tenemos que $T\proves(\psi\leftrightarrow\varphi)$.
+
+  La relacion es transitiva, pues supongamos $\varphi\trel\psi$ y $\psi\trel\varPhi$. Como $\varphi\leftrightarrow\varPhi$
+  se deduce de $(\varphi\leftrightarrow\psi)$, $(\psi\leftrightarrow\varPhi)$ por la regla de transitividad, tenemos que $T\proves(\varphi\leftrightarrow\varPhi)$.
 \end{proof}
 
 \begin{definition}
@@ -93,7 +119,67 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  $ $
+  (1)
+  Sean $\varphi,\psi$ teoremas de T, veremos que $\varphi\trel\psi$. La siguiente prueba justifica que $(\Sigma\cup\{\varphi,\psi\},\tau)\proves(\varphi\leftrightarrow\psi)$
+  \begin{pformal}
+    &1.&\quad& \varphi& & & & \text{HIPOTESIS}1\\
+    &2.&\quad& \psi& & & & \text{TESIS1AXIOMAPROPIO}\\
+    &3.&\quad& (\varphi\rightarrow\psi) & & & & \text{CONCLUSION}\\
+    &4.&\quad& \psi & & & & \text{HIPOTESIS}2\\
+    &5.&\quad& \varphi& & & & \text{TESIS2AXIOMAPROPIO}\\
+    &6.&\quad& (\psi\rightarrow\varphi) & & & & \text{CONCLUSION}\\
+    &7.&\quad& (\varphi\leftrightarrow\psi) & & & & \text{EQUIVALENCIAINTRODUCCION}(3,6)\\
+  \end{pformal}
+
+  Y por lo tanto $\forder\proves(\varphi\leftrightarrow\psi)$ lo cual implica $\varphi\trel\psi$.
+
+  Ahora veamos que si $\varphi$ es un teorema de $T$ y $\varphi\trel\psi$, $\psi$ es tambien un teorema de $T$. La siguiente prueba justifica que 
+  $(\Sigma\cup\{\varphi,\varphi\leftrightarrow\psi\})\proves\psi$, y por lo tanto $\forder\proves\psi$.
+
+  \begin{pformal}
+    &1.&\quad& (\varphi\leftrightarrow\psi)& & & & \text{AXIOMAPROPIO}\\
+    &2.&\quad& \varphi & & & & \text{AXIOMAPROPIO}\\
+    &3.&\quad& (\varphi\rightarrow\psi) & & & & \text{EQUIVALENCIAELIMINACION}(1)\\
+    &3.&\quad& \psi& & & & \text{MODUSPONENS}(2,3)\\
+  \end{pformal}
+
+  (2) Sean $\varphi,\psi$ refutables en T, veremos que $\varphi\trel\psi$. La siguiente prueba 
+  justifica que $(\Sigma\cup\{\neg\varphi,\neg\psi\},\tau)\proves(\varphi\leftrightarrow\psi)$.
+  \begin{pformal}
+    &1.&\quad& \varphi& & & & \text{HIPOTESIS}1\\
+    &2.&\quad& \neg\psi& & & & \text{HIPOTESIS}2\\
+    &3.&\quad& \neg\varphi& & & & \text{AXIOMAPROPIO}\\
+    &4.&\quad& (\varphi\land\neg\varphi) & & & & \text{TESIS2CONJUNCIONINTRODUCCION}(1,3)\\
+    &5.&\quad& (\neg\psi\rightarrow(\varphi\land\neg\varphi))& & & & \text{CONCLUSION}\\
+    &6.&\quad& \psi & & & & \text{TESIS1ABSURDO}(5)\\
+    &7.&\quad& (\varphi\rightarrow\psi) & & & & \text{CONCLUSION}\\
+    &8.&\quad& \psi& & & & \text{HIPOTESIS}3\\
+    &9.&\quad& \neg\varphi& & & & \text{HIPOTESIS}4\\
+    &10.&\quad& \neg\psi& & & & \text{AXIOMAPROPIO}\\
+    &11.&\quad& (\psi\land\neg\psi) & & & & \text{TESIS4CONJUNCIONINTRODUCCION}(8,10)\\
+    &12.&\quad& (\neg\varphi\rightarrow(\psi\land\neg\psi))& & & & \text{CONCLUSION}\\
+    &13.&\quad& \varphi & & & & \text{TESIS3ABSURDO}(5)\\
+    &14.&\quad& (\psi\rightarrow\varphi) & & & & \text{CONCLUSION}\\
+    &15.&\quad& (\varphi\leftrightarrow\psi)& & & & \text{EQUIVALENCIAINTRODUCCION}(7,14)
+  \end{pformal}
+
+  Como $\forder\proves\neg\varphi,\neg\psi$, $\forder\proves(\varphi\leftrightarrow\psi)$, lo cual dice $\varphi\trel\psi$.
+
+  Ahora veamos que si $\varphi$ es refutable en $T$ y $\varphi\trel\psi$, entonces $\psi$ tambien es refutable en $T$.
+  La siguiente prueba justifica que $(\Sigma\cup\{\neg\varphi,\varphi\leftrightarrow\psi\},\tau)\proves\neg\psi$, y por lo tanto $\forder\proves\neg\psi$.
+
+  \begin{pformal}
+    &1.&\quad& \psi& & & & \text{HIPOTESIS}1\\
+    &2.&\quad& (\varphi\leftrightarrow\psi)& & & & \text{AXIOMAPROPIO}\\
+    &3.&\quad& (\psi\rightarrow\varphi)& & & & \text{EQUIVALENCIAELIMINACION}(2)\\
+    &4.&\quad& \varphi & & & & \text{MODUSPONENS}(1,3)\\
+    &5.&\quad& \neg\varphi& & & & \text{AXIOMAPROPIO}\\
+    &6.&\quad& (\varphi\land\neg\varphi) & & & & \text{TESIS1CONJUNCIONINTRODUCCION}(5)\\
+    &7.&\quad& (\psi\rightarrow(\varphi\land\neg\varphi)) & & & & \text{CONCLUSION}\\
+    &8.&\quad& \neg\psi& & & & \text{ABSURDO}(7)\\
+  \end{pformal}
+  
 \end{proof}
 \begin{definition}
   Dada una teoria $T=\forder$ y $\varphi\in S^\tau$, $[\varphi]_T$ denotara la clase de $\varphi$ con respecto

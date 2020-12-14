@@ -18,7 +18,7 @@
   \begin{alignat}{3}
     &Partic^\tau &\ =&\ \{(\forall v\varphi(v),\varphi(t)): \varphi =_d\varphi(v)\in F^\tau \text{ y } t\in T_c^\tau\}\\
     &Exist^\tau &\ =&\ \{(\varphi(t),\exists v\varphi(v)): \varphi =_d\varphi(v)\in F^\tau \text{ y } t\in T_c^\tau\}\\    
-    &Evoc^\tau &\ =&\ \{(\varphi,\varphi(v)): \varphi\in S^\tau\}\\    
+    &Evoc^\tau &\ =&\ \{(\varphi,\varphi): \varphi\in S^\tau\}\\    
     &Absur^\tau &\ =&\ \{((\neg\varphi\rightarrow(\psi\land\neg\psi)),\varphi): \varphi,\psi \in S^\tau\}\cup\{((\varphi\rightarrow(\psi\land\neg\psi)),\neg\varphi): \varphi,\psi \in S^\tau\}\\
     &ConjElim^\tau &\ =&\ \{((\varphi\land\psi),\varphi)):\varphi,\psi\in S^\tau\}\cup\{((\varphi\land\psi),\psi)):\varphi,\psi\in S^\tau\}\\
     &EquivElim^\tau &\ =&\ \{((\varphi\leftrightarrow\psi),(\varphi\rightarrow\psi)):\varphi,\psi\in S^\tau\}\cup\{((\varphi\leftrightarrow\psi),(\psi\rightarrow\varphi)):\varphi,\psi\in S^\tau\}\\
@@ -72,7 +72,7 @@
     & &&\qquad\qquad\qquad\qquad \hat\gamma = \text{ resultado de reemplazar en $\gamma$ una ocurrencia de $\varphi$ por $\psi$}\}\}
   \end{alignat*}
 
-  Diremos que $\varphi$ se deduce de $\psi_1, \psi_2$ por la regla de \emph{reemplazo}, con respecto a $\tau$  para expresar que $(\psi_1,psi_2,\varphi)\in Reemp^\tau$.
+  Diremos que $\varphi$ se deduce de $\psi_1, \psi_2$ por la regla de \emph{reemplazo}, con respecto a $\tau$  para expresar que $(\psi_1,\psi_2,\varphi)\in Reemp^\tau$.
 
   Sea
   $$
@@ -86,7 +86,7 @@
   \end{alignat*}
 
   Diremos que $\varphi$ se deduce de $\psi_1,\psi_2$ por la regla de \emph{transitividad}, con respecto a $\tau$ para expresar que 
-  $(\psi_1,psi_2,\varphi) \in Trans^\tau$.
+  $(\psi_1,\psi_2,\varphi) \in Trans^\tau$.
 
   Sea 
   \begin{alignat*}{3}
@@ -129,6 +129,9 @@
   Sea $\tau$ un tipo. Todas las reglas excepto las reglas de eleccion y generalizacion son universales en el sentido que si $\varphi$ se deduce de $\succession{\psi}{1}{k}$ por alguna de estas reglas,
   entonces $((\succession[\land]{\psi}{1}{k})\rightarrow\varphi)$ es una sentencia valida.
 \end{lemma}
+\begin{proof}
+  TODO
+\end{proof}
 
 \subsection{Axiomas logicos}
 \begin{definition}

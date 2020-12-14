@@ -1,6 +1,6 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,leqno]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath, amsthm, amssymb}
+\usepackage{amsmath, amsthm, amssymb, setspace, environ}
 \usepackage[a4paper, total={6in, 8in}]{geometry}
 \usepackage{hyperref}
 \usepackage{xspace}
@@ -10,9 +10,9 @@
 \everymath{\displaystyle}
 
 \newtheorem{theorem}{Teorema}
-\newtheorem{lemma}{Lema}
-\newtheorem{proposition}{Proposicion}
-\newtheorem{corollary}{Corolario}
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{proposition}[theorem]{Proposicion}
+\newtheorem{corollary}[theorem]{Corolario}
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}
 \newtheorem{convention}{Convencion}
@@ -57,15 +57,19 @@
 \newcommand{\proves}{\ensuremath{\vdash}}
 
 % Unidad 10
-\newcommand{\trel}{\ensuremath{\dashv\vdash_{T}}}
+\newcommand{\trel}{\ensuremath{\dashv\vdash_{T}}\xspace}
 \newcommand{\supt}[2]{\ensuremath{#1\ \mathbf{s}^T\ #2}\xspace}
 \newcommand{\inft}[2]{\ensuremath{#1\ \mathbf{i}^T\ #2}\xspace}
-\newcommand{\algLin}{\ensuremath{(S^\tau/\trel, s^T, i^T, {}^{c^T},0^T,1^T)}}
+\newcommand{\algLin}{\ensuremath{(S^\tau/\trel, s^T, i^T, {}^{c^T},0^T,1^T)}\xspace}
+\NewEnviron{pformal}{\begin{singlespace}
+  \begin{flalign*}
+    \BODY
+  \end{flalign*}
+\end{singlespace}}
 
-% Unidad 11
+% Unidad 12
 \newcommand{\aritp}{\ensuremath{(\{0,1\},\{+^2,.^2\},\{\leq\},a)}\xspace}
 \newcommand{\pomega}{\ensuremath{\pmb{\omega}}\xspace}
-
 
 \title{Resumen de Lógica}
 \author{Uziel Ludueña}
