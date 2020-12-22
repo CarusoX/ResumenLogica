@@ -18,7 +18,7 @@
 \end{definition}
 
 \begin{definition}
-  Un \emph{conjunto} parcialmente ordenado o poset, es un par \poset, donde $P$ es un conjunto no vacio
+  Un \emph{conjunto} parcialmente ordenado o poset, es un par \poset, donde $P$ es un conjunto \textbf{no vacio}
   cualquiera y $\leq$ es un orden parcial sobre $P$. Dado un poset \poset, el conjunto $P$ sera llamado el \emph{universo} de \poset.
 \end{definition}
 
@@ -35,6 +35,9 @@ Dado un poset \poset. con $P$ finito, podemos realizar un diagrama llamado \emph
 La relacion de $\leq$ puede ser reconstruida facilmente apartir del diagrama. $a \leq b$ sucedera si y solo si
 $p_a = p_b$ o hay una sucesion de caminos ascendentes de segmentos desde $p_a$ hasta $p_b$.
 
+\begin{remark}
+  Si \poset es un poset, entonces para cada $a, b \in P$ tenemos que $a\leq b$ y $a \not< b \implies a = b$
+\end{remark}
 \subsection{Elementos maximales, maximos, minimales y minimos}
 \begin{definition}
   Sea \poset un poset.
@@ -98,6 +101,19 @@ de \poset en \posetdef{P'}{\leq'}
   cuando exista un isomorfismo de \poset en \posetdef{P'}{\leq'} y en tal caso diremos que \poset y \posetdef{P'}{\leq'}
   son isomorfos.
 \end{definition}
+
+\begin{remark}
+  Un homomorfismo biyectivo de posets puede \textbf{no ser} un isomorfismo de posets. Por ejemplo:
+  $$
+  P = P' = \{1, 2, 3\}
+  $$
+  $$
+  \leq = \{(1, 2), (1, 3), (1, 1), (2, 2), (3, 3)\}, \leq' = \{(1, 2), (2, 3), (1, 3), (1, 1), (2, 2), (3, 3)\}
+  $$
+  $$
+  \functype{F}{P}{P'} = \{(1, 1), (2, 2), (3, 3)\}
+  $$
+\end{remark}
 
 \begin{definition}
   Dada una funcion \functype{F}{A}{B} y $S \subseteq A$, denotaremos con $F(S)$ al conjunto ${\{F(a) : a \in S\}}$
@@ -163,12 +179,12 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  (1) Claramente (\supbin{x}{y}) es cota superior de $x$. Por lo tanto $x \leq \supbin{x}{y}$
+  (1) Claramente (\supbin{x}{y}) es cota superior de $\{x\}$. Por lo tanto $x \leq \supbin{x}{y}$
   
-  (2) Claramente (\infbin{x}{y}) es cota inferior de $x$. Por lo tanto $\infbin{x}{y} \leq x$
+  (2) Claramente (\infbin{x}{y}) es cota inferior de $\{x\}$. Por lo tanto $\infbin{x}{y} \leq x$
   
-  (3) Supongamos $(\supbin{x}{x}) = z \neq x$. Tenemos que $z$ es cota superior de $x$ por lo tanto $x \leq z$.
-  Pero tambien $x$ es cota superior de $x$ y por lo tanto $z$ no puede ser la minima cota superior. El caso del infimo es analogo.
+  (3) Supongamos $(\supbin{x}{x}) = z \neq x$. Tenemos que $z$ es cota superior de $\{x\}$ por lo tanto $x \leq z$.
+  Pero tambien $x$ es cota superior de $\{x\}$ y por lo tanto $z$ no puede ser la minima cota superior. El caso del infimo es analogo.
 
   (4) $(\supbin{x}{y}) = \sup(\{x, y\}) = \sup(\{y, x\}) = (\supbin{y}{x})$
 
@@ -184,9 +200,9 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  (1) $\Rightarrow$ (2) Claramente $y$ es cota superior de $\{x, y\}$ por (1). Y trivialmente es la minima ya que es igual a uno de sus elementos.
+  (1) $\Rightarrow$ (2) Claramente $y$ es cota superior de $\{x, y\}$ por (1). Si $\supbin{x}{y}=z\neq y$, entonces $y \leq z$ y por lo tanto $z$ no es la minima cota superior de $\{x, y\}$
 
-  (2) $\Rightarrow$ (3) Claremente $y$ es cota superior de $\{x, y\}$, por lo tanto $x \leq y$. Luego se tiene que $x$ es cota inferior de $\{x, y\}$. Trivialmente es la maxima.
+  (2) $\Rightarrow$ (3) Claremente $y$ es cota superior de $\{x, y\}$, por lo tanto $x \leq y$. Luego se tiene que $x$ es cota inferior de $\{x, y\}$. Si $\infbin{x}{y}=z\neq x$, entonces $z \leq x$ y entonces no es la maxima cota inferior de $\{x, y\}$
 
   (3) $\Rightarrow$ (1) Claramente $x$ es cota inferior de $\{x, y\}$, por lo tanto $x \leq y$.
 \end{proof}
@@ -199,9 +215,9 @@ Escribiremos \supbin{a}{b} en lugar de $s(a, b)$ y \infbin{a}{b} en lugar de $i(
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  (1) Claramente $(\infbin{x}{y}) \leq x$, y por lo tanto $\supbin{(\infbin{x}{y})}{x} = x$
+  (1) Claramente $(\infbin{x}{y}) \leq x$, y por lo tanto $x$ es cota superior de $\{x, \infbin{x}{y}\}$ y si $\supbin{x}{(\infbin{x}{y})}=z\neq x$, entonces $x\leq z$ y $z$ no es la minima cota superior.
 
-  (2) Claramente $x \leq (\supbin{x}{y})$, y por lo tanto $\infbin{x}{(\supbin{x}{y})} = x$
+  (2) Claramente $x \leq (\supbin{x}{y})$, y por lo tanto $x$ es cota inferior de $\{x, \supbin{x}{y}\}$ y si $\infbin{x}{(\supbin{x}{y})}=z\neq x$, entonces $x\leq z$ y $z$ no es la maxima cota inferior.
 \end{proof}
 
 \begin{lemma}
