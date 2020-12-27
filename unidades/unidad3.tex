@@ -17,7 +17,7 @@
   En tal caso que \reticulAlg sea un reticulado, diremos que $L$ es el \emph{universo} del reticulado.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}[Teorema de Dedekind]
   Sea \reticulAlg un reticulado. La relacion binaria definida por:
   $$
   x \leq y \iff \supbin{x}{y} = y
@@ -60,6 +60,19 @@
   $$
   Luego $z \leq \infbin{x}{y}$ y por lo tanto \infbin{x}{y} es la mayor cota inferior. 
 \end{proof}
+
+\begin{definition}
+  Sea \reticulAlg un reticulado, llamaremos a 
+  $$
+  \leq = \{(x,y) : \supbin{x}{y} = y\}
+  $$
+  el \emph{orden parcial asociado a } \reticulAlg.
+\end{definition}
+
+\begin{remark}
+  Si \reticulAlg es un reticulado, entonces \reticulAlgDef{L}{\mathbf{i}}{\mathbf{s}} tambien es un reticulado. Hay que demostrar que 
+  se cumplen las 7 propiedades para el segundo, dado que ya se cumplen para el primero.
+\end{remark}
 
 \subsection{Subreticulados}
 
