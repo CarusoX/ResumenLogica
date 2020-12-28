@@ -24,22 +24,22 @@
 \begin{proof}
   Supongamos \reticulAlg satisface $Dis_1$. Notese que
   \begin{alignat*}{3}
-    &\infbin{(\supbin{x}{y})}{(\supbin{x}{z})} &\ =&\ \supbin{(\infbin{(\supbin{x}{y})}{x})}{(\infbin{(\supbin{x}{y})}{z})} &\quad(Dis_1 + idempotencia)\\
-    & &\ =&\ \supbin{x}{(\infbin{z}{(\supbin{x}{y})})} &\quad (Dis_1)\\
-    & &\ =&\ \supbin{x}{(\supbin{(\infbin{z}{x})}{(\infbin{z}{y})})}&\quad (Conmutatividad)\\
-    & &\ =&\ \supbin{(\infbin{z}{y})}{(\supbin{(\infbin{z}{x})}{x})}&\quad (idempotencia)\\
-    & &\ =&\ \supbin{(\infbin{z}{y})}{x}
+    &\infbin{(\supbin{x}{y})}{(\supbin{x}{z})} &\ =&\ \supbin{(\infbin{(\supbin{x}{y})}{x})}{(\infbin{(\supbin{x}{y})}{z})} &\quad(Dis_1)\\
+    & &\ =&\ \supbin{x}{(\infbin{z}{(\supbin{x}{y})})} &\quad (Absorcion + Conmutatividad)\\
+    & &\ =&\ \supbin{x}{(\supbin{(\infbin{z}{x})}{(\infbin{z}{y})})}&\quad (Dis_1)\\
+    & &\ =&\ \supbin{(\infbin{z}{y})}{(\supbin{(\infbin{z}{x})}{x})}&\quad (Conmutatividad + Asociatividad)\\
+    & &\ =&\ \supbin{(\infbin{z}{y})}{x}&\quad (Absorcion)
   \end{alignat*}
   
   Por lo tanto cumple $Dis_2$.
   
   Supongamos ahora \reticulAlg satisface $Dis_2$. Notese que
   \begin{alignat*}{3}
-    &\supbin{(\infbin{x}{y})}{(\infbin{x}{z})} &\ =&\ \infbin{(\supbin{(\infbin{x}{y})}{x})}{(\supbin{(\infbin{x}{y})}{z})} &\quad(Dis_2 + idempotencia)\\
-    & &\ =&\ \infbin{x}{(\supbin{z}{(\infbin{x}{y})})} &\quad (Dis_2)\\
-    & &\ =&\ \infbin{x}{(\infbin{(\supbin{z}{x})}{(\supbin{z}{y})})}&\quad (Conmutatividad)\\
-    & &\ =&\ \infbin{(\supbin{z}{y})}{(\infbin{(\supbin{z}{x})}{x})}&\quad (idempotencia)\\
-    & &\ =&\ \infbin{(\supbin{z}{y})}{x}
+    &\supbin{(\infbin{x}{y})}{(\infbin{x}{z})} &\ =&\ \infbin{(\supbin{(\infbin{x}{y})}{x})}{(\supbin{(\infbin{x}{y})}{z})} &\quad(Dis_2)\\
+    & &\ =&\ \infbin{x}{(\supbin{z}{(\infbin{x}{y})})} &\quad (Absorcion + Conmutatividad)\\
+    & &\ =&\ \infbin{x}{(\infbin{(\supbin{z}{x})}{(\supbin{z}{y})})}&\quad (Dis_2)\\
+    & &\ =&\ \infbin{(\supbin{z}{y})}{(\infbin{(\supbin{z}{x})}{x})}&\quad (Conmutatividad + Asociatividad)\\
+    & &\ =&\ \infbin{(\supbin{z}{y})}{x}&\quad (Absorcion)
   \end{alignat*}
   Por lo tanto cumple $Dis_1$.
 \end{proof}
@@ -94,8 +94,8 @@
   $$
   Como es un algebra de Boole, se tiene que el complemento es unico y por lo tanto $(\infbin{x}{y})^c = \supbin{x^c}{y^c}$.\\
   (2) Facil, igual al (1)\\
-  (3) Por definicion, $x$ es complemento de $x^c$. Como tenemos un algebra de Boole, este complemento es unico y por lo tanto $x^{cc} = x$\\
-  (4) Facil, usar lema anterior\\
+  (3) Por definicion, $x$ es complemento de $x^c$ y viceversa. Como tenemos un algebra de Boole, este complemento es unico y por lo tanto $x^{cc} = x$\\
+  (4) Facil, aplicar lema anterior (27)\\
   (5) Supongamos $x \leq y$. Entonces $\infbin{x}{y} = x$, lo cual por (1) nos dice que $\supbin{x^c}{y^c} = x^c$,
   obteniendo $y^c \leq x^c$. Supongamos ahora $y^c \leq x^c$, luego $\infbin{x^c}{y^c} = y^c$, lo cual por (1) nos dice que $\supbin{x^{cc}}{y^{cc}} = y^{cc}$.
   Esto por (3) nos dice que $\supbin{x}{y} = y$ y por lo tanto $x \leq y$.

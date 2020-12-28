@@ -130,14 +130,20 @@
   Sean $z, w \in L$ los unicos elementos de $L$ tal que cumplen que $F(z) = x$ y $F(w) = y$. Estos elementos
   existen y son unicos pues $F$ es biyectiva. Entonces, tenemos que:
   \begin{alignat*}{2}
-    &F^{-1}(F(z) \textbf{ s' }F(w)) &\ = \supbin{F^{-1}(F(z))}{F^{-1}(F(w))}\\
-    &F^{-1}(F(z) \textbf{ i' }F(w)) &\ = \infbin{F^{-1}(F(z))}{F^{-1}(F(w))}\\    
+    &F^{-1}(x \textbf{ s' }y) = F^{-1}(F(z) \textbf{ s' }F(w))\\
+    &F^{-1}(x \textbf{ i' }y) = F^{-1}(F(z) \textbf{ i' }F(w))\\    
   \end{alignat*}
 
-  Y por propiedades de homomorfismo y de funciones con inversa tenemos que:
+  Y como $F$ es un isomorfismo tenemos que y es la inversa de $F^{-1}$ tenemos que:
   \begin{alignat*}{2}
-    &F^{-1}(F(\supbin{z}{w})) &\ = \supbin{z}{w}\\
-    &F^{-1}(F(\infbin{z}{w})) &\ = \infbin{z}{w}\\    
+    &F^{-1}(F(z) \textbf{ s' }F(w)) = F^{-1}(F(\supbin{z}{w})) = \supbin{z}{w}\\
+    &F^{-1}(F(z) \textbf{ i' }F(w)) = F^{-1}(F(\infbin{z}{w})) = \infbin{z}{w}\\    
+  \end{alignat*}
+
+  En donde claramente estamos diciendo que:
+  \begin{alignat*}{2}
+    &F^{-1}(x \textbf{ s' } y) = \supbin{F^{-1}(x)}{F^{-1}(y)}\\
+    &F^{-1}(x \textbf{ i' } y) = \infbin{F^{-1}(x)}{F^{-1}(y)}\\    
   \end{alignat*}
 \end{proof}
 \begin{lemma}
@@ -202,7 +208,7 @@
   \reticulAlgDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}} es un reticulado. El orden
   parcial $\tilde{\leq}$ asociado a este reticulado cumple:
   $$
-  x/\theta \tilde{\leq} y/\theta \iff y\theta(\supbin{x}{y})
+  x/\theta\ \tilde{\leq}\  y/\theta \iff y\theta(\supbin{x}{y})
   $$
 \end{lemma}
 
@@ -216,7 +222,7 @@
     \item[] ... 
   \end{itemize}
   Ahora veamos que el orden parcial $\tilde{\leq}$ dado se cumple en este reticulado. Por definicion, \\$x/\theta \tilde{\leq} y/\theta \iff y/\theta = \supbincongr{x/\theta}{y/\theta}$,
-  por lo cual $x/\theta \tilde{\leq} y/\theta \iff y/\theta = (\supbin{x}{y})/\theta$ y por lo tanto $y\theta(\supbin{x}{y})$
+  por lo cual $x/\theta\ \tilde{\leq}\ y/\theta \iff y/\theta = (\supbin{x}{y})/\theta$ y por lo tanto $y\theta(\supbin{x}{y})$
 \end{proof}
 
 \begin{lemma}
@@ -225,7 +231,7 @@
 \begin{proof}
   Ya sabemos que $\ker F$ es una relacion de equivalencia, veamos que en este caso cumple la propiedad para ser congruencia.
 
-  Sean $x, x', y, y' \in L$ tal que $x\theta x'$ y $y\theta y'$. Luego, tenemos que $F(x) = F(x')$ y $F(y) = F(y')$.
+  Sean $x, x', y, y' \in L$ tal que $x\theta x'$ y $y\theta y'$ ($\theta = ker F$). Luego, tenemos que $F(x) = F(x')$ y $F(y) = F(y')$.
   Entonces claramente $F(\supbin{x}{y}) = F(x) \textbf{ s' } F(y) = F(x') \textbf{ s' } F(y') = F(\supbin{x'}{y'})$, y por lo tanto 
   $(\supbin{x}{y})\theta(\supbin{x'}{y'})$
   
