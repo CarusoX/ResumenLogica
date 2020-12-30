@@ -255,4 +255,17 @@
 
 \end{proof}
 
+\begin{remark}
+  Sea \reticulAlg un reticulado distributivo, y sea $\theta$ una congruencia de \reticulAlg. Entonces \reticulAlgDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}}
+  es distributivo
+\end{remark}
+\begin{proof}
+  Sabemos que para todo $x,y,z \in L$ se cumple que $\infbin{x}{(\supbin{y}{z})} = \supbin{(\infbin{x}{y})}{(\infbin{x}{z})}$.
+  Pero entonces tenemos que $(\infbin{x}{(\supbin{y}{z})})/\theta = (\supbin{(\infbin{x}{y})}{(\infbin{x}{z})})/\theta$, y por sucesivas aplicaciones de la definicion de \supbincongr{}{} y \infbincongr{}{}, obtenemos:
+  $$
+  \infbincongr{x/\theta}{(\supbincongr{y/\theta}{z/\theta})} = \supbincongr{(\infbincongr{x/\theta}{y/\theta})}{(\infbincongr{x/\theta}{z/\theta})}
+  $$
+  Luego \reticulAlgDef{L/\theta}{\tilde{\textbf{s}}}{\tilde{\textbf{i}}} es distributivo.
+\end{proof}
+
 \end{document}
