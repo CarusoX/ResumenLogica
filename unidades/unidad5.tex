@@ -114,7 +114,7 @@
 \begin{definition}
   Dado un conjunto $S \subseteq L$, denotemos con $[S)$ el siguiente conunto:
   $$
-  \{y \in L : y \geq \succession[\textbf{ i }]{s}{1}{n}, \text{ para algunos } \succession{s}{1}{n} \in S, n \geq 1\}
+  \{y \in L : \succession[\textbf{ i }]{s}{1}{n} \leq y, \text{ para algunos } \succession{s}{1}{n} \in S, n \geq 1\}
   $$
 \end{definition}
 \begin{lemma}
@@ -124,10 +124,12 @@
 \begin{proof}
   Ya que $S \subseteq [S)$, tenemos que $[S) \neq \emptyset$.
   
-  Claramente $[S)$ cumple la propiedad (3), pues $x \in [S), x\leq y \Rightarrow y \in [S)$
+  Claramente $[S)$ cumple la propiedad (3), pues si $x \in [S)$, entonces existen $\succession{s}{1}{n}\in S$ tales que $\succession[\textbf{ i }]{s}{1}{n} \leq x$, y si suponemos $x \leq y$,
+  entonces claramente $\succession[\textbf{ i }]{s}{1}{n}\leq y$ y por lo tanto $y\in [S)$
 
-  Veamos que cumple la 2. Sean $y, z \in S$, entonces tenemos que $y \geq \succession[\textbf{ i }]{s}{1}{n}$ y
-  $z \geq \succession[\textbf{ i }]{t}{1}{m}$, con $\succession{s}{1}{n}, \succession{t}{1}{m} \in S$. Claramente $\infbin{y}{z} >= \infbin{\succession[\textbf{ i }]{s}{1}{n}}{\succession[\textbf{ i }]{t}{1}{m}}$
+  Veamos que cumple la (2). Sean $y, z \in S$, entonces tenemos que $y \geq \succession[\textbf{ i }]{s}{1}{n}$ y
+  $z \geq \succession[\textbf{ i }]{t}{1}{m}$, con $\succession{s}{1}{n}, \succession{t}{1}{m} \in S$. Claramente $\infbin{y}{z} \geq \infbin{\succession[\textbf{ i }]{s}{1}{n}}{\succession[\textbf{ i }]{t}{1}{m}}$,
+  y por lo tanto $\infbin{y}{z}\in [S)$
 
   Dado este resultado, diremos que $[S)$ es el \emph{filtro generado por S}.
 \end{proof}
