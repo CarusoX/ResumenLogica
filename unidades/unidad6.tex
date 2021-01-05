@@ -1,5 +1,5 @@
 % !TeX root = ../resumen.tex
-\begin{document}
+
 \section{Sintaxis de la logica de primer orden}
 
 \subsection{Ocurrencias}
@@ -115,6 +115,16 @@ $$
   aplicamos hipotesis inductiva. Si no se da tal cosa, entonces es justamente lo que nos dice el enunciado del lema.
 \end{proof}
 
+\begin{remark}
+  $t \in T^\tau - (Var \cup \mathcal{C}) \implies |t| \geq 4$.
+\end{remark}
+\begin{proof}
+  Como $t \in T^\tau - (Var \cup \mathcal{C})$, tenemos que $t \in T^\tau_{k}$, con $k \geq 1$. Ademas, $t = f(\succession{t}{1}{n})$, y por lo tanto,
+  $|t| = |f(\succession{t}{1}{n})| = |f| + |(| + |\succession{t}{1}{n}| + |)| = |f| + 2 + |t_1| + \dots + |t_n| + (n - 1)$.
+  Esta igualdad claramente alcanza su minimo cuando $|f| = 1$ y $n = 1$, y por lo tanto $|t| = 3 + |t_1|$. Como un termino no puede ser vacio, tenemos que $|t_1| \geq 1$ y por ende $|t| \geq 4$
+\end{proof}
+
+
 \subsubsection{Unicidad de la lectura de terminos}
 
 \begin{lemma}[Mordizqueo de Terminos]
@@ -170,18 +180,17 @@ $$
     
     Sea $n=|t_j|$ y $m=|t_k|$. Se usara la notacion $p[i]$ para referirse a la letra i-esima de $p$.
 
-    Tenemos entonces que $s=t_j[l]\dots t_j[n],t_{j+1},\dots t_{k-1},t_k[1]\dots t_k[r]$
-    Notese que hay una coma justo despues de $t_j[n]$, por lo tanto apartir de algun $i\in\{l,\dots,n\}$ debe comenzar el nombre de una funcion.
-    Esta funcion no cierra su parentesis dentro de $t_j$. Es importante notar que los parentesis se cierran a la derecha, no a la izquierda, osea que no nos importa 
-    la parte $t_j[1]\dots t_j[l-1]$, y por lo tanto esto nos dice que los parentesis en $t_j$ no estan balanceados \abs
+    (Notar bien las comas ahora, no son errores)\\
+    Tenemos entonces que $s=t_j[l]... t_j[n],t_{j+1},... t_{k-1},t_k[1]... t_k[r]$. Para algun $l \in \{1,...,n\},r\in\{1,...,m\}$. Ahora bien notese que si asignamos $x = t_j[1]...t_j[l-1], y = t_j[l]...t_j[n], z = ,t_{j+1},... t_{k-1},t_k[1]... t_k[r]$, podemos aplicar 
+    el lema de Mordizqueo para Terminos, y nos queda que $s,t\in \mathcal{C}$ \abs
   \end{itemize}
 
   (2) Supongamos $t \in Var \cup \mathcal{C}$, si $r, s$ ocurren en $t$, entonces $r=s=t$ y por lo tanto $r$ esta contenida en la ocurrencia de $s$.\\
   Ahora supongamos que vale para $T^\tau_{k}$ y veamos para $T^\tau_{k+1}$. Si $t\in T^\tau_{k}$ podemos aplicar hipotesis directamente, y sino, tenemos que 
   $t=f(\succession{t}{1}{n})$, para $f\in\mathcal{F}_n,n\geq1,\succession{t}{1}{n}\in T^\tau_k$. Si $r$ o $s$ ocurren a partir de algun $i\in\{1,\dots,|f|\}$, entonces
-  solo pueden ocurrir a partir de $1$, y eso hace que las ocurrencias se contengan trivialmente. Ahora si no pasa esto, las ocurrencias suceden dentro de los $t_i$. Sean 
+  solo pueden ocurrir a partir de $1$, lo cual implica que la ocurrencia es total ($r = t$ o $s = t$), y eso hace que las ocurrencias se contengan trivialmente. Ahora si no pasa esto, las ocurrencias suceden dentro de los $t_i$. Sean 
   \succession{r}{1}{q} y \succession{s}{1}{w} los indices de los terminos donde ocurren $r$ y $s$ respectivamente. Tomemos cualquier $1\leq x\leq q$ y $1\leq y\leq w$. Si $r_x = s_y$ entonces 
-  por hipotesis las ocurrencias se contienen o son disjuntas, y sino, las ocurrencias son claramente disjuntas.
+  por hipotesis las ocurrencias se contienen o son disjuntas, y sino, las ocurrencias son claramente disjuntas por el inciso anterior.
 
   (3) Supongamos $t\in Var \cup \mathcal{C}$, si $s$ ocurre en $t$ entonces $s = t$. Si reemplazamos la ocurrencia por $r$, entonces $t' = r$ es un termino.
   Ahora supongamos que vale para $T^\tau_k$ y veamos para $T^\tau_{k+1}$. Si $t\in T^\tau_k$ entonces vale por hipotesis. Si $t=f(\succession{t}{1}{n})$, 
@@ -266,7 +275,7 @@ $$
   tenga alguna ocurrencia en $\psi$.
 \end{definition}
 \begin{lemma}
-  Sea $\tau$ un tipo
+  Sea $\tau$ un tipo y $\varphi,\varphi_1,\varphi_2,\psi \in F^\tau$
   \begin{enumerate}
     \item Las formulas atomicas no tienen subformulas propias
     \item Si $\varphi$ ocurre propiamente en $(\psi\eta\phi)$, entonces tal ocurrencia es en $\psi$ o en $\phi$
@@ -277,4 +286,3 @@ $$
   \end{enumerate}
 \end{lemma}
 \noproof
-\end{document}
