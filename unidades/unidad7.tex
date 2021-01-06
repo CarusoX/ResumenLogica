@@ -38,7 +38,7 @@
   Para $(1), (2)$, tenemos por definiciones que si $v\in Var$ ocurren en $(t\equiv s)$ (resp. en $(r(\succession{t}{1}{n}))$), entonces 
   $v$ ocurre en $t$ o $v$ ocurre en $s$ (resp. $v$ ocurre en algun $t_i$).
 
-  Para $(3)$, notar que si $v \in Li(\varphi)$, entonces $v$ ocurre libremente a partir de $i$ en $\varphi$, y entonces ocurrira libremente a partir de $i+1$ en $\neg\varphi$
+  Para $(3)$, notar que si $v \in Li(\varphi)$, entonces $v$ ocurre libremente a partir de $i$ en $\varphi$, entonces ocurrira libremente a partir de $i+1$ en $\neg\varphi$
   y por lo tanto $v \in Li(\neg\varphi)$. Ahora bien si $v \in Li(\neg\varphi)$, entonces ocurre libremente a partir de $i$, pero por definicion ocurre libremente a partir de $i-1$ en $\varphi$, y entonces $v \in L(\varphi)$
 
   Para $(4)$, notar que si $v \in Li((\varphi\eta\psi))$, entonces $v$ ocurre libremente en $(\varphi\eta\psi)$ a partir de i. Por definicion, tenemos que $v$ ocurre libremente en $\varphi$ a partir de $i-1$ o 
@@ -83,9 +83,9 @@
 \end{lemma}
 \begin{proof}
   Notese que a cada elemento $a\in A$ podemos asignarle cualquier $b\in B$, esto nos da facilmente $|B|^{|A|}$ funciones posibles.
-  Mas formalmente, deberiamos probar que la siguiente funcion es biyectiva:
+  Mas formalmente, sea $A = \{\succession{a}{1}{n}\}$, deberiamos probar que la siguiente funcion es biyectiva:
   \funcdef{F}{\{f: D_f = A \text{ y } I_f \subseteq B\}}{B^{|A|}}{f}{(f(a_1), \dots, f(a_n))}
-  Lo cual es bastante facil de hacer.
+  Lo cual es bastante facil de hacer (probar que es sobreyectiva e inyectiva por separado).
 \end{proof}
 
 \subsection{El valor de un termino de una estructura}
@@ -144,7 +144,7 @@
     \item Si $\varphi = (\varphi_1 \rightarrow \varphi_2)$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi_2[\vec{a}]$ o $\mathbf{A}\not\models\varphi_1[\vec{a}]$
     \item Si $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff $ ya sea se dan $\mathbf{A}\models\varphi_1[\vec{a}]$ y $\mathbf{A}\models\varphi_2[\vec{a}]$ o se dan $\mathbf{A}\not\models\varphi_1[\vec{a}]$ y $\mathbf{A}\not\models\varphi_2[\vec{a}]$
     \item Si $\varphi = \neg\varphi_1$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\not\models\varphi_1[\vec{A}]$
-    \item Si $\varphi = \forall x_i \varphi_1$, entocnes $\mathbf{A}\models\varphi[\vec{a}] \iff $ para cada $a \in A$, se da que $\mathbf{A}\models\varphi_1[\downarrow_i^a(\vec{a})]$
+    \item Si $\varphi = \forall x_i \varphi_1$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff $ para cada $a \in A$, se da que $\mathbf{A}\models\varphi_1[\downarrow_i^a(\vec{a})]$
     \item Si $\varphi = \exists x_i \varphi_1$, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff $ hay un $a \in A$ tal que $\mathbf{A}\models\varphi_1[\downarrow_i^a(\vec{a})]$
   \end{enumerate}
 
@@ -163,7 +163,28 @@
   $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi[\vec{b}]$
 \end{lemma}
 \begin{proof}
-  TODO
+  Sea Teo$_k$ la proposicion que dice que el lema vale para $t \in F_k^\tau$.\\
+  Teo$_0$ es facil ya que si $\varphi \in F_0^\tau$ tenemos que $\varphi = (t\equiv s)$, $t,s\in T^\tau$ o bien $\varphi = r(\succession{t}{1}{n})$, $\succession{t}{1}{n} \in T^\tau$. Como son atomicas, todas las $v \in Var$ que 
+  ocurran en $\varphi$, son variables libres, y por lo tanto, podemos aplicar el lema analogo para terminos y tendremos que estos terminos evaluan al mismo resultado tanto con $\vec{a}$ como $\vec{b}$. Por lo tanto,
+  el valor de verdad de $\varphi$ sera el mismo.
+  Veamo Teo$_k \implies$ Teo$_{k+1}$. Sea $\varphi \in F_{k+1}^\tau - F_k^\tau$, tenemos varios casos (voy a uno mas que la fotocopia):
+  \begin{itemize}
+    \item $\varphi = (\varphi_1\land\varphi_2)$\\
+    Como $Li(\varphi_i) \subseteq Li(\varphi)$, $i = 1, 2$, Teo$_k$ nos dice que $\mathbf{A}\models\varphi_i[\vec{a}]\iff\mathbf{A}\models\varphi_i[\vec{b}]$, $i = 1, 2$, luego\\
+    $\mathbf{A}\models\varphi[\vec{a}]\iff\mathbf{A}\models\varphi_1[\vec{a}]\text{ y }\mathbf{A}\models\varphi_2[\vec{a}]\iff\mathbf{A}\models\varphi_1[\vec{b}]\text{ y }\mathbf{A}\models\varphi_2[\vec{b}]\iff\mathbf{A}\models\varphi[\vec{b}]$
+    \item $\varphi = \forall x_j \varphi_1$\\
+    Supongamos $\mathbf{A}\models\varphi[\vec{a}]$, entonces para todo $a \in A$ tenemos que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{a})]$. Notar que 
+    $\downarrow_j^a(\vec{a})$ y $\downarrow_j^a(\vec{b})$ coinciden en toda $x_i \in Li(\varphi_1)\cup\{x_j\}$, con lo cual tenemos que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{b})]$ para todo $a \in A$ y por tanto $\mathbf{A}\models\varphi[\vec{b}]$. \\
+    Supongamos $\mathbf{A}\models\varphi[\vec{b}]$, entonces para todo $a \in A$ tenemos que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{b})]$. Notar que 
+    $\downarrow_j^a(\vec{b})$ y $\downarrow_j^a(\vec{a})$ coinciden en toda $x_i \in Li(\varphi_1)\cup\{x_j\}$, con lo cual tenemos que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{a})]$ para todo $a \in A$ y por tanto $\mathbf{A}\models\varphi[\vec{a}]$. (si, es igual al anterior pero con las letras cambiadas)\\
+    Por tanto $\mathbf{A}\models\varphi[\vec{a}]\iff\mathbf{A}\models\varphi[\vec{b}]$
+    \item $\varphi = \exists x_j \varphi_1$\\
+    Supongamos $\mathbf{A}\models\varphi[\vec{a}]$, entonces existe un $a \in A$ tal que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{a})]$. Notar que 
+    $\downarrow_j^a(\vec{a})$ y $\downarrow_j^a(\vec{b})$ coinciden en toda $x_i \in Li(\varphi_1)\cup\{x_j\}$, con lo cual tenemos que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{b})]$ para algun $a \in A$ y por tanto $\mathbf{A}\models\varphi[\vec{b}]$. \\
+    Supongamos $\mathbf{A}\models\varphi[\vec{b}]$, entonces existe un $a \in A$ tal que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{b})]$. Notar que 
+    $\downarrow_j^a(\vec{b})$ y $\downarrow_j^a(\vec{a})$ coinciden en toda $x_i \in Li(\varphi_1)\cup\{x_j\}$, con lo cual tenemos que $\mathbf{A}\models\varphi_1[\downarrow_j^a(\vec{a})]$ para algun $a \in A$ y por tanto $\mathbf{A}\models\varphi[\vec{b}]$. (de nuevo, si)\\
+    Por tanto $\mathbf{A}\models\varphi[\vec{a}]\iff\mathbf{A}\models\varphi[\vec{b}]$
+  \end{itemize}
 \end{proof}
 \begin{corollary}
   Si $\varphi$ es una sentencia, entonces $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi[\vec{b}]$, cualesquiera sean 
@@ -199,7 +220,23 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  $  $
+
+  (1) Tenemos que $\varphi\sim\psi \iff \mathbf{A}\models(\phi\leftrightarrow\psi)[\vec{a}]$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a}\in A^\mathbf{N}$\\
+  $\iff \mathbf{A}\models(\phi\leftrightarrow\psi)[\downarrow_{i_n}^a\vec{a}]$, para cualquier $a \in A$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a}\in A^\mathbf{N}$\\
+  $\iff \mathbf{A}\models\forall x_{i_n}(\phi\leftrightarrow\psi)[\vec{a}]$ para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a}\in A^\mathbf{N}$\\
+  $\iff \dots$\\
+  $\iff \mathbf{A}\models\forall x_{i_1} \dots \forall x_{i_n}(\phi\leftrightarrow\psi)[\vec{a}]$ para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a}\in A^\mathbf{N}$\\
+  $\iff \forall x_{i_1} \dots \forall x_{i_n}(\phi\leftrightarrow\psi)$ es universalmente valida.\\
+  
+  (2) $\phi\sim\psi \iff \mathbf{A}\models(\phi\leftrightarrow\psi)[\vec{a}]$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff (\mathbf{A}\models\phi[\vec{a}] \iff \mathbf{A}\models\psi[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff (\mathbf{A}\not\models\phi[\vec{a}] \iff \mathbf{A}\not\models\psi[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff (\mathbf{A}\models\neg\phi[\vec{a}] \iff \mathbf{A}\models\neg\psi[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff \mathbf{A}\models(\neg\phi\leftrightarrow\neg\psi)[\vec{a}]$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff \neg\phi\sim\neg\psi$\\
+  Los otros casos son similares. \\
+  (3) Tarea para alguno de ustedes -- TODO
 \end{proof}
 
 \subsection{Homomorfismos}
@@ -213,7 +250,7 @@
   si se cumplen las siguientes: \begin{enumerate}
     \item $F(c^\mathbf{A}) = c^\mathbf{B}$, para todo $c \in \mathcal{C}$
     \item $F(f^\mathbf{A}(\succession{a}{1}{n})) = f^\mathbf{B}(F(a_1), \dots, F(a_n))$, para cada $f \in \mathcal{F}_n, \succession{a}{1}{n} \in A$
-    \item $\succession{a}{1}{n} \in r^\mathbf{A}$ implica $(F(a_1), \dots, F(a_n)) \in r^\mathbf{B}$, para todo $r \in \mathcal{R}_n, \succession{a}{1}{n}\in A$
+    \item $(\succession{a}{1}{n}) \in r^\mathbf{A}$ implica $(F(a_1), \dots, F(a_n)) \in r^\mathbf{B}$, para todo $r \in \mathcal{R}_n, \succession{a}{1}{n}\in A$
   \end{enumerate}
 
   Un \emph{isomorfismo de $\mathbf{A}$ en $\mathbf{B}$} sera un homomorfismo de $\mathbf{A}$ en $\mathbf{B}$ el cual sea biyectivo y cuya inversa
@@ -234,7 +271,18 @@
 \end{lemma}
 
 \begin{proof}
-  TODO
+  Sea Teo$_k$ la proposicion que dice que el teorema vale para $t\in T_k^\tau$ y sea $\vec{a} = (a_1, a_2, \dots)$ y $F(\vec{a}) = (F(a_1), F(a_2), \dots)$.\\
+  Teo$_0$ nos dice que $t\in Var \cup \mathcal{C}$. Si $t \in \mathcal{C}$, tenemos $F(t^\mathbf{A}[\vec{a}]) = F(t^\mathbf{A}) = t^\mathbf{B} = t^\mathbf{B}[F(\vec{a})]$. En cambio, si $t = x_k \in Var$, tenemos 
+  $F(t^\mathbf{A}[\vec{a}]) = F(x_k^\mathbf{A}[\vec{a}]) = F(a_k) = x_k^\mathbf{B}[F(\vec{a})] = t^\mathbf{B}[F(\vec{a})]$\\
+  Ahora veamos Teo$_k \implies$ Teo$_{k+1}$. Si $t \in T_{k+1} - T_k$, notar que $t = f(\succession{t}{1}{n})$ con $n \geq 1$ y $\succession{t}{1}{n} \in T_k^\tau$. Tenemos entonces
+  \begin{alignat*}{5}
+    &F(t^\mathbf{A}[\vec{a}]) &\ = &\ F(f(\succession{t}{1}{n})^\mathbf{A}[\vec{a}])\\
+    &&\ = &\ F(f^\mathbf{A}(t_1^\mathbf{A}[\vec{a}], \dots, t_n^\mathbf{A}[\vec{a}]))\\
+    &&\ = &\ f^\mathbf{B}(F(t_1^\mathbf{A}[\vec{a}]), \dots, F(t_n^\mathbf{A}[\vec{a}]))\\
+    &&\ = &\ f^\mathbf{B}(t_1^\mathbf{B}[F(\vec{a})], \dots, t_n^\mathbf{B}[F(\vec{a})])\\
+    &&\ = &\ f(\succession{t}{1}{n})^\mathbf{B}[F(\vec{a})]\\
+    &&\ = &\ t^\mathbf{B}[F(\vec{a})]
+  \end{alignat*}
 \end{proof}
 
 \begin{lemma}
@@ -246,5 +294,23 @@
   sentencias de tipo $\tau$.
 \end{lemma}
 \begin{proof}
-  TODO
-\end{proof}
+  Sea Teo$_k$ la proposicion que dice que el teorema vale para $\varphi\in F_k^\tau$, $\vec{a} = (a_1, a_2, \dots)$ y $F(\vec{a}) = (F(a_1), F(a_2), \dots)$.\\
+  Teo$_0$ nos dice que $\varphi$ es una formula atomica, es decir $\varphi = (t\equiv s)$ para algunos $s,t\in T^\tau$ o bien $\varphi = r(\succession{t}{1}{n})$ para algunos $n \geq 1$, $\succession{t}{1}{n} \in T^\tau$.\\
+  Supongamos $\varphi = (t\equiv s)$, luego $\mathbf{A}\models\varphi[\vec{a}] \iff t^\mathbf{A}[\vec{a}] = s^\mathbf{A}[\vec{a}] \iff F(t^\mathbf{A}[\vec{a}]) = F(s^\mathbf{A}[\vec{a}]) \iff t^\mathbf{B}[F(\vec{a})] = s^\mathbf{B}[F(\vec{a})] \iff \mathbf{B}\models\varphi[F(\vec{a})]$.\\
+  Ahora bien si $\varphi = r(\succession{t}{1}{n})$, tenemos que $\mathbf{A}\models\varphi[\vec{a}] \iff (t_1^\mathbf{A}[\vec{a}], \dots, t_n^\mathbf{A}[\vec{a}]) \in r^\mathbf{A} \iff (F(t_1^\mathbf{A}[\vec{a}]), \dots, F(t_n^\mathbf{A}[\vec{a}])) \in r^\mathbf{B} \iff (t_1^\mathbf{A}[F(\vec{a})], \dots, t_n^\mathbf{A}[F(\vec{a})]) \in r^\mathbf{B} \iff \mathbf{B}\models\varphi[F(\vec{a})]$\\
+  Ahora veamos Teo$_{k} \implies $Teo$_{k+1}$. Sea $\varphi \in F_{k+1}^\tau - F_k^\tau$. Hay varios casos, voy a hacer un par.
+  \begin{itemize}
+    \item $\varphi = (\varphi_1\land\varphi_2)$. Claramente $\varphi_1, \varphi_2\in F_k^\tau$. Luego $\mathbf{A}\models\varphi[\vec{a}] \iff \mathbf{A}\models\varphi_1[\vec{a}]$ y $\mathbf{A}\models\varphi_2[\vec{a}] \iff \mathbf{B}\models\varphi_1[F(\vec{a})]$ y $\mathbf{B}\models\varphi_2[F(\vec{a})] \iff \mathbf{B}\models\varphi[F(\vec{a})]$
+    \item $\varphi = (\forall x_k \varphi1)$. Claramente $\varphi_1 \in F_k^\tau$. Luego $\mathbf{A}\models\varphi[\vec{a}]$\\
+    $\iff \mathbf{A}\models\varphi_1[\downarrow_k^a(\vec{a})]$ para todo $a \in A$\\
+    $\iff \mathbf{B}\models\varphi_1[F(\downarrow_k^a(\vec{a}))]$, para todo $a \in A$\\
+    $\iff \mathbf{B}\models\varphi_1[\downarrow_k^{F(a)}(F(\vec{a}))]$, para todo $a \in A$\\
+    $\iff \mathbf{B}\models\varphi[F(\vec{a})]$ (el ultimo 'si y solo si' es producto de que $F$ es un isomorfismo, por tanto sobreyectiva, y entonces estamos probando todos los $F(a) \in B$).
+    \item $\varphi = (\exists x_k \varphi1)$. Claramente $\varphi_1 \in F_k^\tau$. Luego $\mathbf{A}\models\varphi[\vec{a}]$\\
+    $\iff \mathbf{A}\models\varphi_1[\downarrow_k^a(\vec{a})]$ para algun $a \in A$\\
+    $\iff \mathbf{B}\models\varphi_1[F(\downarrow_k^a(\vec{a}))]$, para algun $a \in A$\\
+    $\iff \mathbf{B}\models\varphi_1[\downarrow_k^{F(a)}(F(\vec{a}))]$, para algun $a \in A$\\
+    $\iff \mathbf{B}\models\varphi[F(\vec{a})]$
+  \end{itemize}
+
+\end{proof} 
