@@ -229,14 +229,22 @@
   $\iff \mathbf{A}\models\forall x_{i_1} \dots \forall x_{i_n}(\phi\leftrightarrow\psi)[\vec{a}]$ para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a}\in A^\mathbf{N}$\\
   $\iff \forall x_{i_1} \dots \forall x_{i_n}(\phi\leftrightarrow\psi)$ es universalmente valida.\\
   
-  (2) $\phi\sim\psi \iff \mathbf{A}\models(\phi\leftrightarrow\psi)[\vec{a}]$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
-  $\iff (\mathbf{A}\models\phi[\vec{a}] \iff \mathbf{A}\models\psi[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
-  $\iff (\mathbf{A}\not\models\phi[\vec{a}] \iff \mathbf{A}\not\models\psi[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
-  $\iff (\mathbf{A}\models\neg\phi[\vec{a}] \iff \mathbf{A}\models\neg\psi[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
-  $\iff \mathbf{A}\models(\neg\phi\leftrightarrow\neg\psi)[\vec{a}]$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
-  $\iff \neg\phi\sim\neg\psi$\\
+  (2) $\phi_1\sim\psi_1 \iff \mathbf{A}\models(\phi_1\leftrightarrow\psi_1)[\vec{a}]$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff (\mathbf{A}\models\phi_1[\vec{a}] \iff \mathbf{A}\models\psi_1[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff (\mathbf{A}\not\models\phi_1[\vec{a}] \iff \mathbf{A}\not\models\psi_1[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff (\mathbf{A}\models\neg\phi_1[\vec{a}] \iff \mathbf{A}\models\neg\psi_1[\vec{a}])$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff \mathbf{A}\models(\neg\phi_1\leftrightarrow\neg\psi_1)[\vec{a}]$, para todo modelo $\mathbf{A}$ de tipo $\tau$ y toda asignacion $\vec{a} \in A^\mathbf{N}$\\
+  $\iff \neg\phi_1\sim\neg\psi_1$\\
   Los otros casos son similares. \\
-  (3) Tarea para alguno de ustedes -- TODO
+  (3) Claramente el lema vale si hacemos 0 reemplazos. Probaremos que si hacemos un solo reemplazo, el lema vale, y como $\sim$ es un relacion de equivalencia, 
+  aplicar el lema reiteradamente hara que siga valiendo $\alpha = \alpha'$.\\
+  Supongamos entonces $\alpha \in F_0^\tau$. Luego $\alpha$ es una formula atomica. Luego si $\phi$ ocurre en $\alpha$, tenemos que 
+  $\phi = \alpha$, y por lo tanto $\alpha' = \psi$ y tenemos que $\alpha \sim \alpha'$.\\
+  Ahora veamos el caso inductivo. Hay varios casos, voy a hacer uno solo porque son todos iguales. Supongamos $\alpha = (\varphi_1\land\varphi_2)$, $\varphi_1,\varphi_2\in F_k^\tau$
+  entonces puede pasar que $\phi = \alpha$ y en tal caso $\alpha' = \psi$ y se cumplira $\alpha \sim \alpha'$, o puede pasar que 
+  $\phi$ ocurra en $\varphi_1$ o en $\varphi_2$. Supongamos sin perdida de generalidad que ocurre en $\varphi_1$ y entonces si hacemos el reemplazo de $\phi$ por $\psi$ en $\varphi_1$,
+  obtenemos $\varphi_1'$ el cual cumple por hipotesis que $\varphi_1 \sim \varphi_1'$. Ahora bien, $\varphi_2 \sim \varphi_2$ trivialmente.
+  Luego por inciso anterior $\alpha = (\varphi_1\land\varphi_2) \sim (\varphi_1'\land\varphi_2) = \alpha'$.
 \end{proof}
 
 \subsection{Homomorfismos}
@@ -305,7 +313,7 @@
     $\iff \mathbf{A}\models\varphi_1[\downarrow_k^a(\vec{a})]$ para todo $a \in A$\\
     $\iff \mathbf{B}\models\varphi_1[F(\downarrow_k^a(\vec{a}))]$, para todo $a \in A$\\
     $\iff \mathbf{B}\models\varphi_1[\downarrow_k^{F(a)}(F(\vec{a}))]$, para todo $a \in A$\\
-    $\iff \mathbf{B}\models\varphi[F(\vec{a})]$ (el ultimo 'si y solo si' es producto de que $F$ es un isomorfismo, por tanto sobreyectiva, y entonces estamos probando todos los $F(a) \in B$).
+    $\iff \mathbf{B}\models\varphi[F(\vec{a})]$ (el ultimo 'si y solo si' es producto de que $F$ es un isomorfismo, por tanto sobreyectiva, y entonces cuando estamos probando todos los $a \in A$ estamos cubriendo todo $B$ al aplicarles la funcion $F$).
     \item $\varphi = (\exists x_k \varphi1)$. Claramente $\varphi_1 \in F_k^\tau$. Luego $\mathbf{A}\models\varphi[\vec{a}]$\\
     $\iff \mathbf{A}\models\varphi_1[\downarrow_k^a(\vec{a})]$ para algun $a \in A$\\
     $\iff \mathbf{B}\models\varphi_1[F(\downarrow_k^a(\vec{a}))]$, para algun $a \in A$\\

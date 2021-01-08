@@ -182,20 +182,20 @@ $$
 
     (Notar bien las comas ahora, no son errores)\\
     Tenemos entonces que $s=t_j[l]... t_j[n],t_{j+1},... t_{k-1},t_k[1]... t_k[r]$. Para algun $l \in \{1,...,n\},r\in\{1,...,m\}$. Ahora bien notese que si asignamos $x = t_j[1]...t_j[l-1], y = t_j[l]...t_j[n], z = ,t_{j+1},... t_{k-1},t_k[1]... t_k[r]$, podemos aplicar 
-    el lema de Mordizqueo para Terminos, y nos queda que $s,t\in \mathcal{C}$ \abs
+    el lema de Mordizqueo para Terminos, y nos queda que $s,t_j\in \mathcal{C}$ \abs
   \end{itemize}
 
   (2) Supongamos $t \in Var \cup \mathcal{C}$, si $r, s$ ocurren en $t$, entonces $r=s=t$ y por lo tanto $r$ esta contenida en la ocurrencia de $s$.\\
   Ahora supongamos que vale para $T^\tau_{k}$ y veamos para $T^\tau_{k+1}$. Si $t\in T^\tau_{k}$ podemos aplicar hipotesis directamente, y sino, tenemos que 
-  $t=f(\succession{t}{1}{n})$, para $f\in\mathcal{F}_n,n\geq1,\succession{t}{1}{n}\in T^\tau_k$. Si $r$ o $s$ ocurren a partir de algun $i\in\{1,\dots,|f|\}$, entonces
-  solo pueden ocurrir a partir de $1$, lo cual implica que la ocurrencia es total ($r = t$ o $s = t$), y eso hace que las ocurrencias se contengan trivialmente. Ahora si no pasa esto, las ocurrencias suceden dentro de los $t_i$. Sean 
+  $t=f(\succession{t}{1}{n})$, para $f\in\mathcal{F}_n,n\geq1,\succession{t}{1}{n}\in T^\tau_k$.
+  Por inciso anterior, solo hay 2 casos, o bien $r = t$ o $s = t$, y eso hace que las ocurrencias se contengan trivialmente, o bien las ocurrencias suceden dentro de los $t_i$. Sean 
   \succession{r}{1}{q} y \succession{s}{1}{w} los indices de los terminos donde ocurren $r$ y $s$ respectivamente. Tomemos cualquier $1\leq x\leq q$ y $1\leq y\leq w$. Si $r_x = s_y$ entonces 
-  por hipotesis las ocurrencias se contienen o son disjuntas, y sino, las ocurrencias son claramente disjuntas por el inciso anterior.
+  por hipotesis las ocurrencias se contienen o son disjuntas, y sino, las ocurrencias son claramente disjuntas.
 
   (3) Supongamos $t\in Var \cup \mathcal{C}$, si $s$ ocurre en $t$ entonces $s = t$. Si reemplazamos la ocurrencia por $r$, entonces $t' = r$ es un termino.
   Ahora supongamos que vale para $T^\tau_k$ y veamos para $T^\tau_{k+1}$. Si $t\in T^\tau_k$ entonces vale por hipotesis. Si $t=f(\succession{t}{1}{n})$, 
-  con $f\in\mathcal{F}_n, n\geq1, \succession{t}{1}{n}\in T^\tau_k$, de nuevo tenemos dos casos. Si $s$ ocurre apartir de $\{1,\dots,|f|\}$
-  entonces $s$ ocurre a partir de 1, y por lo tanto $t=s$, y por lo tanto $t'=r$ es termino. Sino, $s$ ocurre en algun $t_i$, y por hipotesis, reemplazar en ese termino la ocurrencia nos da como resultado un termino,
+  con $f\in\mathcal{F}_n, n\geq1, \succession{t}{1}{n}\in T^\tau_k$, de nuevo tenemos 2 casos, o bien $s = t$, por lo tanto $t'=r$ es termino,
+  o bien, $s$ ocurre en algun $t_i$, y por hipotesis, reemplazar en ese termino la ocurrencia nos da como resultado un termino,
   y por lo tanto $t'\in T^\tau$ es termino.
 
 \end{proof}

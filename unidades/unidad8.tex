@@ -29,7 +29,11 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  Sea Teo$_k$ la proposicion que dice que el lema se cumple para $t \in T_k^\tau$.
+  Teo$_0$ es sencilla de probar ya que $t \in \mathcal{C}$ o $t \in Var$. Si $t \in \mathcal{C}$ Teo$_0$ se cumple, 
+  y si $t \in Var$, como $t = _d t(\succession{v}{1}{n})$, tenemos que $t \in \{\succession{v}{1}{n}\}$ por lo que tambien se cumple Teo$_0$.\\
+  Veamos Teo$_k \implies$ Teo$_{k+1}$.  Sea $t \in T_{k+1}^\tau-T_k^\tau$. Luego $t = f(\succession{t}{1}{m})$ con $f\in\mathcal{F}_m$, $m\geq 1$, $\succession{t}{1}{m}\in T_k^\tau$.
+  Por hipotesis tenemos que las variables que ocurren en los $t_i$ estan en $\{\succession{v}{1}{n}\}$, lo cual demuestra el lema. 
 \end{proof}
 
 \begin{convention}
@@ -40,7 +44,7 @@
 \begin{lemma}
   Sea $\tau$ un tipo cualquiera y $t \in T^\tau$. Supongamos $t =_d t(\succession{v}{1}{n})$. Sea
   $\mathbf{A}$ un modelo de tipo $\tau$. Sean $\succession{a}{1}{n} \in A$. Se tiene que: \begin{enumerate}
-    \item Si $t = c$, entonces $t^\mathbf{A}[\succession{a}{1}{n}] = c^\mathbf{A}$
+    \item Si $t = c \in \mathcal{C}$, entonces $t^\mathbf{A}[\succession{a}{1}{n}] = c^\mathbf{A}$
     \item Si $t = v_j$, entonces $t^\mathbf{A}[\succession{a}{1}{n}] = a_j$
     \item Si $t = f(\succession{t}{1}{m})$, con $f \in \mathcal{F}_m$ y $\succession{t}{1}{m} \in T^\tau$, entonces
     $$
@@ -49,7 +53,16 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  $ $\\
+  (1) Si $t = c \in \mathcal{C}$, entonces $t$ es cerrado, y por lo tanto $t^\mathbf{A}[\vec{x}] = c^\mathbf{A}$, para cualquier asignacion $\vec{x} \in A^\mathbf{N}$.
+  (2) Si $t = v_j$, como declaramos $t =_d t(\succession{v}{1}{n})$, tenemos que $t^\mathbf{A}[\succession{a}{1}{n}] = t^\mathbf{A}[\vec{b}]$ donde $\vec{b}$ es una asignacion tal que 
+  a cada $v_i$ se le asigna el valor $a_i$. En particular, a $v_j$ se le asigna $a_j$. Luego $t^\mathbf{A}[\succession{a}{1}{n}] = a_j$\\
+  (3) Sea $\vec{b}$ una asignacion tal que a cada $v_i$ le asigna $a_i$. Tenemos que
+  \begin{alignat*}{3}
+    &t^\mathbf{A}[\succession{a}{1}{n}] &\ = &\ t^\mathbf{A}[\vec{b}]\\
+    & &\ = &\ f^\mathbf{A}(t_1^\mathbf{A}[\vec{b}], \dots, t_m^\mathbf{A}[\vec{b}])\\
+    & &\ = &\ f^\mathbf{A}(t_1^\mathbf{A}[\succession{a}{1}{n}], \dots, t_m^\mathbf{A}[\succession{a}{1}{n}]) &\ &\ \text{(por convencion 3)}
+  \end{alignat*}
 \end{proof}
 
 \section{Notacion declaratoria para formulas}
@@ -154,9 +167,7 @@
   \end{enumerate}
 \end{lemma}
 
-\begin{proof}
-  TODO
-\end{proof}
+\noproof[(Se mencionan como propiedades)]
 
 \begin{theorem}
   Supongamos $\varphi =_d \varphi(\succession{w}{1}{k}), t_1 =_d t_1(\succession{v}{1}{n}), \dots, t_k =_d t_k(\succession{v}{1}{n})$
