@@ -23,7 +23,7 @@
   Sea $\tau$ un tipo cualquiera y supongamos $t \in T^\tau$. Si $t =_d t(\succession{v}{1}{n})$,
   entonces se da alguna de las siguientes: \begin{enumerate}
     \item $t = c$, para algun $c \in \mathcal{C}$
-    \item $t = v_j$, para algun $j$
+    \item $t = v_j$, para algun $j \in \{1,\dots,n\}$
     \item $t = f(\succession{t}{1}{m})$, con $f \in \mathcal{F}_m$ y $\succession{t}{1}{m} \in T^\tau$ tales
     que las variables que ocurren en cada uno de ellos estan en $\{\succession{v}{1}{n}\}$
   \end{enumerate}
@@ -97,13 +97,14 @@
     \item $\varphi = (\varphi_1 \leftrightarrow \varphi_2)$, con $\varphi_1, \varphi_2 \in F^\tau$, unicas y tales que $Li(\varphi_1)\cup Li(\varphi_2) \subseteq \{\succession{v}{1}{n}\}$
     \item $\varphi = \neg\varphi_1$, con $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}\}$
     \item $\varphi = \forall v_j\varphi_1$, con $v_j \in \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}\}$
-    \item $\varphi = \forall v_j\varphi_1$, con $v_j \in Var - \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}, v\}$
+    \item $\varphi = \forall v\varphi_1$, con $v \in Var - \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}, v\}$
     \item $\varphi = \exists v_j\varphi_1$, con $v_j \in \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}\}$
-    \item $\varphi = \exists v_j\varphi_1$, con $v_j \in Var - \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}, v\}$
+    \item $\varphi = \exists v\varphi_1$, con $v \in Var - \{\succession{v}{1}{n}\}$, y $\varphi_1 \in F^\tau$, unica y tal que $Li(\varphi_1) \subseteq \{\succession{v}{1}{n}, v\}$
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  (1), (2), (3), (4), (5), (6), (7), (8), (10) son triviales por definicion de variable y la definicion de $=_d$ para formulas.
+  (9) y (10) son consecuencia de no declarar una $v_k$ para algun $k\in \mathbf{N}$ y por lo tanto debemos agregarla al conjunto.
 \end{proof}
 
 \begin{convention}
