@@ -130,7 +130,19 @@
   entonces $((\succession[\land]{\psi}{1}{k})\rightarrow\varphi)$ es una sentencia valida.
 \end{lemma}
 \begin{proof}
-  TODO
+  Veamos que la regla de existencia es universal. Por definicion, un par de $Exist^{\tau }$
+  es siempre de la forma $(\varphi (t),\exists v\varphi (v))$,
+  con $\varphi =_{d}\varphi (v)$ y $t\in T_{c}^{\tau }$. Sea $\mathbf{A}$ una
+  estructura de tipo $\tau $ tal que $\mathbf{A}\models \varphi (t)$. Sea $t^{\mathbf{A}}$
+  el valor que toma $t$ en $\mathbf{A}$. Por el Lema de reemplazo
+  tenemos que $\mathbf{A}\models \varphi \left[ t^{\mathbf{A}}\right] $, por
+  lo cual tenemos que $\mathbf{A}\models \exists v\varphi (v)$.
+  
+  Veamos que la regla modus ponens es universal. Por definicion, una tripla de $ModPon^\tau$
+  es siempre de la forma $(\varphi,(\varphi\rightarrow\psi), \psi)$, con $\varphi,\psi \in S^\tau$.
+  Sea $\mathbf{A}$ una estructura de tipo $\tau$ tal que $\mathbf{A}\models\varphi$ y $\mathbf{A}\models(\varphi\rightarrow\psi)$.
+  Como $\mathbf{A}\models(\varphi\rightarrow\psi)$, tenemos que $\mathbf{A}\not\models\varphi$ o $\mathbf{A}\models\psi$. Como 
+  la primera opcion no es factible, deducimos que $\mathbf{A}\models\psi$.
 \end{proof}
 
 \subsection{Axiomas logicos}
@@ -256,7 +268,10 @@
   Sea $\pvarphi\in S^{\tau+}$. Hay unicos $n\geq1$ y $\succession{\varphi}{1}{n}\in S^\tau$ tales que $\pvarphi=\succession[]{\varphi}{1}{n}$.
 \end{lemma}
 \begin{proof}
-  TODO
+  Supongamos existen $n,m\geq1$ tales que $\pvarphi=\succession[]{\varphi}{1}{n}$ y $\pvarphi=\succession[]{\psi}{1}{m}$,
+  para algunos $\succession{\varphi}{1}{n}, \succession{\psi}{1}{m} \in S^\tau$. Si $\varphi_1 \neq \psi_1$,
+  una es tramo inicial de la otra, y entonces alguna de ellas no es formula (por mordizqueo de formulas). Luego $\varphi_1 = \psi_1$. Esta logica es analoga para 
+  cada $\varphi_i$ y $\psi_i$. Luego $n=m$ y las sentencias involucradas son las mismas. 
 \end{proof}
 
 \begin{definition}
@@ -336,4 +351,16 @@
 \section{El concepto de teorema}
 \begin{definition}
   Cuando haya una prueba de $\varphi$ en \forder, diremos que $\varphi$ es un \emph{teorema} de la teoria \forder, y escribiremos $\forder\proves\varphi$.
+\end{definition}
+
+\section{Conteo de modelos modulo isomorfismo}
+\begin{definition}
+  Sea $T$ una teoria de primer orden. Diremos que $T$ \emph{tiene, modulo isomorfismo, exactamente una 
+  cantidad n de modelos de m elementos si hay \succession{\mathbf{A}}{1}{n}} estructuras de tipo $\tau$ tales que:
+  \begin{enumerate}
+    \item Cada $\mathbf{A}_i$ es un modelo de $T$
+    \item $|A_i| = m$, para cada $i=1,\dots,n$
+    \item $\mathbf{A}_i$ no es isomorfo a $\mathbf{A}_j$, cada vez que $i\neq j$
+    \item Si $\mathbf{A}$ es un modelo de la teoria $T$, y $|A| = m$, entonces $\mathbf{A}$ es isomorfo a $\mathbf{A}_i$ para algun i
+  \end{enumerate} 
 \end{definition}
