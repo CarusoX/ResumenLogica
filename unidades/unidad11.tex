@@ -2,7 +2,7 @@
 
 \section{Teorema de la completitud}
 
-\begin{lemma}
+\begin{lemma}[Tipos parecidos]
   Sean $\tau=(\mathcal{C},\mathcal{F},\mathcal{R},a)$ y $\tau'=(\mathcal{C}',\mathcal{F}',\mathcal{R}',a')$ tipos. Se cumplen: \begin{enumerate}
     \item Si $\mathcal{C}\subseteq\mathcal{C}', \mathcal{F}\subseteq\mathcal{F}',\mathcal{R}\subseteq\mathcal{R}'$ y $a'|_{\mathcal{F}\cup\mathcal{R}}=a$,
     entonces $\forder\proves\varphi$ implica $(\Sigma,\tau')\proves\varphi$
@@ -20,9 +20,8 @@
   $$
   
 \end{lemma}
-\begin{proof}
-  TODO
-\end{proof}
+
+\noproof
 
 \begin{lemma}[Lema de Coincidencia]
   Sea $\tau=(\mathcal{C},\mathcal{F},\mathcal{R},a)$ y $\tau'=(\mathcal{C}',\mathcal{F}',\mathcal{R}',a')$ dos tipos cualesquiera y sea $\tau_\cap=(\mathcal{C}_\cap,\mathcal{F}_\cap,\mathcal{R}_\cap,a_\cap)$ donde:
@@ -50,20 +49,282 @@
   \end{enumerate}
 \end{lemma}
 \begin{proof}
-  TODO
+  Notese que las formulas de tipo $\tau $ son palabras de algun alfabeto
+finito $A$. Dado un orden total $\leq $ para $A$, podemos definir%
+\begin{eqnarray*}
+\gamma _{1} &=&\min\nolimits_{\alpha }^{\leq }\left( \alpha \in F^{\tau
+}\wedge \left\vert Li(\alpha )\right\vert \leq 1\right)  \\
+\gamma _{t+1} &=&\min\nolimits_{\alpha }^{\leq }\left( \alpha \in F^{\tau
+}\wedge \left\vert Li(\alpha )\right\vert \leq 1\wedge (\forall i\in \mathbf{N}
+)_{i\leq t}\alpha \neq \gamma _{i}\right) 
+\end{eqnarray*}%
+Notese que para $t\in \mathbf{N}$, tenemos que $\gamma _{t}=t$-esimo
+elemento de $\{\alpha \in F^{\tau }:\left\vert Li(\alpha )\right\vert \leq
+1\}$, con respecto al orden total de $A^{\ast }$ inducido por $\leq $.
+Claramente entonces la infinitupla $(\gamma _{1},\gamma _{2},...)$ cumple
+(1) y (2).
 \end{proof}
 
 \begin{theorem}[Teorema de Completitud]
   Sea $T=\forder$ una teoria de primer orden. Si $T\models\varphi$, entonces $T\proves\varphi$
 \end{theorem}
 \begin{proof}
-  TODO
+  Primero probaremos completitud para el caso en que $\tau $ tiene una
+cantidad infinita de nombres de constante que no ocurren en las sentencias de $
+\Sigma$. Lo probaremos por el absurdo, es decir supongamos que hay una
+sentencia $\varphi_0$ tal que $T\models\varphi_0$ y $T\not\vdash
+\varphi_0$. Notese que ya que $T\not\vdash\varphi_0$, tenemos que $
+[\neg\varphi_0]_{T}\not=0^{T}$ (sino, $\neg\varphi_0$ seria refutable, y por lo tanto se podria $T\proves\varphi_0$). Por el lema anterior hay una
+infinitupla $(\gamma _{1},\gamma _{2},...)\in F^{\tau \mathbf{N}}$ tal que:
+
+\begin{enumerate}
+\item[-] $\left\vert Li(\gamma _{j})\right\vert \leq 1$, para cada $
+j=1,2,... $
+
+\item[-] Si $\left\vert Li(\gamma )\right\vert \leq 1$, entonces $\gamma
+=\gamma _{j}$, para algun $j\in \mathbf{N}$
+\end{enumerate}
+
+\noindent Para cada $j\in \mathbf{N}$, sea $w_{j}\in Var$ tal que $Li(\gamma
+_{j})\subseteq \{w_{j}\}$. Para cada $j$, declaremos $\gamma _{j}=_{d}\gamma
+_{j}(w_{j})$. Notese que por el Lema del infimo tenemos que $\inf
+\{[\gamma _{j}(t)]_{T}:t\in T_{c}^{\tau }\}=[\forall w_{j}\gamma
+_{j}(w_{j})]_{T}$, para cada $j=1,2,...$. Por el Teorema de Rasiova y
+Sikorski tenemos que hay un filtro primo $\mathcal{U}$ de $\mathcal{A}_{T}$,
+el cual cumple:
+
+\begin{enumerate}
+\item[(a)] $[\neg \varphi_0]_{T}\in \mathcal{U}$
+
+\item[(b)] Para cada $j\in \mathbf{N}$, $\{[\gamma _{j}(t)]_{T}:t\in
+T_{c}^{\tau }\}\subseteq \mathcal{U}$ implica que $[\forall w_{j}\gamma
+_{j}(w_{j})]_{T}\in \mathcal{U}$
+\end{enumerate}
+
+\noindent Ya que la infinitupla $(\gamma _{1},\gamma _{2},...)$ cubre todas
+las formulas con a lo sumo una variable libre, podemos reescribir la
+propiedad (b) de la siguiente manera
+
+\begin{enumerate}
+\item[(b)$^{\prime}$] Para cada $\varphi =_{d}\varphi (v)\in F^{\tau }$, si 
+$\{[\varphi(t)]_{T}:t\in T_{c}^{\tau }\}\subseteq \mathcal{U}$ entonces $%
+[\forall v\varphi (v)]_{T}\in \mathcal{U}$
+\end{enumerate}
+
+\noindent Definamos sobre $T_{c}^{\tau }$ la siguiente relacion:%
+\begin{equation*}
+t\bowtie s\text{ si y solo si }[(t\equiv s)]_{T}\in \mathcal{U}\text{.}
+\end{equation*}%
+Veamos entonces que:
+
+\begin{enumerate}
+\item $\bowtie$ es de equivalencia.
+
+\item Para cada $\varphi =_{d}\varphi (v_{1},...,v_{n})\in F^{\tau }$, $
+t_{1},...,t_{n},s_{1},...,s_{n}\in T_{c}^{\tau }$, si $t_{1}\bowtie s_{1}$, $
+t_{2}\bowtie s_{2}$, $...$, $t_{n}\bowtie s_{n}$, entonces $[\varphi
+(t_{1},...,t_{n})]_{T}\in \mathcal{U}$ si y solo si $[\varphi
+(s_{1},...,s_{n})]_{T}\in \mathcal{U}$.
+
+\item Para cada $f\in \mathcal{F}_{n}$, $
+t_{1},...,t_{n},s_{1},...,s_{n}\in T_{c}^{\tau }$,
+$$
+t_{1}\bowtie s_{1},t_{2}\bowtie s_{2},...,\;t_{n}\bowtie s_{n}\text{ implica 
+}f(t_{1},...,t_{n})\bowtie f(s_{1},...,s_{n}).
+$$
+\end{enumerate}
+
+Probaremos (1), mostrando que valen las 3 propiedades.
+\begin{itemize}
+  \item $t \bowtie t \iff [t\equiv t]_T \in \mathcal{U} \iff 1^T \in \mathcal{U}$, trivial pues $\mathcal{U}$ es filtro.
+  \item $(t \bowtie s \implies s \bowtie t) \iff ([t\equiv s]_T \in \mathcal{U} \implies [s\equiv t]_T \in \mathcal{U})$, es trivial que $[t\equiv s]_T = [s\equiv t]_T$ (se deduce por commutatividad).
+  \item $(t\bowtie s, s \bowtie r \implies t\bowtie r) \iff ([t\equiv s]_T \in \mathcal{U}, [s \equiv r]_T \in \mathcal{U} \implies [t \equiv r]_T \in \mathcal{U})$,
+  es facil ver que $(t\equiv r)$ se deduce por la regla de reemplazo, por lo que se puede demostrar $((t\equiv s) \land (s\equiv r)) \rightarrow (t\equiv r)$, y por lo tanto
+  $\inft{[t\equiv s]_T}{[s\equiv r]_T} \leq^T [t\equiv r]_T$, y como $\mathcal{U}$ es un filtro, se cumple transitividad.
+  
+\end{itemize}
+
+
+Probaremos (2). Notese que por regla de reemplazo,
+\begin{equation*}
+T\vdash \left( (t_{1}\equiv s_{1})\wedge (t_{2}\equiv s_{2})\wedge ...\wedge
+(t_{n}\equiv s_{n})\wedge \varphi (t_{1},...,t_{n})\right) \rightarrow
+\varphi (s_{1},...,s_{n})
+\end{equation*}%
+lo cual nos dice que%
+\begin{equation*}
+\lbrack (t_{1}\equiv s_{1})]_{T}\;\mathsf{i}^{T}\mathsf{\;}[(t_{2}\equiv
+s_{2})]_{T}\;\mathsf{i}^{T}\mathsf{\;}...\;\mathsf{i}^{T}\mathsf{\;}%
+[(t_{n}\equiv s_{n})]_{T}\;\mathsf{i}^{T}\mathsf{\;}[\varphi
+(t_{1},...,t_{n})]_{T}\leq ^{T}[\varphi (s_{1},...,s_{n})]_{T}
+\end{equation*}%
+de lo cual se desprende que%
+\begin{equation*}
+\lbrack \varphi (t_{1},...,t_{n})]_{T}\in \mathcal{U}\text{ implica }%
+[\varphi (s_{1},...,s_{n})]_{T}\in \mathcal{U}
+\end{equation*}%
+ya que $\mathcal{U}$ es un filtro. La otra implicacion es analoga.
+
+Para probar (3) podemos tomar $\varphi =\left( f(v_{1},...,v_{n})\equiv
+f(s_{1},...,s_{n})\right) $ y aplicar (2).
+
+Definamos ahora un modelo $\mathbf{A}_{\mathcal{U}}$ de tipo $\tau $ de la
+siguiente manera:
+
+\begin{enumerate}
+\item[-] Universo de $\mathbf{A}_{\mathcal{U}}=T_{c}^{\tau }/\mathrm{\bowtie 
+}$
+
+\item[-] $c^{\mathbf{A}_{\mathcal{U}}}=c/\mathrm{\bowtie }$, para cada $c\in 
+\mathcal{C}$.
+
+\item[-] $f^{\mathbf{A}_{\mathcal{U}}}(t_{1}/\mathrm{\bowtie },...,t_{n}/%
+\mathrm{\bowtie })=f(t_{1},...,t_{n})/\mathrm{\bowtie }$, para cada $f\in 
+\mathcal{F}_{n}$, $t_{1},...,t_{n}\in T_{c}^{\tau }\;$
+
+\item[-] $r^{\mathbf{A}_{\mathcal{U}}}=\{(t_{1}/\mathrm{\bowtie },...,t_{n}/%
+\mathrm{\bowtie }):[r(t_{1},...,t_{n})]_{T}\in \mathcal{U}\}$, para cada $%
+r\in \mathcal{R}_{n}$.
+\end{enumerate}
+
+Notese que la definicion de $f^{\mathbf{A}_{\mathcal{U}}}$ es inambigua por
+(3). Probaremos las siguientes propiedades basicas:
+
+\begin{enumerate}
+\item[(4)] Para cada $t=_{d}t(v_{1},...,v_{n})\in T^{\tau }$, $%
+t_{1},...,t_{n}\in T_{c}^{\tau }$, tenemos que%
+\begin{equation*}
+t^{\mathbf{A}_{\mathcal{U}}}[t_{1}/\mathrm{\bowtie },...,t_{n}/\mathrm{%
+\bowtie }]=t(t_{1},...,t_{n})/\mathrm{\bowtie }
+\end{equation*}
+
+\item[(5)] Para cada $\varphi =_{d}\varphi (v_{1},...,v_{n})\in F^{\tau }$, $%
+t_{1},...,t_{n}\in T_{c}^{\tau }$, tenemos que%
+\begin{equation*}
+\mathbf{A}_{\mathcal{U}}\models \varphi \lbrack t_{1}/\mathrm{\bowtie }%
+,...,t_{n}/\mathrm{\bowtie }]\text{ si y solo si }[\varphi
+(t_{1},...,t_{n})]_{T}\in \mathcal{U}.
+\end{equation*}
+\end{enumerate}
+
+La prueba de (4) es directa por induccion. Probaremos (5) por induccion en
+el $k$ tal que $\varphi \in F_{k}^{\tau }$. El caso $k=0$ es dejado al
+lector. Supongamos (5) vale para $\varphi \in F_{k}^{\tau }$. Sea $\varphi
+=_{d}\varphi (v_{1},...,v_{n})\in F_{k+1}^{\tau }-F_{k}^{\tau }$. Hay varios
+casos:
+
+CASO $\varphi =\left( \varphi _{1}\vee \varphi _{2}\right) $.
+
+Notese que por la Convencion Notacional 6, tenemos que $\varphi
+_{i}=_{d}\varphi _{i}(v_{1},...,v_{n})$. Tenemos entonces%
+\begin{equation*}
+\begin{array}{c}
+\mathbf{A}_{\mathcal{U}}\models \varphi \lbrack t_{1}/\mathrm{\bowtie }%
+,...,t_{n}/\mathrm{\bowtie }] \\ 
+\Updownarrow \\ 
+\mathbf{A}_{\mathcal{U}}\models \varphi _{1}[t_{1}/\mathrm{\bowtie }%
+,...,t_{n}/\mathrm{\bowtie }]\text{ o }\mathbf{A}_{\mathcal{U}}\models
+\varphi _{2}[t_{1}/\mathrm{\bowtie },...,t_{n}/\mathrm{\bowtie }] \\ 
+\Updownarrow \\ 
+\lbrack \varphi _{1}(t_{1},...,t_{n})]_{T}\in \mathcal{U}\text{ o }[\varphi
+_{2}(t_{1},...,t_{n})]_{T}\in \mathcal{U} \\ 
+\Updownarrow \\ 
+\lbrack \varphi _{1}(t_{1},...,t_{n})]_{T}\ \mathsf{s}^{T}\mathsf{\ }%
+[\varphi _{2}(t_{1},...,t_{n})]_{T}\in \mathcal{U} \\ 
+\Updownarrow \\ 
+\lbrack \left( \varphi _{1}(t_{1},...,t_{n})\vee \varphi
+_{2}(t_{1},...,t_{n})\right) ]_{T}\in \mathcal{U} \\ 
+\Updownarrow \\ 
+\lbrack \varphi (t_{1},...,t_{n})]_{T}\in \mathcal{U}.%
+\end{array}%
+\end{equation*}%
+CASO $\varphi =\forall v\varphi _{1}$, con $v\in Var-\{v_{1},...,v_{n}\}$.
+Notese que por la Convencion Notacional 6, tenemos que $\varphi
+_{1}=_{d}\varphi _{1}(v_{1},...,v_{n},v)$. Tenemos entonces%
+\begin{equation*}
+\begin{array}{c}
+\mathbf{A}_{\mathcal{U}}\models \varphi \lbrack t_{1}/\mathrm{\bowtie }%
+,...,t_{n}/\mathrm{\bowtie }] \\ 
+\Updownarrow \\ 
+\mathbf{A}_{\mathcal{U}}\models \varphi _{1}[t_{1}/\mathrm{\bowtie }%
+,...,t_{n}/\mathrm{\bowtie },t/\mathrm{\bowtie }]\text{, para todo }t\in
+T_{c}^{\tau } \\ 
+\Updownarrow \\ 
+\lbrack \varphi _{1}(t_{1},...,t_{n},t)]_{T}\in \mathcal{U}\text{, para todo 
+}t\in T_{c}^{\tau } \\ 
+\Updownarrow \\ 
+\lbrack \forall v\varphi _{1}(t_{1},...,t_{n},v)]_{T}\in \mathcal{U} \\ 
+\Updownarrow \\ 
+\lbrack \varphi (t_{1},...,t_{n})]_{T}\in \mathcal{U}.%
+\end{array}%
+\end{equation*}%
+CASO $\varphi =\exists v\varphi _{1}$, con $v\in Var-\{v_{1},...,v_{n}\}$.
+Notese que por la Convencion Notacional 6, tenemos que $\varphi
+_{1}=_{d}\varphi _{1}(v_{1},...,v_{n},v)$. Tenemos entonces%
+\begin{equation*}
+\begin{array}{c}
+\mathbf{A}_{\mathcal{U}}\models \varphi \lbrack t_{1}/\mathrm{\bowtie }%
+,...,t_{n}/\mathrm{\bowtie }] \\ 
+\Updownarrow \\ 
+\mathbf{A}_{\mathcal{U}}\models \varphi _{1}[t_{1}/\mathrm{\bowtie }%
+,...,t_{n}/\mathrm{\bowtie },t/\mathrm{\bowtie }]\text{, para algun }t\in
+T_{c}^{\tau } \\ 
+\Updownarrow \\ 
+\lbrack \varphi _{1}(t_{1},...,t_{n},t)]_{T}\in \mathcal{U}\text{, para
+algun }t\in T_{c}^{\tau } \\ 
+\Updownarrow \\ 
+([\varphi _{1}(t_{1},...,t_{n},t)]_{T})^{\mathsf{c}^{T}}\not\in \mathcal{U}%
+\text{, para algun }t\in T_{c}^{\tau } \\ 
+\Updownarrow \\ 
+\lbrack \neg \varphi _{1}(t_{1},...,t_{n},t)]_{T}\not\in \mathcal{U}\text{,
+para algun }t\in T_{c}^{\tau } \\ 
+\Updownarrow \\ 
+\lbrack \forall v\;\neg \varphi _{1}(t_{1},...,t_{n},v)]_{T}\not\in 
+\mathcal{U} \\ 
+\Updownarrow \\ 
+([\forall v\;\neg \varphi _{1}(t_{1},...,t_{n},v)]_{T})^{\mathsf{c}^{T}}\in 
+\mathcal{U} \\ 
+\Updownarrow \\ 
+\lbrack \neg \forall v\;\neg \varphi _{1}(t_{1},...,t_{n},v)]_{T}\in 
+\mathcal{U} \\ 
+\Updownarrow \\ 
+\lbrack \varphi (t_{1},...,t_{n})]_{T}\in \mathcal{U}.%
+\end{array}%
+\end{equation*}%
+Pero ahora notese que (5) en particular nos dice que para cada sentencia $%
+\psi \in S^{\tau }$, $\mathbf{A}_{\mathcal{U}}\models \psi $ si y solo si $%
+[\psi ]_{T}\in \mathcal{U}.$ De esta forma llegamos a que $\mathbf{A}_{%
+\mathcal{U}}\models \Sigma $ y $\mathbf{A}_{\mathcal{U}}\models \neg
+\varphi_0$, lo cual contradice la suposicion de que $T\models \varphi
+_0.$
+
+Ahora supongamos que $\tau $ es cualquier tipo. Sean $s_{1}$ y $s_{2}$ un
+par de simbolos no pertenecientes a la lista%
+\begin{equation*}
+\forall \ \ \exists \ \ \neg \ \ \vee \ \ \wedge \ \ \rightarrow \ \
+\leftrightarrow \ \ (\ \ )\ \ ,\ \equiv \ \ \mathsf{X}\ \ \mathit{0}\ \ 
+\mathit{1}\ \ ...\ \ \mathit{9}\ \ \mathbf{0}\ \ \mathbf{1}\ \ ...\ \ 
+\mathbf{9}
+\end{equation*}%
+y tales que ninguno ocurra en alguna palabra de $\mathcal{C}\cup \mathcal{F}%
+\cup \mathcal{R}.$ Si $T\models \varphi $, entonces usando el Lema de
+Coincidencia se puede ver que $(\Sigma ,(\mathcal{C}\cup
+\{s_{1}s_{2}s_{1},s_{1}s_{2}s_{2}s_{1},...\},\mathcal{F},\mathcal{R}%
+,a))\models \varphi $, por lo cual%
+\begin{equation*}
+(\Sigma ,(\mathcal{C}\cup \{s_{1}s_{2}s_{1},s_{1}s_{2}s_{2}s_{1},...\},%
+\mathcal{F},\mathcal{R},a))\vdash \varphi .
+\end{equation*}%
+Pero por Lema de tipos parecidos, tenemos que $T\vdash \varphi .$
 \end{proof}
 \begin{corollary}
   Toda teoria consistente tiene un modelo
 \end{corollary}
 \begin{proof}
-  TODO
+  Supongamos $(\Sigma ,\tau )$ es consistente y no tiene modelos. Entonces $%
+(\Sigma ,\tau )\models \left( \varphi \wedge \lnot \varphi \right) $, con lo
+cual por completitud $(\Sigma ,\tau )\vdash \left( \varphi \wedge \lnot
+\varphi \right) $, lo cual es absurdo.
 \end{proof}
 \begin{corollary}[Teorema de Compacidad]
   Sea $\forder$ una teoria. \begin{enumerate}
@@ -72,7 +333,21 @@
   \end{enumerate}
 \end{corollary}
 \begin{proof}
-  TODO
+  (a) Veamos que $(\Sigma ,\tau )$ es consistente. Supongamos lo contrario, es
+decir supongamos $(\Sigma ,\tau )\vdash \left( \varphi \wedge \lnot \varphi
+\right) $, para alguna sentencia $\varphi $. Notese que entonces hay un
+subconjunto finito $\Sigma _{0}\subseteq \Sigma $ tal que la teoria $(\Sigma
+_{0},\tau )\vdash \left( \varphi \wedge \lnot \varphi \right) $ ($\Sigma
+_{0} $ puede ser formado con los axiomas de $\Sigma $ usados en una prueba
+formal que atestigue que $(\Sigma ,\tau )\vdash \left( \varphi \wedge \lnot
+\varphi \right) $). Pero esto es absurdo ya que por hypotesis dicha teoria $%
+(\Sigma _{0},\tau )$ tiene un modelo. O sea que $(\Sigma ,\tau )$ es
+consistente por lo cual tiene un modelo.
+
+(b) Si $(\Sigma ,\tau )\models \varphi $, entonces por completitud, $(\Sigma
+,\tau )\vdash \varphi $. Pero entonces hay un subconjunto finito $\Sigma
+_{0}\subseteq \Sigma $ tal que $(\Sigma _{0},\tau )\vdash \varphi $, es
+decir tal que $(\Sigma _{0},\tau )\models \varphi $ (correccion).
 \end{proof}
 
 \section{Interpretacion semantica del algebra de Lindembaum}
