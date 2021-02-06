@@ -368,3 +368,34 @@ decir tal que $(\Sigma _{0},\tau )\models \varphi $ (correccion).
 \begin{proof}
   TODO
 \end{proof}
+
+\begin{remark}
+  Sea $\tau = (\{0\},\emptyset,\{\leq^2\},a)$ y sea $\Sigma$ el conjunto formado por los axiomas
+  que dicen que $\leq$ es un orden parcial junto con el axioma $\forall\ x 0\leq x$. Sea $T$
+  la teoria \forder. Sea
+  $$
+  \varphi = \exists x \exists y (0 < x \land x < y \land \forall\ z (z = 0 \lor z = x \lor z = y))
+  $$
+  Entonces $[\varphi]_T$ es un atomo del algebra de Lindenbaum $\mathcal{A}_T$.
+\end{remark}
+\begin{proof}
+  Primero veamos que $0^T <^T [\varphi]_T$. Por lema anterior, tenemos que ($A_R$ es el axioma de reflexividad para el $\leq$)
+  $$0^T <^T [\varphi]_T \iff \emph{Mod}_T(\neg A_R)\subsetneqq\emph{Mod}_T(\varphi)$$
+
+  Claramente $\emph{Mod}_T(\neg A_R) = \emptyset$, pues ningun modelo que cumpla los axiomas, puede no cumplir $A_R$.
+
+  Ademas, podemos dar un modelo de $T$, que cumpla $\varphi$.
+  $$
+    \mathbf{A} = (A, i) = (\{a, b, c\}, \{(0, a), (\leq, \{(a,a),(b,b),(c,c),(a,b),(a,c),(b,c)\})\})
+  $$
+
+  Entonces claramente quedo probado $0^T <^T [\varphi]_T$. Ahora bien, es importante notar que todos los modelos que cumplan
+  $\varphi$ son iguales modulo isomorfismo y por lo tanto satisfacen las mismas sentencias.
+
+  Entonces ahora supongamos que $0^T < [\psi]_T < [\varphi]_T$, para algun $\psi \in F^\tau$. Si esto pasase, entonces 
+  tambien por lema anterior tenemos que
+  $$[\psi]^T <^T [\varphi]_T \iff \emph{Mod}_T(\psi)\subsetneqq\emph{Mod}_T(\varphi)$$
+  Claramente entonces $\emph{Mod}_T(\psi)$ no tienen ningun modelo de $\emph{Mod}_T(\varphi)$, porque sino, como son todos iguales modulo
+  isomorfismo, tendria a todos, y serian iguales. Pero entonces $\emph{Mod}_T(\psi) = \emptyset$ y entonces $[\psi]_T = 0^T$.
+  Por lo tanto $[\varphi]_T$ es atomo en $\mathcal{A}_T$.
+\end{proof}
