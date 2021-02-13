@@ -399,3 +399,28 @@ decir tal que $(\Sigma _{0},\tau )\models \varphi $ (correccion).
   isomorfismo, tendria a todos, y serian iguales. Pero entonces $\emph{Mod}_T(\psi) = \emptyset$ y entonces $[\psi]_T = 0^T$.
   Por lo tanto $[\varphi]_T$ es atomo en $\mathcal{A}_T$.
 \end{proof}
+
+\begin{remark}
+  Sea $\tau = (\emptyset, \emptyset, \{r^2\}, a)$. En el algebra de Lindembaum $\mathcal{A}_{(\emptyset, \tau)}$
+  se tiene que\\ $[\exists x\forall y\ r(x, y)]_T \prec^T [\forall y \exists x\ r(x, y)]_T$
+\end{remark}
+\begin{proof}
+  Sean $\varphi = \exists x\forall y\ r(x, y)$ y $\psi = \forall y \exists x\ r(x, y)$.
+  \begin{pformal}
+    &1.&\quad& \exists x\forall y\ r(x, y)& & & & \text{HIPOTESIS1}\\
+    &2.&\quad& \forall y r(a, y)& & & & \text{ELECCION}(1)\\
+    &3.&\quad& r(a, b)& & & & \text{PARTICULARIZACION}(2)\\
+    &4.&\quad& \exists x\ r(x, b) & & & & \text{EXISTENCIA}(3)\\
+    &5.&\quad& \forall y \exists y\ r(x, y) & & & & \text{TESIS1GENERALIZACION(4)}\\
+    &6.&\quad& (\exists x\forall y\ r(x, y)\rightarrow\forall y \exists y\ r(x, y)) & & & & \text{CONCLUSION}
+  \end{pformal}
+  Luego tenemos que $T \proves (\varphi \rightarrow \psi)$ y por tanto $[\varphi]_T \leq^T [\psi]_T$.
+
+  Ahora bien, es facil dar un modelo $\mathbf{A}$ de T tal que $\mathbf{A}\not\models\psi$ pero que $\mathbf{A}\models\varphi$:
+  $$
+  \mathbf{A} = (A, i) = (\{a, b\}, \{(r, \{(a,a),(b,b)\})\})
+  $$
+  Y por lema anterior tenemos que $[\varphi]_T <^T [\psi]_T$.
+
+  TODO
+\end{proof}

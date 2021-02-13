@@ -392,26 +392,15 @@
 
 \begin{remark}
   Sea $\tau$ un tipo cualquiera y sean $\varphi_1, \varphi_2,\varphi_3$ sentencias de tipo $\tau$.
-  Dar una prueba formal de $((\varphi_1\land\varphi_2)\rightarrow\varphi_3)\leftrightarrow(\varphi_1\rightarrow(\varphi_2\rightarrow\varphi_3))$
+  Dar una prueba formal de $((\varphi_1\land\varphi_2)\rightarrow\varphi_3\leftrightarrow(\varphi_1\rightarrow(\varphi_2\rightarrow\varphi_3)))$
 \end{remark}
 \begin{proof}
   \begin{pformal}
     &1.&\quad& ((\varphi_1\land\varphi_2)\rightarrow\varphi_3)& & & & \text{HIPOTESIS1}\\
-    &2.&\quad& \varphi_1& & & & \text{HIPOTESIS}2\\
-    &3.&\quad& \varphi_2& & & & \text{HIPOTESIS}3\\
+    &2.&\quad& \varphi_1& & & & \text{HIPOTESIS}(2)\\
+    &3.&\quad& \varphi_2& & & & \text{HIPOTESIS}(3)\\
     &4.&\quad& (\varphi_1 \land \varphi_2)& & & & \text{CONJUNCIONINTRODUCCION}(2,3)\\
     &5.&\quad& \varphi_3 & & & & \text{TESIS3MODUSPONENS(4,1)}\\
-    &6.&\quad& (\varphi_2\rightarrow\varphi_3) & & & & \text{TESIS2CONCLUSION}\\
-    &7.&\quad& (\varphi_1\rightarrow(\varphi_2\rightarrow\varphi_3)) & & & & \text{TESIS1CONCLUSION}\\
-    &8.&\quad& ((\varphi_1\land\varphi_2)\rightarrow\varphi_3)\rightarrow(\varphi_1\rightarrow(\varphi_2\rightarrow\varphi_3)) & & & & \text{CONCLUSION}\\    
-    &9.&\quad& (\varphi_1\rightarrow(\varphi_2\rightarrow\varphi_3)) & & & & \text{HIPOTESIS}4\\    
-    &10.&\quad& (\varphi_1\land\varphi_2) & & & & \text{HIPOTESIS}5\\        
-    &11.&\quad& \varphi_1 & & & & \text{CONJUNCIONELIMINACION}(10)\\        
-    &12.&\quad& \varphi_2 & & & & \text{CONJUNCIONELIMINACION}(10)\\        
-    &13.&\quad& (\varphi_2\rightarrow\varphi_3) & & & & \text{MODUSPONENS}(11,9)\\        
-    &14.&\quad& \varphi_3 & & & & \text{TESIS5MODUSPONENS}(12,13)\\        
-    &15.&\quad& ((\varphi_1\land\varphi_2)\rightarrow\varphi_3) & & & & \text{TESIS4CONCLUSION}\\        
-    &16.&\quad& ((\varphi_1\rightarrow(\varphi_2\rightarrow\varphi_3))\rightarrow((\varphi_1\land\varphi_2)\rightarrow\varphi_3)) & & & & \text{CONCLUSION}\\        
-    &17.&\quad& ((\varphi_1\land\varphi_2)\rightarrow\varphi_3)\leftrightarrow(\varphi_1\rightarrow(\varphi_2\rightarrow\varphi_3)) & & & & \text{EQUIVALENCIAINTRODUCCION}(8, 16)\\        
+    &6.&\quad& (\exists x\forall y\ r(x, y)\rightarrow\forall y \exists y\ r(x, y)) & & & & \text{CONCLUSION}
   \end{pformal}
 \end{proof}
